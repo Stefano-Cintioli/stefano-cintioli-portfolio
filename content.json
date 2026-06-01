@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.2.0",
+    "version": "1.3.0",
     "ptDraft": false
   },
   "en": {
@@ -14,7 +14,8 @@
       "eyebrow": "Argentina · LatAm · Global Web3",
       "headline": {
         "a": "Bridging LatAm builders",
-        "b": "with the global Web3 ecosystem."
+        "preAccent": "with the global ",
+        "postAccent": " ecosystem."
       },
       "sub": "LatAm Community Lead at BNB Chain. Routing regional builders to the right vertical, building the tools the work needs along the way.",
       "cta": "Get in touch →",
@@ -24,11 +25,13 @@
     },
     "currently": {
       "kicker": "Currently",
-      "body": "Currently running BNB Chain's LatAm community and BD pipeline from Buenos Aires. Routing regional projects toward stables, payments, AI, and RWA verticals. Co-developing BNB Dojo as a global builder-engagement layer. Always open to builders, founders, and operators working on the region.",
       "meta": {
         "loc": "Buenos Aires · UTC-3",
         "scope": "8 countries activated · 6 months"
-      }
+      },
+      "preEm": "Currently ",
+      "em": "running BNB Chain's LatAm community and sourcing leads to the BD pipeline",
+      "postEm": " from Buenos Aires. Routing regional projects toward stables, payments, AI, and RWA verticals. Co-developing BNB Dojo as a global builder-engagement layer. Always open to builders, founders, and operators working on the region."
     },
     "work": {
       "kicker": "Work",
@@ -186,7 +189,8 @@
       "eyebrow": "Argentina · LatAm · Web3 global",
       "headline": {
         "a": "Conectando builders de LatAm",
-        "b": "con el ecosistema Web3 global."
+        "preAccent": "con el ecosistema ",
+        "postAccent": " global."
       },
       "sub": "LatAm Community Lead en BNB Chain. Conectando builders regionales con el vertical correcto, y construyendo en el camino las herramientas que el trabajo necesita.",
       "cta": "Escribime →",
@@ -196,11 +200,13 @@
     },
     "currently": {
       "kicker": "Ahora",
-      "body": "Llevando la comunidad y el pipeline de BD de BNB Chain en LatAm desde Buenos Aires. Conectando proyectos regionales hacia los verticales de stablecoins, pagos, AI y RWA. Co-desarrollando BNB Dojo como capa global de engagement con builders. Siempre abierto a builders, founders y operadores que estén construyendo en la región.",
       "meta": {
         "loc": "Buenos Aires · UTC-3",
         "scope": "8 países activados · 6 meses"
-      }
+      },
+      "preEm": "",
+      "em": "Liderando la comunidad LatAm de BNB Chain y derivando leads al pipeline de BD",
+      "postEm": " desde Buenos Aires. Conectando proyectos regionales hacia los verticales de stablecoins, pagos, AI y RWA. Co-desarrollando BNB Dojo como capa global de engagement con builders. Siempre abierto a builders, founders y operadores que estén construyendo en la región."
     },
     "work": {
       "kicker": "Trabajo",
@@ -358,7 +364,8 @@
       "eyebrow": "Argentina · LatAm · Web3 global",
       "headline": {
         "a": "Conectando builders latino-americanos",
-        "b": "ao ecossistema Web3 global."
+        "preAccent": "ao ecossistema ",
+        "postAccent": " global."
       },
       "sub": "LatAm Community Lead na BNB Chain. Direcionando builders da região para o vertical certo, construindo no caminho as ferramentas que o trabalho exige.",
       "cta": "Fala comigo →",
@@ -368,11 +375,13 @@
     },
     "currently": {
       "kicker": "Agora",
-      "body": "Liderando a comunidade e o pipeline de BD da BNB Chain na LatAm desde Buenos Aires. Direcionando projetos regionais para os verticais de stablecoins, pagamentos, AI e RWA. Co-desenvolvendo o BNB Dojo como camada global de engagement com builders. Sempre aberto a builders, founders e operadores que estão construindo na região.",
       "meta": {
         "loc": "Buenos Aires · UTC-3",
         "scope": "8 países ativados · 6 meses"
-      }
+      },
+      "preEm": "",
+      "em": "Liderando a comunidade LatAm da BNB Chain e encaminhando leads para o pipeline de BD",
+      "postEm": " desde Buenos Aires. Direcionando projetos regionais para os verticais de stablecoins, pagamentos, AI e RWA. Co-desenvolvendo o BNB Dojo como camada global de engagement com builders. Sempre aberto a builders, founders e operadores que estão construindo na região."
     },
     "work": {
       "kicker": "Trabalho",

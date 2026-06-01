@@ -1,0 +1,6 @@
+.DS_Store
+assets/photos/source/
+assets/fonts/pp-editorial-new/
+node_modules/
+*.log
+.vercel
