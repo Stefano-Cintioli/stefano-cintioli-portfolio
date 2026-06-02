@@ -4,3 +4,4 @@ assets/fonts/pp-editorial-new/
 node_modules/
 *.log
 .vercel
+.claude/

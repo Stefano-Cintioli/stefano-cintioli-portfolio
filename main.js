@@ -26,8 +26,8 @@
   // ---------- State ----------
   const SUPPORTED_LANGS = ["en", "es", "pt"];
   const DEFAULT_LANG = "en";
-  const TABS = ["tools", "impact", "socials"];
-  const DEFAULT_TAB = "tools";
+  const TABS = ["socials", "tools", "impact"];
+  const DEFAULT_TAB = "socials";
 
   let content = null;     // populated from content.json
   let currentLang = DEFAULT_LANG;
@@ -47,10 +47,16 @@
       }
     });
 
-    $$(".lang-toggle button").forEach(function (btn) {
+    // Dropdown options: aria-pressed (state) + aria-selected (listbox)
+    $$('[data-lang-dropdown] [role="option"]').forEach(function (btn) {
       const isActive = btn.dataset.lang === lang;
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      btn.setAttribute("aria-selected", isActive ? "true" : "false");
     });
+
+    // Collapsed toggle label: show current language code in upper-case
+    const label = $("[data-lang-current]");
+    if (label) label.textContent = lang.toUpperCase();
 
     updateLangStatus(lang);
 
@@ -85,13 +91,73 @@
     el.textContent = iso;
   }
 
-  function initLangToggle() {
-    $$(".lang-toggle button").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const lang = btn.dataset.lang;
-        if (SUPPORTED_LANGS.indexOf(lang) === -1) return;
-        applyLang(lang);
-      });
+  function initLangDropdown() {
+    const dropdown = $("[data-lang-dropdown]");
+    if (!dropdown) return;
+    const toggle = $("[data-lang-toggle]", dropdown);
+    const menu = $(".lang-menu", dropdown);
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.hidden = !open;
+      dropdown.classList.toggle("is-open", open);
+    }
+
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+      setOpen(willOpen);
+      if (willOpen) {
+        // focus the active option, or the first one
+        const active = $('[role="option"][aria-pressed="true"]', menu) ||
+                       $('[role="option"]', menu);
+        if (active) active.focus();
+      }
+    });
+
+    menu.addEventListener("click", function (e) {
+      const opt = e.target.closest('[role="option"][data-lang]');
+      if (!opt) return;
+      const lang = opt.dataset.lang;
+      if (SUPPORTED_LANGS.indexOf(lang) === -1) return;
+      applyLang(lang);
+      setOpen(false);
+      toggle.focus();
+    });
+
+    // Keyboard: ArrowDown/Up to navigate, Enter/Space to select, Escape to close
+    menu.addEventListener("keydown", function (e) {
+      const opts = $$('[role="option"]', menu);
+      const idx = opts.indexOf(document.activeElement);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        opts[Math.min(idx + 1, opts.length - 1)]?.focus();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        opts[Math.max(idx - 1, 0)]?.focus();
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        opts[0]?.focus();
+      } else if (e.key === "End") {
+        e.preventDefault();
+        opts[opts.length - 1]?.focus();
+      }
+    });
+
+    // Escape on dropdown closes it
+    dropdown.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        e.preventDefault();
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Click outside closes
+    document.addEventListener("click", function (e) {
+      if (toggle.getAttribute("aria-expanded") !== "true") return;
+      if (!dropdown.contains(e.target)) setOpen(false);
     });
   }
 
@@ -299,7 +365,7 @@
 
   // ---------- Content fetch ----------
   function loadContent() {
-    return fetch("content.json?v=20260525", { cache: "no-cache" })
+    return fetch("content.json?v=20260607", { cache: "no-cache" })
       .then(function (res) {
         if (!res.ok) throw new Error("content.json " + res.status);
         return res.json();
@@ -316,14 +382,102 @@
   }
 
 
+  // ---------- Section reveals (one fade-in-up per major section) ----------
+  function initSectionReveals() {
+    if (reduced) return;
+    const sections = $$("main > section.section");
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+
+    // Sections already in viewport at load: skip animation entirely (no flash)
+    const fold = window.innerHeight - 80;
+    const toAnimate = [];
+    sections.forEach(function (s) {
+      const top = s.getBoundingClientRect().top;
+      if (top < fold) return;          // already visible → no reveal class
+      s.classList.add("section-reveal");
+      toAnimate.push(s);
+    });
+    if (!toAnimate.length) return;
+
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
+    toAnimate.forEach(function (s) { io.observe(s); });
+  }
+
+
+  // ---------- Principles cards: staggered fade-in-up entrance ----------
+  function initPrinciplesReveal() {
+    if (reduced) return;
+    const grid = $(".principles-grid");
+    if (!grid || !("IntersectionObserver" in window)) return;
+
+    const cards = $$(".principle-card", grid);
+    if (!cards.length) return;
+
+    grid.classList.add("js-animate");
+
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        cards.forEach(function (card, i) {
+          setTimeout(function () {
+            card.classList.add("is-revealed");
+          }, i * 80);
+        });
+        io.unobserve(grid);
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
+    io.observe(grid);
+  }
+
+
+  // ---------- Active nav link by section in view ----------
+  function initNavActiveSection() {
+    if (!("IntersectionObserver" in window)) return;
+    const navLinks = $$('.site-nav a[href^="#"]');
+    if (!navLinks.length) return;
+
+    const map = new Map();
+    navLinks.forEach(function (a) {
+      const id = a.getAttribute("href").slice(1);
+      const sec = document.getElementById(id);
+      if (sec) map.set(sec, a);
+    });
+    if (!map.size) return;
+
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        const a = map.get(e.target);
+        if (!a || !e.isIntersecting) return;
+        navLinks.forEach(function (link) { link.classList.remove("is-active"); });
+        a.classList.add("is-active");
+      });
+    }, {
+      // Trigger when section center crosses the viewport center
+      rootMargin: "-45% 0px -50% 0px",
+      threshold: 0,
+    });
+    map.forEach(function (_a, sec) { io.observe(sec); });
+  }
+
+
   // ---------- Boot ----------
   function boot() {
     safe(initHeaderScroll, "initHeaderScroll");
     safe(initTabs, "initTabs");
     safe(initSmoothAnchors, "initSmoothAnchors");
-    safe(initLangToggle, "initLangToggle");
+    safe(initLangDropdown, "initLangDropdown");
     safe(initMouseGradient, "initMouseGradient");
     safe(initLastUpdated, "initLastUpdated");
+    safe(initSectionReveals, "initSectionReveals");
+    safe(initPrinciplesReveal, "initPrinciplesReveal");
+    safe(initNavActiveSection, "initNavActiveSection");
     safe(loadContent, "loadContent");
 
     document.documentElement.classList.add("is-ready");
