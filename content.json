@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.3.0",
+    "version": "1.5.0",
     "ptDraft": false
   },
   "en": {
@@ -68,54 +68,61 @@
       "visit": "Visit ↗"
     },
     "impact": {
-      "cells": {
+      "leadLine": "First 6 months · H1 2026",
+      "clusters": {
         "1": {
-          "label": "projects live on BNB Chain mainnet",
-          "time": "H1 2026"
+          "header": "ECOSYSTEM & BD",
+          "lead": {
+            "label": "BD leads sourced & routed"
+          },
+          "items": {
+            "0": {
+              "label": "projects live on BNB Chain mainnet",
+              "detail": "one P0, one P1"
+            },
+            "1": {
+              "label": "activations across the region"
+            },
+            "2": {
+              "label": "KOL & builder 1-1s across the region"
+            }
+          }
         },
         "2": {
-          "label": "BD leads sourced & routed",
-          "time": "6 months"
+          "header": "REACH & CONTENT",
+          "lead": {
+            "label": "X impressions on @BNBChainLatAm, organic"
+          },
+          "items": {
+            "0": {
+              "label": "@BNBChainLatAm followers, from <100, zero paid"
+            },
+            "1": {
+              "label": "AMAs & Spaces executed"
+            },
+            "2": {
+              "label": "countries activated",
+              "detail": "AR · BR · PE · VE\nPY · CL · MX · ES"
+            }
+          }
         },
         "3": {
-          "label": "activations across the region",
-          "time": "6 months"
-        },
-        "4": {
-          "label": "countries activated",
-          "time": "AR · BR · PE · VE\nPY · CL · MX · ES"
-        },
-        "5": {
-          "label": "X impressions, all organic",
-          "time": "6 months"
-        },
-        "6": {
-          "label": "X followers from <100, organic",
-          "time": "zero paid"
-        },
-        "7": {
-          "label": "AMAs & Spaces executed",
-          "time": "6 months"
-        },
-        "8": {
-          "label": "beta testers on BNB Dojo v2",
-          "time": "closed cohort"
-        },
-        "9": {
-          "label": "Telegram members added",
-          "time": "<6 months"
-        },
-        "10": {
-          "label": "organic community messages",
-          "time": "6 months"
-        },
-        "11": {
-          "label": "KOL & builder 1-1s across the region",
-          "time": "6 months"
-        },
-        "12": {
-          "label": "internal tools shipped",
-          "time": "during this role"
+          "header": "COMMUNITY & TOOLS",
+          "lead": {
+            "label": "BNB Chain ES Telegram members added"
+          },
+          "items": {
+            "0": {
+              "label": "organic community messages"
+            },
+            "1": {
+              "label": "beta testers on BNB Dojo v2",
+              "detail": "closed cohort"
+            },
+            "2": {
+              "label": "internal tools shipped"
+            }
+          }
         }
       }
     },
@@ -164,8 +171,8 @@
     "contact": {
       "kicker": "Contact",
       "title": {
-        "a": "If you're building in LatAm — or hiring for it — ",
-        "b": "let's talk."
+        "a": "Building in LatAm, or hiring for it? ",
+        "b": "Let's talk."
       },
       "email": "Email",
       "x": "X",
@@ -243,54 +250,61 @@
       "visit": "Ver ↗"
     },
     "impact": {
-      "cells": {
+      "leadLine": "Primeros 6 meses · H1 2026",
+      "clusters": {
         "1": {
-          "label": "proyectos en mainnet de BNB Chain",
-          "time": "H1 2026"
+          "header": "ECOSISTEMA Y BD",
+          "lead": {
+            "label": "leads de BD encontrados y derivados"
+          },
+          "items": {
+            "0": {
+              "label": "proyectos en mainnet de BNB Chain",
+              "detail": "uno P0, uno P1"
+            },
+            "1": {
+              "label": "activaciones en toda la región"
+            },
+            "2": {
+              "label": "1-1s con KOLs y builders de la región"
+            }
+          }
         },
         "2": {
-          "label": "leads de BD encontrados y derivados",
-          "time": "6 meses"
+          "header": "ALCANCE Y CONTENIDO",
+          "lead": {
+            "label": "impresiones en @BNBChainLatAm, orgánicas"
+          },
+          "items": {
+            "0": {
+              "label": "seguidores de @BNBChainLatAm, desde <100, cero paid"
+            },
+            "1": {
+              "label": "AMAs y Spaces ejecutados"
+            },
+            "2": {
+              "label": "países activados",
+              "detail": "AR · BR · PE · VE\nPY · CL · MX · ES"
+            }
+          }
         },
         "3": {
-          "label": "activaciones en toda la región",
-          "time": "6 meses"
-        },
-        "4": {
-          "label": "países activados",
-          "time": "AR · BR · PE · VE\nPY · CL · MX · ES"
-        },
-        "5": {
-          "label": "impresiones en X, 100% orgánicas",
-          "time": "6 meses"
-        },
-        "6": {
-          "label": "seguidores en X desde <100, orgánico",
-          "time": "cero paid"
-        },
-        "7": {
-          "label": "AMAs y Spaces ejecutados",
-          "time": "6 meses"
-        },
-        "8": {
-          "label": "beta testers en BNB Dojo v2",
-          "time": "cohorte cerrada"
-        },
-        "9": {
-          "label": "miembros sumados a Telegram",
-          "time": "<6 meses"
-        },
-        "10": {
-          "label": "mensajes orgánicos en la comunidad",
-          "time": "6 meses"
-        },
-        "11": {
-          "label": "1-1s con KOLs y builders de la región",
-          "time": "6 meses"
-        },
-        "12": {
-          "label": "herramientas internas shippeadas",
-          "time": "en este rol"
+          "header": "COMUNIDAD Y HERRAMIENTAS",
+          "lead": {
+            "label": "miembros sumados al Telegram de BNB Chain ES"
+          },
+          "items": {
+            "0": {
+              "label": "mensajes orgánicos en la comunidad"
+            },
+            "1": {
+              "label": "beta testers en BNB Dojo v2",
+              "detail": "cohorte cerrada"
+            },
+            "2": {
+              "label": "herramientas internas shippeadas"
+            }
+          }
         }
       }
     },
@@ -339,8 +353,8 @@
     "contact": {
       "kicker": "Contacto",
       "title": {
-        "a": "Si estás construyendo en LatAm — o estás contratando para LatAm — ",
-        "b": "hablemos."
+        "a": "¿Construís en LatAm o estás contratando para la región? ",
+        "b": "Hablemos."
       },
       "email": "Email",
       "x": "X",
@@ -418,54 +432,61 @@
       "visit": "Ver ↗"
     },
     "impact": {
-      "cells": {
+      "leadLine": "Primeiros 6 meses · H1 2026",
+      "clusters": {
         "1": {
-          "label": "projetos na mainnet da BNB Chain",
-          "time": "H1 2026"
+          "header": "ECOSSISTEMA E BD",
+          "lead": {
+            "label": "leads de BD encontrados e direcionados"
+          },
+          "items": {
+            "0": {
+              "label": "projetos na mainnet da BNB Chain",
+              "detail": "um P0, um P1"
+            },
+            "1": {
+              "label": "ativações pela região"
+            },
+            "2": {
+              "label": "1-1s com KOLs e builders da região"
+            }
+          }
         },
         "2": {
-          "label": "leads de BD encontrados e direcionados",
-          "time": "6 meses"
+          "header": "ALCANCE E CONTEÚDO",
+          "lead": {
+            "label": "impressões em @BNBChainLatAm, orgânicas"
+          },
+          "items": {
+            "0": {
+              "label": "seguidores de @BNBChainLatAm, desde <100, zero paid"
+            },
+            "1": {
+              "label": "AMAs e Spaces executados"
+            },
+            "2": {
+              "label": "países ativados",
+              "detail": "AR · BR · PE · VE\nPY · CL · MX · ES"
+            }
+          }
         },
         "3": {
-          "label": "ativações pela região",
-          "time": "6 meses"
-        },
-        "4": {
-          "label": "países ativados",
-          "time": "AR · BR · PE · VE\nPY · CL · MX · ES"
-        },
-        "5": {
-          "label": "impressões no X, 100% orgânicas",
-          "time": "6 meses"
-        },
-        "6": {
-          "label": "seguidores no X desde <100, orgânico",
-          "time": "zero paid"
-        },
-        "7": {
-          "label": "AMAs e Spaces executados",
-          "time": "6 meses"
-        },
-        "8": {
-          "label": "beta testers no BNB Dojo v2",
-          "time": "cohort fechado"
-        },
-        "9": {
-          "label": "novos membros no Telegram",
-          "time": "<6 meses"
-        },
-        "10": {
-          "label": "mensagens orgânicas da comunidade",
-          "time": "6 meses"
-        },
-        "11": {
-          "label": "1-1s com KOLs e builders da região",
-          "time": "6 meses"
-        },
-        "12": {
-          "label": "ferramentas internas entregues",
-          "time": "neste papel"
+          "header": "COMUNIDADE E FERRAMENTAS",
+          "lead": {
+            "label": "novos membros no Telegram da BNB Chain ES"
+          },
+          "items": {
+            "0": {
+              "label": "mensagens orgânicas da comunidade"
+            },
+            "1": {
+              "label": "beta testers no BNB Dojo v2",
+              "detail": "cohort fechado"
+            },
+            "2": {
+              "label": "ferramentas internas entregues"
+            }
+          }
         }
       }
     },
@@ -514,8 +535,8 @@
     "contact": {
       "kicker": "Contato",
       "title": {
-        "a": "Se você está construindo na LatAm — ou contratando para a LatAm — ",
-        "b": "vamos conversar."
+        "a": "Está construindo na América Latina ou contratando para a região? ",
+        "b": "Vamos conversar."
       },
       "email": "Email",
       "x": "X",
