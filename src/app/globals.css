@@ -3,25 +3,117 @@
 @tailwind utilities;
 
 /* =============================================================
-   Design tokens — light + dark
-   Hue/saturation/lightness, comma-less, so Tailwind can alpha them
+   Design tokens — single source of truth for light + dark.
+   HSL values without hsl() wrapper so Tailwind can alpha them
+   via the `hsl(var(--token) / <alpha-value>)` pattern.
+
+   shadcn naming convention:
+     --primary / --primary-foreground  — solid brand surfaces (BNB gold here)
+     --accent  / --accent-foreground   — subtle bg used by shadcn for
+                                          menu-item hover; NOT our gold
+     --background / --foreground       — page bg / body text
+     --card / --popover                — surface tiers
+     --muted                           — least-prominent surface
+     --border / --input                — hairlines and form chrome
+     --ring                            — focus indicator
+
+   Project-specific additions (not in shadcn):
+     --bg-2 / --bg-deep                — intermediate / deepest surfaces
+     --fg-dim / --fg-mute              — body-secondary / metadata text
+     --accent-hover                    — lighter gold for primary hover
+     --accent-secondary                — cool sky as secondary accent
+
+   Contrast notes (WCAG):
+     Dark — gold #F0B90B on midnight #0d1117 = 10.85:1 (AAA).
+     Light — bright BNB gold fails AA on white, so --primary in light
+              theme uses hsl(42 95% 30%) ≈ #7D601C (AAA for both bg
+              and text usage on white).
    ============================================================= */
 
 @layer base {
+  :root,
+  .light {
+    --background:           0 0% 100%;
+    --foreground:           220 30% 10%;
+
+    --card:                 0 0% 100%;
+    --card-foreground:      220 30% 10%;
+    --popover:              0 0% 100%;
+    --popover-foreground:   220 30% 10%;
+
+    /* Darker gold — AA-compliant both as bg surface and as text on white */
+    --primary:              42 95% 30%;
+    --primary-foreground:   0 0% 100%;
+
+    --secondary:            40 20% 97%;
+    --secondary-foreground: 220 30% 10%;
+
+    --muted:                40 20% 96%;
+    --muted-foreground:     220 12% 38%;
+
+    --accent:               40 20% 94%;
+    --accent-foreground:    220 30% 10%;
+
+    --destructive:          0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:               220 13% 91%;
+    --input:                220 13% 91%;
+    --ring:                 42 95% 30%;
+
+    --radius:               0.6rem;
+
+    /* Project additions */
+    --bg-2:                 40 20% 97%;
+    --bg-deep:              0 0% 100%;
+    --fg-dim:               220 12% 25%;
+    --fg-mute:              220 10% 45%;
+    --accent-hover:         42 100% 24%;
+    --accent-secondary:     215 30% 35%;
+  }
+
+  .dark {
+    --background:           215 24% 6%;
+    --foreground:           220 17% 92%;
+
+    --card:                 215 23% 10%;
+    --card-foreground:      220 17% 92%;
+    --popover:              215 23% 10%;
+    --popover-foreground:   220 17% 92%;
+
+    /* BNB gold #F0B90B */
+    --primary:              45 96% 50%;
+    --primary-foreground:   215 24% 6%;
+
+    --secondary:            220 17% 14%;
+    --secondary-foreground: 220 17% 92%;
+
+    --muted:                220 17% 14%;
+    --muted-foreground:     220 17% 65%;
+
+    --accent:               220 17% 14%;
+    --accent-foreground:    220 17% 92%;
+
+    --destructive:          0 72% 50%;
+    --destructive-foreground: 220 17% 92%;
+
+    --border:               220 17% 18%;
+    --input:                220 17% 18%;
+    --ring:                 45 96% 50%;
+
+    --radius:               0.6rem;
+
+    /* Project additions */
+    --bg-2:                 215 23% 10%;
+    --bg-deep:              216 33% 5%;
+    --fg-dim:               220 17% 78%;
+    --fg-mute:              220 17% 65%;
+    --accent-hover:         47 97% 60%;        /* #FCD535 — lighter BNB gold */
+    --accent-secondary:     215 30% 65%;
+  }
+
+  /* Font-family tokens (kept outside theme blocks — same in both) */
   :root {
-    /* Dark by default. Light overrides below. */
-    --bg:        215 24% 6%;       /* #0d1117 */
-    --bg-2:      215 23% 10%;
-    --bg-deep:   216 33% 5%;
-
-    --fg:        220 17% 92%;      /* near-white, cool */
-    --fg-dim:    220 17% 70%;
-    --fg-mute:   220 17% 56%;
-
-    --accent:           45 96% 50%;       /* BNB gold #F0B90B */
-    --accent-hover:     47 97% 60%;       /* lighter gold #FCD535 */
-    --accent-secondary: 215 30% 65%;      /* cool sky as secondary */
-
     --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     --font-display: 'Clash Display', 'Iowan Old Style', Georgia, serif;
     --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -29,20 +121,6 @@
     --nav-h:        64px;
     --section-y:    clamp(4rem, 9vw, 8rem);
     --gutter:       clamp(1.25rem, 4vw, 3rem);
-  }
-
-  .light {
-    --bg:        0 0% 100%;          /* white */
-    --bg-2:      40 20% 97%;
-    --bg-deep:   0 0% 100%;
-
-    --fg:        220 30% 10%;
-    --fg-dim:    220 12% 30%;
-    --fg-mute:   220 10% 45%;
-
-    --accent:           42 92% 36%;       /* darker gold for AA on white */
-    --accent-hover:     42 95% 30%;
-    --accent-secondary: 215 30% 35%;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -55,22 +133,23 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   body {
-    @apply bg-bg text-fg font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
     overflow-x: clip;
     min-height: 100vh;
   }
 
   ::selection {
-    background: hsl(var(--accent));
-    color: hsl(var(--bg));
-  }
-
-  :focus-visible {
-    outline: 2px solid hsl(var(--accent));
-    outline-offset: 3px;
-    border-radius: 3px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 }
