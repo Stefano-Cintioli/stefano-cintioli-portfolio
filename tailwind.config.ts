@@ -67,6 +67,8 @@ const config: Config = {
         'fg-mute': 'hsl(var(--fg-mute) / <alpha-value>)',
         'accent-hover': 'hsl(var(--accent-hover) / <alpha-value>)',
         'accent-secondary': 'hsl(var(--accent-secondary) / <alpha-value>)',
+        // text-only gold (use for gold text on light bg; do NOT use as fill)
+        'gold-ink': 'hsl(var(--gold-ink) / <alpha-value>)',
         hairline: 'hsl(var(--foreground) / 0.10)',
         'hairline-2': 'hsl(var(--foreground) / 0.18)',
       },

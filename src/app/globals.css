@@ -23,11 +23,18 @@
      --accent-hover                    — lighter gold for primary hover
      --accent-secondary                — cool sky as secondary accent
 
+   Gold-usage rule (both themes):
+     Gold is a FILL with near-black text ON TOP of it. It is NEVER a
+     text color on a light background — use --gold-ink instead, which
+     is the darkened gold reserved for the rare "gold-colored text/icon
+     on white" case.
+
    Contrast notes (WCAG):
-     Dark — gold #F0B90B on midnight #0d1117 = 10.85:1 (AAA).
-     Light — bright BNB gold fails AA on white, so --primary in light
-              theme uses hsl(42 95% 30%) ≈ #7D601C (AAA for both bg
-              and text usage on white).
+     Dark  — gold #F0B90B on midnight #0d1117 = 10.85:1 (AAA, fill or text).
+     Light — gold #F0B90B as a FILL with near-black text (#0d1117) on
+             top = 10.85:1 (AAA). Dark text on bright gold button.
+     Light — --gold-ink hsl(42 95% 30%) ≈ #7D601C as TEXT on white
+             = 5.12:1 (AA for body, AAA for large text).
    ============================================================= */
 
 @layer base {
@@ -41,9 +48,9 @@
     --popover:              0 0% 100%;
     --popover-foreground:   220 30% 10%;
 
-    /* Darker gold — AA-compliant both as bg surface and as text on white */
-    --primary:              42 95% 30%;
-    --primary-foreground:   0 0% 100%;
+    /* FILL token — bright BNB gold; pair with dark text */
+    --primary:              45 96% 50%;        /* #F0B90B */
+    --primary-foreground:   220 26% 7%;        /* #0d1117 — near-black ink */
 
     --secondary:            40 20% 97%;
     --secondary-foreground: 220 30% 10%;
@@ -59,7 +66,7 @@
 
     --border:               220 13% 91%;
     --input:                220 13% 91%;
-    --ring:                 42 95% 30%;
+    --ring:                 45 96% 50%;        /* gold focus ring */
 
     --radius:               0.6rem;
 
@@ -68,8 +75,12 @@
     --bg-deep:              0 0% 100%;
     --fg-dim:               220 12% 25%;
     --fg-mute:              220 10% 45%;
-    --accent-hover:         42 100% 24%;
+    --accent-hover:         45 95% 44%;        /* slightly darker gold hover (still AAA with dark text) */
     --accent-secondary:     215 30% 35%;
+
+    /* TEXT-only gold for use on light backgrounds.
+       Use ONLY for gold text / icon color on white. Never for fills. */
+    --gold-ink:             42 95% 30%;        /* #7D601C */
   }
 
   .dark {
@@ -81,9 +92,9 @@
     --popover:              215 23% 10%;
     --popover-foreground:   220 17% 92%;
 
-    /* BNB gold #F0B90B */
-    --primary:              45 96% 50%;
-    --primary-foreground:   215 24% 6%;
+    /* FILL token — bright BNB gold; pair with dark text */
+    --primary:              45 96% 50%;        /* #F0B90B */
+    --primary-foreground:   220 26% 7%;        /* #0d1117 — near-black ink */
 
     --secondary:            220 17% 14%;
     --secondary-foreground: 220 17% 92%;
@@ -110,6 +121,10 @@
     --fg-mute:              220 17% 65%;
     --accent-hover:         47 97% 60%;        /* #FCD535 — lighter BNB gold */
     --accent-secondary:     215 30% 65%;
+
+    /* TEXT-only gold — on dark backgrounds the bright BNB gold already
+       passes AAA as text, so --gold-ink mirrors --primary in dark mode. */
+    --gold-ink:             45 96% 50%;
   }
 
   /* Font-family tokens (kept outside theme blocks — same in both) */
