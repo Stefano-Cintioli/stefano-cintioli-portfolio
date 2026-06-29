@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================
+   Design tokens — light + dark
+   Hue/saturation/lightness, comma-less, so Tailwind can alpha them
+   ============================================================= */
+
+@layer base {
+  :root {
+    /* Dark by default. Light overrides below. */
+    --bg:        215 24% 6%;       /* #0d1117 */
+    --bg-2:      215 23% 10%;
+    --bg-deep:   216 33% 5%;
+
+    --fg:        220 17% 92%;      /* near-white, cool */
+    --fg-dim:    220 17% 70%;
+    --fg-mute:   220 17% 56%;
+
+    --accent:           45 96% 50%;       /* BNB gold #F0B90B */
+    --accent-hover:     47 97% 60%;       /* lighter gold #FCD535 */
+    --accent-secondary: 215 30% 65%;      /* cool sky as secondary */
+
+    --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-display: 'Clash Display', 'Iowan Old Style', Georgia, serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    --nav-h:        64px;
+    --section-y:    clamp(4rem, 9vw, 8rem);
+    --gutter:       clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .light {
+    --bg:        0 0% 100%;          /* white */
+    --bg-2:      40 20% 97%;
+    --bg-deep:   0 0% 100%;
+
+    --fg:        220 30% 10%;
+    --fg-dim:    220 12% 30%;
+    --fg-mute:   220 10% 45%;
+
+    --accent:           42 92% 36%;       /* darker gold for AA on white */
+    --accent-hover:     42 95% 30%;
+    --accent-secondary: 215 30% 35%;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + 24px);
+    overflow-x: clip;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    overflow-x: clip;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--bg));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
