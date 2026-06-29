@@ -11,7 +11,27 @@ import { es } from './es';
 import { pt } from './pt';
 import type { Locale, SiteContent } from './schema';
 
-export type { Locale, SiteContent } from './schema';
+export type {
+  Locale,
+  SiteContent,
+  HeroContent,
+  CurrentlyContent,
+  WorkContent,
+  ToolItem,
+  ToolStatus,
+  CommsPost,
+  ImpactContent,
+  ImpactCluster,
+  ImpactMetric,
+  HowContent,
+  Principle,
+  ContactContent,
+  ContactItem,
+  NavContent,
+  FooterContent,
+  ActionLabels,
+  StatusLabels,
+} from './schema';
 
 export const locales: readonly Locale[] = ['en', 'es', 'pt'] as const;
 export const defaultLocale: Locale = 'en';
