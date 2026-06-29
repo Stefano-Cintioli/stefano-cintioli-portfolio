@@ -30,8 +30,8 @@ export const pt: SiteContent = {
     },
     sub: 'LatAm Community Lead na BNB Chain. Direcionando builders da região para o vertical certo, construindo no caminho as ferramentas que o trabalho exige.',
     cta: {
-      primary: { label: 'Baixar CV', href: '/assets/stefano-cintioli-cv.pdf' },     // TODO: review
-      secondary: { label: 'Fala comigo', href: '#contact' },                         // TODO: review
+      primary: { label: 'Fala comigo', href: '#contact' },                         // TODO: review
+      secondary: { label: 'Baixar CV', href: '/assets/stefano-cintioli-cv.pdf' },   // TODO: review
     },
     photoCaption: 'Binance Day · Lima · Maio 2026',
     location: 'Buenos Aires · UTC-3',
