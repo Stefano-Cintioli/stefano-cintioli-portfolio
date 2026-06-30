@@ -36,7 +36,7 @@ export const es: SiteContent = {
       postAccent: ' global.',
     },
     sub: 'Conectando builders regionales con el vertical correcto, y construyendo en el camino las herramientas que el trabajo necesita.',
-    status: 'LatAm Community Lead · BNB Chain · Buenos Aires', // TODO: review (kept English title)
+    status: 'Líder de Comunidad LatAm · BNB Chain · Buenos Aires',
     cta: { label: 'Hablemos', href: '#contact' },
     photoCaption: 'Binance Day · Lima · Mayo 2026',
   },
