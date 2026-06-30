@@ -1,7 +1,18 @@
 .DS_Store
-assets/photos/source/
-assets/fonts/pp-editorial-new/
-node_modules/
 *.log
 .vercel
 .claude/
+
+# Next.js
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Environment
+.env*.local
+
+# IDE
+.idea/
+.vscode/
