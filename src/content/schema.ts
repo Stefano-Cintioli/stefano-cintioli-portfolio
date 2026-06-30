@@ -15,6 +15,21 @@
 export type Locale = 'en' | 'es' | 'pt';
 
 /* --------------------------------------------------------------------------
+ * SEO — short document title + meta description + soft keyword list.
+ *
+ * Kept separate from hero copy (which fuels the OG card + share previews)
+ * because the constraints are different:
+ *   - Document <title> must be ≤ ~60 chars
+ *   - Meta description must be ≤ ~155 chars
+ *   - Both are per-locale, both must work in isolation without context.
+ * -------------------------------------------------------------------------- */
+export interface SeoContent {
+  title: string;
+  description: string;
+  keywords: string[];
+}
+
+/* --------------------------------------------------------------------------
  * Nav
  * -------------------------------------------------------------------------- */
 export interface NavContent {
@@ -149,6 +164,7 @@ export interface ActionLabels {
  * Aggregate
  * -------------------------------------------------------------------------- */
 export interface SiteContent {
+  seo: SeoContent;
   nav: NavContent;
   hero: HeroContent;
   now: NowContent;

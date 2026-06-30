@@ -10,6 +10,22 @@
 import type { SiteContent } from './schema';
 
 export const en: SiteContent = {
+  seo: {
+    // 51 chars
+    title: 'Stefano Cintioli — LatAm Community Lead, BNB Chain',
+    // 137 chars
+    description:
+      "LatAm Community Lead at BNB Chain. I route regional Web3 builders to the right vertical and ship the tools the work needs. Let's build.",
+    keywords: [
+      'web3',
+      'blockchain',
+      'BNB Chain',
+      'LatAm',
+      'business development',
+      'community',
+    ],
+  },
+
   nav: {
     now: 'Now',
     lastSixMonths: 'Last 6 months',
