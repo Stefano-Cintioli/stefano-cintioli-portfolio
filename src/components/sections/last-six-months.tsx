@@ -42,7 +42,9 @@ export function LastSixMonths({ content }: { content: SiteContent }) {
     >
       <div className="container max-w-6xl py-24 md:py-32">
         <BlurFade blur={false} y={8} duration={0.45}>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-4">
+          {/* Eyebrow (mono "H1 2026") sits above the h2 — keep it as a <p>;
+              "Last 6 months" below is the actual section heading. */}
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-4">
             {kicker}
           </p>
         </BlurFade>
@@ -72,9 +74,10 @@ export function LastSixMonths({ content }: { content: SiteContent }) {
         {/* CONTENT HIGHLIGHTS */}
         <div className="mt-20 md:mt-28">
           <BlurFade blur={false} y={8} duration={0.5}>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-7">
+            {/* Sub-section heading, semantically an h3 under the section's h2 */}
+            <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-7">
               {highlightsKicker}
-            </p>
+            </h3>
           </BlurFade>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 list-none p-0">
@@ -190,12 +193,24 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
       </div>
 
       <div className="relative">
+        {/* Screen-reader-only summary — the chart's accessible name + a fuller
+            description for assistive tech. The visual chart is decorative
+            given this prose, so SVG carries role="img" + the same name. */}
+        <p className="sr-only">
+          {`${growth.title} grew from ${growth.startLabel} to ${growth.endLabel} over the period (${growth.caption}).`}
+        </p>
+
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full h-auto"
           role="img"
-          aria-label={`${growth.title}: ${growth.startLabel} to ${growth.endLabel}`}
+          aria-labelledby="growth-chart-title growth-chart-desc"
         >
+          <title id="growth-chart-title">{growth.title}</title>
+          <desc id="growth-chart-desc">
+            {`${growth.startLabel} to ${growth.endLabel} — ${growth.caption}.`}
+          </desc>
+
           <defs>
             <linearGradient id="growth-fill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%"   stopColor="hsl(var(--primary))" stopOpacity="0.22" />
@@ -213,7 +228,7 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
             strokeWidth="1"
           />
 
-          {/* area */}
+          {/* area — primary gradient stays bright (decorative fill, non-text) */}
           <motion.path
             d={areaPath}
             fill="url(#growth-fill)"
@@ -222,11 +237,11 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
             transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
           />
 
-          {/* line */}
+          {/* line — stroke uses --gold-ink so it stays visible on white in light mode */}
           <motion.path
             d={linePath}
             fill="none"
-            stroke="hsl(var(--primary))"
+            stroke="hsl(var(--gold-ink))"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -235,7 +250,7 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
             transition={{ duration: 1.1, ease: EASE }}
           />
 
-          {/* end point */}
+          {/* end point — bright gold dot (graphical accent, not text) */}
           <motion.circle
             cx={lastPoint.x}
             cy={lastPoint.y}
@@ -247,10 +262,10 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
           />
         </svg>
 
-        {/* Endpoint labels — start (real), end (real) */}
-        <div className="flex justify-between mt-3 font-mono text-xs">
+        {/* Endpoint labels — both real values from content */}
+        <div className="flex justify-between mt-3 font-mono text-xs" aria-hidden="true">
           <span className="text-fg-mute">{growth.startLabel}</span>
-          <span className="text-primary tabular-nums">{growth.endLabel}</span>
+          <span className="text-gold-ink tabular-nums">{growth.endLabel}</span>
         </div>
       </div>
     </div>
@@ -300,7 +315,7 @@ function HighlightCard({ post, index }: { post: CommsPost; index: number }) {
           <p className="font-display text-lg leading-[1.3] tracking-[-0.012em] text-foreground flex items-start gap-2">
             <span className="flex-1">{post.topic}</span>
             <ArrowUpRight
-              className="h-4 w-4 mt-1 shrink-0 text-fg-mute transition-[color,transform] duration-200 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="h-4 w-4 mt-1 shrink-0 text-fg-mute transition-[color,transform] duration-200 group-hover:text-gold-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
           </p>

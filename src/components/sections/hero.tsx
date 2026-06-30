@@ -42,7 +42,7 @@ export function Hero({ content }: { content: SiteContent }) {
           <div className="order-2 md:order-1">
             <motion.p
               {...item(0)}
-              className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-5"
+              className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-5"
             >
               {content.hero.eyebrow}
             </motion.p>
@@ -60,7 +60,7 @@ export function Hero({ content }: { content: SiteContent }) {
               </span>
               <span className="block">
                 <span className="text-foreground">{content.hero.headline.preAccent}</span>
-                <span className="text-primary">{content.hero.headline.accent}</span>
+                <span className="text-gold-ink">{content.hero.headline.accent}</span>
                 <span className="text-foreground">{content.hero.headline.postAccent}</span>
               </span>
             </motion.h1>

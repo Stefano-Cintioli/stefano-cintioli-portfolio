@@ -44,7 +44,7 @@ export function ScrollCue({ targetId = 'currently' }: { targetId?: string }) {
       className={[
         'absolute left-1/2 bottom-8 -translate-x-1/2',
         'inline-flex flex-col items-center gap-1.5',
-        'text-fg-mute hover:text-primary',
+        'text-fg-mute hover:text-gold-ink',
         'transition-[opacity,transform] duration-500',
         'data-[hidden=true]:opacity-0 data-[hidden=true]:translate-y-2 data-[hidden=true]:pointer-events-none',
       ].join(' ')}

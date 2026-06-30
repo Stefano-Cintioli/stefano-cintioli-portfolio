@@ -29,7 +29,8 @@ export function Contact({ content }: { content: SiteContent }) {
     >
       <div className="container max-w-4xl py-24 md:py-32 text-center">
         <BlurFade blur={false} y={8} duration={0.45}>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-7">
+          {/* Small label — h2 (the headline below carries the visual weight but is the same heading level) */}
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-7">
             {kicker}
           </p>
         </BlurFade>
@@ -37,7 +38,7 @@ export function Contact({ content }: { content: SiteContent }) {
         <BlurFade blur={false} y={8} duration={0.5} delay={0.06}>
           <h2 className="font-display font-medium leading-[1.1] tracking-[-0.022em] text-balance text-3xl sm:text-4xl md:text-[clamp(2rem,3.6vw,3rem)] max-w-[24ch] mx-auto mb-10">
             <span className="text-foreground">{headline.preEm}</span>
-            <span className="text-primary">{headline.em}</span>
+            <span className="text-gold-ink">{headline.em}</span>
           </h2>
         </BlurFade>
 

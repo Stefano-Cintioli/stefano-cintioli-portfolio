@@ -19,9 +19,10 @@ export function Now({ content }: { content: SiteContent }) {
     >
       <div className="container max-w-4xl py-24 md:py-28">
         <BlurFade blur={false} y={8} duration={0.45}>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-7">
+          {/* Section heading — visually a small mono kicker, semantically the section's h2 */}
+          <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-7">
             {kicker}
-          </p>
+          </h2>
         </BlurFade>
 
         <BlurFade blur={false} y={8} duration={0.5} delay={0.08}>

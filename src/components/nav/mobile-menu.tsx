@@ -59,7 +59,7 @@ export function MobileMenu({
                 className={[
                   'rounded-md px-3 py-3 font-display text-xl transition-colors',
                   isActive
-                    ? 'text-primary'
+                    ? 'text-gold-ink'
                     : 'text-foreground/80 hover:text-foreground hover:bg-muted',
                 ].join(' ')}
               >

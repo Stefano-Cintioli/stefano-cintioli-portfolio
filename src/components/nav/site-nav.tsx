@@ -49,11 +49,11 @@ export function SiteNav({
         <a
           href="#hero"
           aria-label="Stefano Cintioli — top"
-          className="inline-flex items-center gap-2.5 text-foreground transition-colors hover:text-primary"
+          className="inline-flex items-center gap-2.5 text-foreground transition-colors hover:text-gold-ink"
         >
           <span
             aria-hidden="true"
-            className="inline-grid place-items-center h-7 w-7 rounded-md border border-primary text-primary font-mono text-[0.65rem] tracking-wider"
+            className="inline-grid place-items-center h-7 w-7 rounded-md border border-primary text-gold-ink font-mono text-[0.65rem] tracking-wider"
           >
             SC
           </span>

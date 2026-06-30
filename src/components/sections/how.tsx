@@ -20,9 +20,10 @@ export function How({ content }: { content: SiteContent }) {
     >
       <div className="container max-w-6xl py-24 md:py-32">
         <BlurFade blur={false} y={8} duration={0.45}>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-10 md:mb-14">
+          {/* Section heading — visually a kicker, semantically the section's h2 */}
+          <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-10 md:mb-14">
             {content.how.kicker}
-          </p>
+          </h2>
         </BlurFade>
 
         <ol className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 list-none p-0">
@@ -70,7 +71,7 @@ function PrincipleCard({
         >
           {principle.number}
         </span>
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-primary/80">
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-gold-ink/85">
           {principle.keyword}
         </span>
       </div>
