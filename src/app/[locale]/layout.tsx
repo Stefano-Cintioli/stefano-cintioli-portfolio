@@ -75,8 +75,13 @@ export async function generateMetadata({
     },
     icons: {
       icon: [
+        // SVG first — scalable, modern browsers prefer it for crisp tab icons at any size
         { url: '/assets/favicon.svg', type: 'image/svg+xml' },
+        // PNG fallback for browsers that don't render SVG favicons
         { url: '/assets/favicon.png', type: 'image/png', sizes: '32x32' },
+      ],
+      apple: [
+        { url: '/assets/apple-touch-icon.png', sizes: '180x180' },
       ],
     },
   };
