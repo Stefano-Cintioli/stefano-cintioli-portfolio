@@ -129,9 +129,12 @@
 
   /* Font-family tokens (kept outside theme blocks — same in both) */
   :root {
-    --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    --font-display: 'Clash Display', 'Iowan Old Style', Georgia, serif;
-    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    /* Fonts via next/font (Geist Sans + Geist Mono) — variables set on
+       <html> in [locale]/layout.tsx. Fallback chain is sans-only — no
+       serifs anywhere, headings will never render as Georgia. */
+    --font-sans:    var(--font-geist-sans, 'Geist'), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: var(--font-geist-sans, 'Geist'), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:    var(--font-geist-mono, 'Geist Mono'), ui-monospace, 'SF Mono', Menlo, monospace;
 
     --nav-h:        64px;
     --section-y:    clamp(4rem, 9vw, 8rem);

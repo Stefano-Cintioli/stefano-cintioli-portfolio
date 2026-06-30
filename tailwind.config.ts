@@ -78,9 +78,12 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        // SANS-only fallback chain everywhere — no serif fallback for headings.
+        // Geist Sans loads via next/font; if it ever fails, we fall through to
+        // the OS UI sans, not Georgia.
+        sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'SF Mono', 'monospace'],
       },
       transitionTimingFunction: {
         'out-soft': 'cubic-bezier(0.16, 1, 0.3, 1)',
