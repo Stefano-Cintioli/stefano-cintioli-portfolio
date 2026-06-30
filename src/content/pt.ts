@@ -4,6 +4,22 @@
 import type { SiteContent } from './schema';
 
 export const pt: SiteContent = {
+  seo: {
+    // 55 chars
+    title: 'Stefano Cintioli — Líder de Comunidade LatAm, BNB Chain',
+    // 142 chars
+    description:
+      'Líder de Comunidade LatAm na BNB Chain. Conecto builders Web3 da região com o vertical certo e entrego as ferramentas que o trabalho precisa.',
+    keywords: [
+      'web3',
+      'blockchain',
+      'BNB Chain',
+      'LatAm',
+      'desenvolvimento de negócios',
+      'comunidade',
+    ],
+  },
+
   nav: {
     now: 'Agora',
     lastSixMonths: 'Últimos 6 meses',

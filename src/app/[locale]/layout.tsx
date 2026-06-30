@@ -21,6 +21,12 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+/**
+ * Site-wide publish date — the day the v2 redesign went to production.
+ * Keep stable; doesn't refresh on every deploy. Used as article:published_time.
+ */
+const PUBLISHED_TIME = '2026-06-30T00:00:00Z';
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,36 +35,56 @@ export async function generateMetadata({
   const { locale } = await params;
   const content = getContent(locale);
 
-  const description = content.hero.sub;
-  const title = `Stefano Cintioli — ${content.hero.headline.lineA} ${content.hero.headline.preAccent}${content.hero.headline.accent}${content.hero.headline.postAccent}`;
+  // Document <title> + meta description come from the SEO block — concise,
+  // per-locale, keyword-bearing. Kept separate from hero copy so neither
+  // bleeds into the other.
+  const docTitle = content.seo.title;
+  const docDescription = content.seo.description;
+
+  // OG / Twitter share previews use the longer headline-based string — that's
+  // what looks right in a Slack / X / LinkedIn unfurl.
+  const shareTitle = `Stefano Cintioli — ${content.hero.headline.lineA} ${content.hero.headline.preAccent}${content.hero.headline.accent}${content.hero.headline.postAccent}`;
+  const shareDescription = content.hero.sub;
+
   const path = locale === routing.defaultLocale ? '' : `/${locale}`;
+  // Absolute URL belt-and-suspenders — metadataBase already covers this, but
+  // some scrapers strip relative URLs from og:image / twitter:image. Keep absolute.
+  const ogImageUrl = `${SITE_URL}/assets/og-card.jpg`;
+  // Stamped at server-render time → tracks the latest Vercel build date.
+  const modifiedTime = new Date().toISOString();
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: { default: title, template: '%s · Stefano Cintioli' },
-    description,
-    authors: [{ name: 'Stefano Cintioli' }],
+    // `title.default` is the home page's <title>. The template only kicks in
+    // when a child route declares its own title — there are none today, so
+    // it's safe to keep for future use; it can never append body content.
+    title: { default: docTitle, template: '%s · Stefano Cintioli' },
+    description: docDescription,
+    keywords: content.seo.keywords,
+    authors: [{ name: 'Stefano Cintioli', url: SITE_URL }],
+    creator: 'Stefano Cintioli',
     openGraph: {
       type: 'profile',
-      title,
-      description,
+      title: shareTitle,
+      description: shareDescription,
       siteName: 'Stefano Cintioli',
       url: `${SITE_URL}${path}`,
       locale: locale === 'en' ? 'en_US' : locale === 'es' ? 'es_AR' : 'pt_BR',
       images: [
         {
-          url: '/assets/og-card.jpg',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: shareTitle,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
-      images: ['/assets/og-card.jpg'],
+      title: shareTitle,
+      description: shareDescription,
+      images: [ogImageUrl],
+      creator: '@s_cintioli_',
     },
     alternates: {
       canonical: `${SITE_URL}${path}`,
@@ -74,16 +100,17 @@ export async function generateMetadata({
       follow: true,
       'max-image-preview': 'large',
     },
+    // E-E-A-T dates — pass through to <head> as <meta property="article:...">
+    other: {
+      'article:published_time': PUBLISHED_TIME,
+      'article:modified_time': modifiedTime,
+    },
     icons: {
       icon: [
-        // SVG first — scalable, modern browsers prefer it for crisp tab icons at any size
         { url: '/assets/favicon.svg', type: 'image/svg+xml' },
-        // PNG fallback for browsers that don't render SVG favicons
         { url: '/assets/favicon.png', type: 'image/png', sizes: '32x32' },
       ],
-      apple: [
-        { url: '/assets/apple-touch-icon.png', sizes: '180x180' },
-      ],
+      apple: [{ url: '/assets/apple-touch-icon.png', sizes: '180x180' }],
     },
   };
 }
@@ -115,6 +142,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const content = getContent(locale);
 
+  // Stable @id for the Person — referenced by WebSite.publisher so crawlers
+  // know both schemas describe the same entity.
+  const PERSON_ID = `${SITE_URL}/#person`;
+  const WEBSITE_ID = `${SITE_URL}/#website`;
+
   // schema.org Person — static facts about Stefano. Same payload across
   // locales (description swaps per locale to surface localized intent),
   // emitted as a JSON-LD <script> in the body so crawlers + LLMs can read
@@ -122,6 +154,7 @@ export default async function LocaleLayout({
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': PERSON_ID,
     name: 'Stefano Cintioli',
     url: SITE_URL,
     image: `${SITE_URL}/assets/og-card.jpg`,
@@ -154,6 +187,19 @@ export default async function LocaleLayout({
     ],
   };
 
+  // schema.org WebSite — names the site, declares its language for THIS
+  // locale, and points its publisher at the Person above via @id. No
+  // Organization schema — this is a personal site, not a brand.
+  const webSiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: 'Stefano Cintioli',
+    url: SITE_URL,
+    inLanguage: locale,
+    publisher: { '@id': PERSON_ID },
+  };
+
   return (
     <html
       lang={locale}
@@ -174,6 +220,11 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {/* schema.org WebSite — declares the site + locale + publisher link */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider

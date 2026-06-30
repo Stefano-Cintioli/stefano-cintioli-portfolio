@@ -12,6 +12,7 @@ import type { Locale, SiteContent } from './schema';
 export type {
   Locale,
   SiteContent,
+  SeoContent,
   NavContent,
   HeroContent,
   NowContent,
