@@ -21,6 +21,14 @@ export interface BlurFadeProps {
   y?: number;
   /** Trigger on mount instead of on scroll. Use for hero. */
   inView?: boolean;
+  /**
+   * Animate `filter: blur()` alongside opacity + translate.
+   * Set to false for large text blocks — animating filter forces the GPU to
+   * re-rasterize the entire layer per frame, which is visibly janky on long
+   * paragraphs in editorial type. Default true (small elements pay the cost
+   * fine).
+   */
+  blur?: boolean;
   className?: string;
 }
 
@@ -30,6 +38,7 @@ export function BlurFade({
   duration = 0.5,
   y = 12,
   inView = true,
+  blur = true,
   className,
 }: BlurFadeProps) {
   const reduced = useReducedMotion();
@@ -38,8 +47,12 @@ export function BlurFade({
     return <div className={className}>{children}</div>;
   }
 
-  const hidden = { opacity: 0, y, filter: 'blur(6px)' };
-  const visible = { opacity: 1, y: 0, filter: 'blur(0px)' };
+  const hidden = blur
+    ? { opacity: 0, y, filter: 'blur(6px)' }
+    : { opacity: 0, y };
+  const visible = blur
+    ? { opacity: 1, y: 0, filter: 'blur(0px)' }
+    : { opacity: 1, y: 0 };
 
   if (inView) {
     return (
