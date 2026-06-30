@@ -6,6 +6,7 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 
 import { ThemeProvider } from '@/components/providers/theme-provider';
+import { Assistant } from '@/components/assistant';
 import { routing } from '@/i18n/routing';
 import { getContent, type Locale } from '@/content';
 import '../globals.css';
@@ -182,6 +183,8 @@ export default async function LocaleLayout({
             disableTransitionOnChange
           >
             {children}
+            {/* Deferred RAG chatbot mount point. Renders null today. */}
+            <Assistant />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
