@@ -32,12 +32,8 @@ export interface HeroContent {
     postAccent: string;
   };
   sub: string;
-  cta: {
-    /** Primary CTA — Download CV. Phase 3 introduces this label. */
-    primary: { label: string; href: string };
-    /** Secondary CTA — Get in touch (mailto or #contact). */
-    secondary: { label: string; href: string };
-  };
+  /** Single CTA — "Get in touch" → #contact. */
+  cta: { label: string; href: string };
   photoCaption: string;
   location: string;
 }
@@ -159,17 +155,12 @@ export interface HowContent {
 
 export interface ContactItem {
   kind: 'email' | 'x' | 'linkedin' | 'telegram';
-  label: string;       // translated
-  handle: string;      // proper noun — verbatim across locales (e.g. @s_cintioli_)
+  label: string;       // translated; serves as aria-label on the icon link
   href: string;
 }
 
 export interface ContactContent {
-  kicker: string;
-  headline: {
-    preEm: string;
-    em: string;
-  };
+  /** Icons-only block: just the 4 social-link items. No headline, no kicker. */
   items: ContactItem[];
 }
 
@@ -191,9 +182,8 @@ export interface FooterContent {
 }
 
 export interface ActionLabels {
-  visit: string;        // existing
-  downloadCv: string;   // new in v2
-  getInTouch: string;   // new in v2
+  visit: string;        // "Visit ↗"
+  getInTouch: string;   // "Get in touch"
 }
 
 export interface StatusLabels {

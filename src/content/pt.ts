@@ -29,10 +29,7 @@ export const pt: SiteContent = {
       postAccent: ' global.',
     },
     sub: 'LatAm Community Lead na BNB Chain. Direcionando builders da região para o vertical certo, construindo no caminho as ferramentas que o trabalho exige.',
-    cta: {
-      primary: { label: 'Fala comigo', href: '#contact' },                         // TODO: review
-      secondary: { label: 'Baixar CV', href: '/assets/stefano-cintioli-cv.pdf' },   // TODO: review
-    },
+    cta: { label: 'Fala comigo', href: '#contact' }, // TODO: review
     photoCaption: 'Binance Day · Lima · Maio 2026',
     location: 'Buenos Aires · UTC-3',
   },
@@ -188,16 +185,11 @@ export const pt: SiteContent = {
     ],
   },
   contact: {
-    kicker: 'Contato',
-    headline: {
-      preEm: 'Está construindo na América Latina ou contratando para a região? ',
-      em: 'Vamos conversar.',
-    },
     items: [
-      { kind: 'email',    label: 'Email',    handle: 'stefano.cintioli@bnbchain.org', href: 'mailto:stefano.cintioli@bnbchain.org' },
-      { kind: 'x',        label: 'X',        handle: '@s_cintioli_',                  href: 'https://x.com/s_cintioli_' },
-      { kind: 'linkedin', label: 'LinkedIn', handle: '/in/stefanocintioli',           href: 'https://linkedin.com/in/stefanocintioli' },
-      { kind: 'telegram', label: 'Telegram', handle: '@StefanoCintioli',              href: 'https://t.me/StefanoCintioli' },
+      { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
+      { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
+      { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/stefanocintioli' },
+      { kind: 'telegram', label: 'Telegram', href: 'https://t.me/StefanoCintioli' },
     ],
   },
   footer: {
@@ -207,7 +199,6 @@ export const pt: SiteContent = {
   },
   action: {
     visit: 'Ver ↗',
-    downloadCv: 'Baixar CV',     // TODO: review
     getInTouch: 'Fala comigo',   // TODO: review
   },
   status: {

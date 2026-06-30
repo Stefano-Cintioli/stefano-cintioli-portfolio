@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
@@ -14,6 +14,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 /**
  * Hero — entrance animation on MOUNT (not whileInView), since this is the
  * first paint. Each piece staggers in over ~0.7s total.
+ *
+ * Single CTA: "Get in touch" → #contact. (Download CV removed.)
  */
 export function Hero({ content }: { content: SiteContent }) {
   const reduced = useReducedMotion();
@@ -64,26 +66,14 @@ export function Hero({ content }: { content: SiteContent }) {
               {content.hero.sub}
             </motion.p>
 
-            <motion.div
-              {...item(0.24)}
-              className="flex flex-wrap items-center gap-3"
-            >
+            <motion.div {...item(0.24)}>
               <Button asChild size="lg" className="group">
-                <a href={content.hero.cta.primary.href}>
-                  {content.hero.cta.primary.label}
+                <a href={content.hero.cta.href}>
+                  {content.hero.cta.label}
                   <ArrowRight
                     className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
                     aria-hidden="true"
                   />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="group">
-                <a
-                  href={content.hero.cta.secondary.href}
-                  download="stefano-cintioli-cv.pdf"
-                >
-                  <Download className="mr-1 h-4 w-4" aria-hidden="true" />
-                  {content.hero.cta.secondary.label}
                 </a>
               </Button>
             </motion.div>

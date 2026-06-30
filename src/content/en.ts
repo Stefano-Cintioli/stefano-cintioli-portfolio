@@ -4,9 +4,9 @@
  * Migrated VERBATIM from the legacy content.json (v1.5.0) and the live
  * index.html. No facts, metrics, URLs, dates, or proper nouns were altered.
  *
- * Strings that are NEW in v2 (Download CV, Get in touch as a label,
- * tool slugs, photo alt text) are written fresh here; ES + PT carry
- * "TODO: review" markers next to those same strings.
+ * Strings that are NEW in v2 (Get in touch CTA, tool slugs, photo alt
+ * text) are written fresh here; ES + PT carry "TODO: review" markers
+ * next to those same strings.
  */
 
 import type { SiteContent } from './schema';
@@ -29,10 +29,7 @@ export const en: SiteContent = {
       postAccent: ' ecosystem.',
     },
     sub: 'LatAm Community Lead at BNB Chain. Routing regional builders to the right vertical, building the tools the work needs along the way.',
-    cta: {
-      primary: { label: 'Get in touch', href: '#contact' },
-      secondary: { label: 'Download CV', href: '/assets/stefano-cintioli-cv.pdf' },
-    },
+    cta: { label: 'Get in touch', href: '#contact' },
     photoCaption: 'Binance Day · Lima · May 2026',
     location: 'Buenos Aires · UTC-3',
   },
@@ -188,16 +185,11 @@ export const en: SiteContent = {
     ],
   },
   contact: {
-    kicker: 'Contact',
-    headline: {
-      preEm: 'Building in LatAm, or hiring for it? ',
-      em: "Let's talk.",
-    },
     items: [
-      { kind: 'email',    label: 'Email',    handle: 'stefano.cintioli@bnbchain.org', href: 'mailto:stefano.cintioli@bnbchain.org' },
-      { kind: 'x',        label: 'X',        handle: '@s_cintioli_',                  href: 'https://x.com/s_cintioli_' },
-      { kind: 'linkedin', label: 'LinkedIn', handle: '/in/stefanocintioli',           href: 'https://linkedin.com/in/stefanocintioli' },
-      { kind: 'telegram', label: 'Telegram', handle: '@StefanoCintioli',              href: 'https://t.me/StefanoCintioli' },
+      { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
+      { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
+      { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/stefanocintioli' },
+      { kind: 'telegram', label: 'Telegram', href: 'https://t.me/StefanoCintioli' },
     ],
   },
   footer: {
@@ -207,7 +199,6 @@ export const en: SiteContent = {
   },
   action: {
     visit: 'Visit ↗',
-    downloadCv: 'Download CV',
     getInTouch: 'Get in touch',
   },
   status: {
