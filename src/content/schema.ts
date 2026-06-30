@@ -1,144 +1,109 @@
 /**
  * SiteContent — single typed schema for all per-locale content.
  *
- * Migrated from the legacy content.json (Phase 3). Every locale file in this
- * directory MUST satisfy this interface, so structural changes here ripple
- * into compile errors across en.ts / es.ts / pt.ts — that's the point.
- *
- * Discipline:
- *   - Metrics, proper nouns, URLs, dates: identical across locales.
- *   - Copy: translated; en is the source of truth.
- *   - New UI strings I introduce in this redesign (e.g. CTA labels) carry a
- *     trailing "// TODO: review" comment in es.ts / pt.ts so they're easy to
- *     find later.
+ * Phase 6 structural refactor:
+ *   - Section names changed: "currently" → "now", "work + impact + tools" → "lastSixMonths".
+ *   - Tools section removed entirely (no ToolItem, no ToolStatus, no WorkContent, no
+ *     status labels). Tools content + URLs are gone from every locale.
+ *   - Hero gains `status` chip (role · org · location), drops `location`.
+ *   - Now is short prose + a list of chips (no preEm/em/postEm split anymore).
+ *   - LastSixMonths is a flat curated metric list + a single growth-chart spec
+ *     + the event/content cards that used to live in the Communication tab.
+ *   - Contact gains its headline + primary CTA back. Footer no longer renders socials.
  */
 
 export type Locale = 'en' | 'es' | 'pt';
 
 /* --------------------------------------------------------------------------
+ * Nav
+ * -------------------------------------------------------------------------- */
+export interface NavContent {
+  now: string;
+  lastSixMonths: string;
+  how: string;
+  contact: string;
+}
+
+/* --------------------------------------------------------------------------
  * Hero
  * -------------------------------------------------------------------------- */
-
 export interface HeroContent {
   eyebrow: string;
   headline: {
-    /** Line 1 — full text. NBSP characters in source preserve word-pairing. */
     lineA: string;
-    /** Line 2 prefix, sits in body color, includes trailing space. */
     preAccent: string;
-    /** Word(s) painted in --primary. Same across locales (e.g. "Web3"). */
     accent: string;
-    /** Line 2 suffix, body color, includes leading space. */
     postAccent: string;
   };
   sub: string;
+  /** Status chip near the CTA: role · org · location. */
+  status: string;
   /** Single CTA — "Get in touch" → #contact. */
   cta: { label: string; href: string };
   photoCaption: string;
-  location: string;
 }
 
 /* --------------------------------------------------------------------------
- * Currently
+ * Now (was: Currently)
+ * Short statement + 2–3 inline chips. No emphasis-clause split anymore.
  * -------------------------------------------------------------------------- */
-
-export interface CurrentlyContent {
+export interface NowContent {
   kicker: string;
-  /** Paragraph composed of pre-emphasis text, emphasized clause, post-emphasis. */
-  body: {
-    preEm: string;
-    em: string;
-    postEm: string;
-  };
-  meta: {
-    loc: string;
-    scope: string;
-  };
+  body: string;
+  /** Short pill facts (e.g. "8 countries", "6 months", "Buenos Aires"). */
+  chips: string[];
 }
 
 /* --------------------------------------------------------------------------
- * Work
+ * Last 6 months (merges old Impact + Communication)
  * -------------------------------------------------------------------------- */
+export interface ImpactMetric {
+  value: string;        // verbatim across locales: "76.3K", "+462", "20+", etc.
+  label: string;        // translated
+  detail?: string;      // optional qualifier (e.g. "organic", "from <100")
+}
 
-export type ToolStatus = 'live' | 'beta' | 'internal';
-
-export interface ToolItem {
-  /** Stable slug — anchor for the planned /work/[slug] route. */
-  slug: string;
-  /** Display number (01–04). */
-  number: string;
-  /** Project name — proper noun, kept verbatim across locales. */
-  name: string;
-  /** One-line description; translated per locale. */
-  desc: string;
-  status: ToolStatus;
-  /** Optional outbound link. Absent for Internal tools without a public URL. */
-  url?: string;
+/**
+ * Growth-chart spec — minimal sparkline that animates a single gold line.
+ * `series` is a list of synthetic-but-plausible monthly snapshots; only the
+ * endpoints carry real data (start/end labels). Documented in the report.
+ */
+export interface GrowthChart {
+  title: string;
+  /** Y-axis snapshot values. First/last are real; midpoints are visual shape. */
+  series: number[];
+  startLabel: string;   // e.g. "<100"
+  endLabel: string;     // e.g. "476"
+  caption: string;      // e.g. "@BNBChainLatAm followers · organic · zero paid"
 }
 
 export interface CommsPost {
   id: string;
-  /** Platform name — kept verbatim across locales (e.g. "X", "LinkedIn"). */
   platform: 'X' | 'LinkedIn';
-  /** Display date — same string across locales (e.g. "May 2026"). */
-  date: string;
-  /** Topic line; translated per locale. */
-  topic: string;
+  date: string;        // verbatim across locales: "May 2026", "Mar 2026", etc.
+  topic: string;       // translated
   url: string;
-  /** Public path to the recap photo (under /public). */
-  photo: string;
-  /** Alt text for the photo; translated per locale. */
-  alt: string;
+  photo: string;       // /public path
+  alt: string;         // translated
 }
 
-export interface WorkContent {
+export interface LastSixMonthsContent {
   kicker: string;
-  tabs: {
-    tools: string;
-    impact: string;
-    socials: string;
-  };
-  toolsHeading: string;
-  tools: ToolItem[];
-  comms: {
-    handlesKicker: string;
-    posts: CommsPost[];
-  };
+  heading: string;
+  /** Optional short lead-in below the heading. */
+  intro?: string;
+  /** Curated 6 strongest metrics. */
+  metrics: ImpactMetric[];
+  growth: GrowthChart;
+  highlightsKicker: string;
+  highlights: CommsPost[];
 }
 
 /* --------------------------------------------------------------------------
- * Impact — three clusters, each with a lead metric + supporting items
+ * How I think
  * -------------------------------------------------------------------------- */
-
-export interface ImpactMetric {
-  /** Number string — VERBATIM across locales (e.g. "76.3K", "+462"). */
-  value: string;
-  /** Label; translated per locale. */
-  label: string;
-  /** Optional qualifier (e.g. "one P0, one P1", "closed cohort", country list). */
-  detail?: string;
-}
-
-export interface ImpactCluster {
-  /** Heading like "ECOSYSTEM & BD" — translated per locale. */
-  header: string;
-  lead: ImpactMetric;
-  items: ImpactMetric[];
-}
-
-export interface ImpactContent {
-  leadLine: string;
-  clusters: ImpactCluster[];
-}
-
-/* --------------------------------------------------------------------------
- * How I think — 4 operating principles
- * -------------------------------------------------------------------------- */
-
 export interface Principle {
-  /** Display number (01–04). */
   number: string;
-  /** One-word keyword in mono caps (e.g. "FILTER" / "FILTRAR"). */
   keyword: string;
   title: string;
   body: string;
@@ -152,29 +117,24 @@ export interface HowContent {
 /* --------------------------------------------------------------------------
  * Contact
  * -------------------------------------------------------------------------- */
-
 export interface ContactItem {
   kind: 'email' | 'x' | 'linkedin' | 'telegram';
-  label: string;       // translated; serves as aria-label on the icon link
+  label: string;       // also serves as aria-label
   href: string;
 }
 
 export interface ContactContent {
-  /** Icons-only block: just the 4 social-link items. No headline, no kicker. */
+  kicker: string;
+  /** Short headline; the emphasized clause is rendered in --primary. */
+  headline: { preEm: string; em: string };
+  /** Primary mailto CTA. Sits above the 4 icon buttons. */
+  primaryCta: { label: string; href: string };
   items: ContactItem[];
 }
 
 /* --------------------------------------------------------------------------
- * Misc UI strings
+ * Misc
  * -------------------------------------------------------------------------- */
-
-export interface NavContent {
-  currently: string;
-  work: string;
-  how: string;
-  contact: string;
-}
-
 export interface FooterContent {
   loc: string;
   lastUpdatedLabel: string;
@@ -182,29 +142,19 @@ export interface FooterContent {
 }
 
 export interface ActionLabels {
-  visit: string;        // "Visit ↗"
-  getInTouch: string;   // "Get in touch"
-}
-
-export interface StatusLabels {
-  live: string;
-  beta: string;
-  internal: string;
+  getInTouch: string;
 }
 
 /* --------------------------------------------------------------------------
  * Aggregate
  * -------------------------------------------------------------------------- */
-
 export interface SiteContent {
   nav: NavContent;
   hero: HeroContent;
-  currently: CurrentlyContent;
-  work: WorkContent;
-  impact: ImpactContent;
+  now: NowContent;
+  lastSixMonths: LastSixMonthsContent;
   how: HowContent;
   contact: ContactContent;
   footer: FooterContent;
   action: ActionLabels;
-  status: StatusLabels;
 }

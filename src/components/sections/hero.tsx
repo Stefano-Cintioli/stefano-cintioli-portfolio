@@ -12,10 +12,12 @@ import { cn } from '@/lib/utils';
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Hero — entrance animation on MOUNT (not whileInView), since this is the
- * first paint. Each piece staggers in over ~0.7s total.
+ * Hero.
  *
- * Single CTA: "Get in touch" → #contact. (Download CV removed.)
+ * Headline tightened to AT MOST 3 lines; size dialed down from 5xl→4xl-md.
+ * Single CTA. Floating "Buenos Aires · UTC-3" mono line is gone — replaced
+ * with a small status chip directly below the CTA: "Role · Org · Location".
+ * Entrance staggers on MOUNT (first paint, not whileInView).
  */
 export function Hero({ content }: { content: SiteContent }) {
   const reduced = useReducedMotion();
@@ -24,9 +26,9 @@ export function Hero({ content }: { content: SiteContent }) {
     reduced
       ? {}
       : {
-          initial: { opacity: 0, y: 12, filter: 'blur(6px)' },
-          animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-          transition: { duration: 0.55, delay, ease: EASE },
+          initial: { opacity: 0, y: 12 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.5, delay, ease: EASE },
         };
 
   return (
@@ -40,14 +42,18 @@ export function Hero({ content }: { content: SiteContent }) {
           <div className="order-2 md:order-1">
             <motion.p
               {...item(0)}
-              className="font-mono text-xs uppercase tracking-[0.18em] text-primary mb-5"
+              className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-primary mb-5"
             >
               {content.hero.eyebrow}
             </motion.p>
 
             <motion.h1
-              {...item(0.08)}
-              className="font-display font-medium leading-[0.96] tracking-tight mb-6 text-balance text-5xl sm:text-6xl md:text-[clamp(3rem,5.8vw,5.4rem)]"
+              {...item(0.06)}
+              className={cn(
+                'font-display font-medium tracking-[-0.02em] mb-7 text-balance',
+                'leading-[1.04]',
+                'text-[2.25rem] sm:text-[2.75rem] md:text-[clamp(2.5rem,4.4vw,3.75rem)]',
+              )}
             >
               <span className="block text-foreground">
                 {content.hero.headline.lineA}
@@ -60,13 +66,13 @@ export function Hero({ content }: { content: SiteContent }) {
             </motion.h1>
 
             <motion.p
-              {...item(0.16)}
-              className="text-base md:text-lg text-fg-dim max-w-[42ch] leading-relaxed mb-9"
+              {...item(0.12)}
+              className="text-base md:text-lg text-fg-dim max-w-[44ch] leading-relaxed mb-8"
             >
               {content.hero.sub}
             </motion.p>
 
-            <motion.div {...item(0.24)}>
+            <motion.div {...item(0.18)} className="flex flex-wrap items-center gap-4">
               <Button asChild size="lg" className="group">
                 <a href={content.hero.cta.href}>
                   {content.hero.cta.label}
@@ -76,14 +82,22 @@ export function Hero({ content }: { content: SiteContent }) {
                   />
                 </a>
               </Button>
-            </motion.div>
 
-            <motion.p
-              {...item(0.32)}
-              className="mt-9 font-mono text-xs uppercase tracking-[0.14em] text-fg-mute"
-            >
-              {content.hero.location}
-            </motion.p>
+              {/* Status chip — role · org · location */}
+              <span
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-full px-3.5 py-1.5',
+                  'border border-hairline-2 bg-card/60',
+                  'font-mono text-[0.7rem] tracking-[0.04em] text-fg-dim',
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-1.5 w-1.5 rounded-full bg-primary"
+                />
+                {content.hero.status}
+              </span>
+            </motion.div>
           </div>
 
           {/* Right — photo */}
@@ -91,15 +105,15 @@ export function Hero({ content }: { content: SiteContent }) {
             {...(reduced
               ? {}
               : {
-                  initial: { opacity: 0, scale: 0.96, filter: 'blur(8px)' },
-                  animate: { opacity: 1, scale: 1, filter: 'blur(0px)' },
-                  transition: { duration: 0.7, delay: 0.1, ease: EASE },
+                  initial: { opacity: 0, scale: 0.97 },
+                  animate: { opacity: 1, scale: 1 },
+                  transition: { duration: 0.6, delay: 0.08, ease: EASE },
                 })}
             className={cn(
               'order-1 md:order-2 relative rounded-2xl overflow-hidden',
               'border border-hairline-2 bg-bg-2',
               'shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55),0_12px_28px_-16px_rgba(240,185,11,0.18)]',
-              'mx-auto md:mx-0 w-full max-w-[440px] md:max-w-none',
+              'mx-auto md:mx-0 w-full max-w-[420px] md:max-w-none',
               'aspect-[4/5]',
             )}
           >
@@ -118,7 +132,7 @@ export function Hero({ content }: { content: SiteContent }) {
         </div>
       </div>
 
-      <ScrollCue targetId="currently" />
+      <ScrollCue targetId="now" />
     </section>
   );
 }

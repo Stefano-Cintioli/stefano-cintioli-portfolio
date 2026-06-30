@@ -1,160 +1,96 @@
 // DRAFT TRANSLATION — pending review (Brazilian Portuguese).
-// Reuses the existing translations from content.json v1.5.0 where they exist.
-// New v2 UI strings are flagged with "TODO: review".
-//
-// Locked across locales (DO NOT translate or change):
-//   - All metric values: 20+, 5+, 22+, 25+, 76.3K, 476, 6, 8, +462, 1,654, 30+, 5
-//   - All proper nouns and project names (BNB Chain, BNB Dojo, VendimiaTech,
-//     Crecimiento, Blockenfy, UTN, @BNBChainLatAm, @crecimientoar, etc.)
-//   - All URLs and email/handle strings
-//   - Dates (May/Mar/Apr 2026 → translated month names are OK)
+// Phase 6 restructure mirrors en.ts. New strings flagged with "TODO: review".
 
 import type { SiteContent } from './schema';
 
-const NBSP = ' ';
-
 export const pt: SiteContent = {
   nav: {
-    currently: 'Agora',
-    work: 'Trabalho',
+    now: 'Agora',
+    lastSixMonths: 'Últimos 6 meses',
     how: 'Como trabalho',
     contact: 'Contato',
   },
+
   hero: {
     eyebrow: 'Argentina · LatAm · Web3 global',
     headline: {
-      lineA: `Conectando builders${NBSP}latino-americanos`,
-      preAccent: 'ao ecossistema ',
+      lineA: 'Conectando builders latino-americanos',
+      preAccent: 'à ',
       accent: 'Web3',
       postAccent: ' global.',
     },
-    sub: 'LatAm Community Lead na BNB Chain. Direcionando builders da região para o vertical certo, construindo no caminho as ferramentas que o trabalho exige.',
-    cta: { label: 'Fala comigo', href: '#contact' }, // TODO: review
+    sub: 'Direcionando builders da região para o vertical certo, construindo no caminho as ferramentas que o trabalho exige.',
+    status: 'LatAm Community Lead · BNB Chain · Buenos Aires', // TODO: review
+    cta: { label: 'Fala comigo', href: '#contact' },
     photoCaption: 'Binance Day · Lima · Maio 2026',
-    location: 'Buenos Aires · UTC-3',
   },
-  currently: {
+
+  now: {
     kicker: 'Agora',
-    body: {
-      preEm: '',
-      em: 'Liderando a comunidade LatAm da BNB Chain e encaminhando leads para o pipeline de BD',
-      postEm: ' desde Buenos Aires. Direcionando projetos regionais para os verticais de stablecoins, pagamentos, AI e RWA. Co-desenvolvendo o BNB Dojo como camada global de engagement com builders. Sempre aberto a builders, founders e operadores que estão construindo na região.',
-    },
-    meta: {
-      loc: 'Buenos Aires · UTC-3',
-      scope: '8 países ativados · 6 meses',
-    },
+    body: 'Liderando a comunidade LatAm da BNB Chain e encaminhando leads para o pipeline de BD desde Buenos Aires.',
+    chips: ['8 países', '6 meses', 'Buenos Aires'], // TODO: review
   },
-  work: {
-    kicker: 'Trabalho',
-    tabs: { tools: 'Ferramentas', impact: 'Impacto', socials: 'Comunicação' },
-    toolsHeading: 'Ferramentas entregues neste papel', // TODO: review
-    tools: [
-      {
-        slug: 'bnb-dojo',
-        number: '01',
-        name: 'BNB Dojo',
-        desc: 'Plataforma mobile-first de aprendizado gamificado de Web3. Trilíngue ES/PT/EN. Sistema de faixas.',
-        status: 'beta',
-        url: 'https://bnb-dojo-v2.vercel.app/home',
-      },
-      {
-        slug: 'daily-briefing-agent',
-        number: '02',
-        name: 'Daily Intelligence Briefing Agent',
-        desc: 'Briefings diários estruturados do ecossistema via Telegram e Gmail. Groq + LLaMA 3.',
-        status: 'internal',
-      },
-      {
-        slug: 'presentations-stack',
-        number: '03',
-        name: 'Stack de Apresentações + Brand Kit',
-        desc: 'Templates de slides e materiais de eventos alinhados com a marca BNB Chain.',
-        status: 'live',
-        url: 'https://binance-day-peru-2026.vercel.app/',
-      },
-      {
-        slug: 'ambassador-automation',
-        number: '04',
-        name: 'Ambassador Program Automation',
-        desc: 'Contribuição cross-funcional para a infraestrutura operacional do Guild.',
-        status: 'internal',
-      },
+
+  lastSixMonths: {
+    kicker: 'H1 2026',
+    heading: 'Últimos 6 meses', // TODO: review
+    intro: 'Crescimento orgânico, builders regionais, ativações reais.', // TODO: review
+    metrics: [
+      { value: '76.3K', label: 'impressões em @BNBChainLatAm', detail: 'orgânicas' },
+      { value: '+462',  label: 'novos membros no Telegram da BNB Chain ES' },
+      { value: '8',     label: 'países ativados', detail: 'AR · BR · PE · VE · PY · CL · MX · ES' },
+      { value: '25+',   label: '1-1s com KOLs e builders da região' },
+      { value: '20+',   label: 'leads de BD encontrados e direcionados' },
+      { value: '5+',    label: 'projetos na mainnet da BNB Chain', detail: 'um P0, um P1' },
     ],
-    comms: {
-      handlesKicker: 'Me encontre em',
-      posts: [
-        {
-          id: 'binance-day-peru',
-          platform: 'X',
-          date: 'Maio 2026',
-          topic: 'Binance Day Perú — cobertura oficial da BNB Chain LatAm',
-          url: 'https://x.com/BNBChainLatAm/status/2052970649459597789',
-          photo: '/assets/img/binance-day-peru.webp',
-          alt: 'Stefano Cintioli no palco do Binance Day Perú, Lima, maio 2026', // TODO: review
-        },
-        {
-          id: 'vendimia-tech',
-          platform: 'X',
-          date: 'Mar 2026',
-          topic: 'VendimiaTech — migração da Blockenfy para a BNB Chain',
-          url: 'https://x.com/s_cintioli_/status/2038248562824188158',
-          photo: '/assets/img/vendimia-workshop.webp',
-          alt: 'Hackathon VendimiaTech, Mendoza', // TODO: review
-        },
-        {
-          id: 'crecimiento-partnership',
-          platform: 'X',
-          date: 'Abr 2026',
-          topic: 'Parceria com a Crecimiento',
-          url: 'https://x.com/crecimientoar/status/2034410672344137897',
-          photo: '/assets/img/crecimiento-workshop.webp',
-          alt: 'Workshop Crecimiento, Buenos Aires e Lima', // TODO: review
-        },
-        {
-          id: 'utn-university-tour',
-          platform: 'LinkedIn',
-          date: '2026',
-          topic: 'UTN Buenos Aires — University Tour',
-          url: 'https://www.linkedin.com/posts/natalie-abuchaibe_crypto-web3-blockchain-ugcPost-7444493501985116160-RFL4',
-          photo: '/assets/img/university-tour-panel.webp',
-          alt: 'Binance University Tour, UTN Buenos Aires', // TODO: review
-        },
-      ],
+    growth: {
+      title: 'Seguidores de @BNBChainLatAm',
+      series: [80, 130, 195, 285, 370, 476],
+      startLabel: '<100',
+      endLabel: '476',
+      caption: 'orgânico · zero paid · 6 meses', // TODO: review
     },
-  },
-  impact: {
-    leadLine: 'Primeiros 6 meses · H1 2026',
-    clusters: [
+    highlightsKicker: 'Conteúdo em destaque', // TODO: review
+    highlights: [
       {
-        header: 'ECOSSISTEMA E BD',
-        lead: { value: '20+', label: 'leads de BD encontrados e direcionados' },
-        items: [
-          { value: '5+', label: 'projetos na mainnet da BNB Chain', detail: 'um P0, um P1' },
-          { value: '22+', label: 'ativações pela região' },
-          { value: '25+', label: '1-1s com KOLs e builders da região' },
-        ],
+        id: 'binance-day-peru',
+        platform: 'X',
+        date: 'Maio 2026',
+        topic: 'Binance Day Perú — cobertura oficial da BNB Chain LatAm',
+        url: 'https://x.com/BNBChainLatAm/status/2052970649459597789',
+        photo: '/assets/img/binance-day-peru.webp',
+        alt: 'Stefano Cintioli no palco do Binance Day Perú, Lima, maio 2026',
       },
       {
-        header: 'ALCANCE E CONTEÚDO',
-        lead: { value: '76.3K', label: 'impressões em @BNBChainLatAm, orgânicas' },
-        items: [
-          { value: '476', label: 'seguidores de @BNBChainLatAm, desde <100, zero paid' },
-          { value: '6', label: 'AMAs e Spaces executados' },
-          { value: '8', label: 'países ativados', detail: `AR${NBSP}·${NBSP}BR${NBSP}·${NBSP}PE${NBSP}·${NBSP}VE\nPY${NBSP}·${NBSP}CL${NBSP}·${NBSP}MX${NBSP}·${NBSP}ES` },
-        ],
+        id: 'vendimia-tech',
+        platform: 'X',
+        date: 'Mar 2026',
+        topic: 'VendimiaTech — migração da Blockenfy para a BNB Chain',
+        url: 'https://x.com/s_cintioli_/status/2038248562824188158',
+        photo: '/assets/img/vendimia-workshop.webp',
+        alt: 'Hackathon VendimiaTech, Mendoza',
       },
       {
-        header: 'COMUNIDADE E FERRAMENTAS',
-        lead: { value: '+462', label: 'novos membros no Telegram da BNB Chain ES' },
-        items: [
-          { value: '1,654', label: 'mensagens orgânicas da comunidade' },
-          { value: '30+', label: 'beta testers no BNB Dojo v2', detail: 'cohort fechado' },
-          { value: '5', label: 'ferramentas internas entregues' },
-        ],
+        id: 'crecimiento-partnership',
+        platform: 'X',
+        date: 'Abr 2026',
+        topic: 'Parceria com a Crecimiento',
+        url: 'https://x.com/crecimientoar/status/2034410672344137897',
+        photo: '/assets/img/crecimiento-workshop.webp',
+        alt: 'Workshop Crecimiento, Buenos Aires e Lima',
+      },
+      {
+        id: 'utn-university-tour',
+        platform: 'LinkedIn',
+        date: '2026',
+        topic: 'UTN Buenos Aires — University Tour',
+        url: 'https://www.linkedin.com/posts/natalie-abuchaibe_crypto-web3-blockchain-ugcPost-7444493501985116160-RFL4',
+        photo: '/assets/img/university-tour-panel.webp',
+        alt: 'Binance University Tour, UTN Buenos Aires',
       },
     ],
   },
+
   how: {
     kicker: 'Como penso e opero',
     principles: [
@@ -184,7 +120,14 @@ export const pt: SiteContent = {
       },
     ],
   },
+
   contact: {
+    kicker: 'Contato',
+    headline: {
+      preEm: 'Está construindo na América Latina ou contratando para a região? ',
+      em: 'Vamos conversar.',
+    },
+    primaryCta: { label: 'Me manda um email', href: 'mailto:stefano.cintioli@bnbchain.org' }, // TODO: review
     items: [
       { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
       { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
@@ -192,18 +135,14 @@ export const pt: SiteContent = {
       { kind: 'telegram', label: 'Telegram', href: 'https://t.me/StefanoCintioli' },
     ],
   },
+
   footer: {
     loc: 'Buenos Aires · UTC-3',
     lastUpdatedLabel: 'Atualizado',
     copyright: '© 2026 Stefano Cintioli',
   },
+
   action: {
-    visit: 'Ver ↗',
-    getInTouch: 'Fala comigo',   // TODO: review
-  },
-  status: {
-    live: 'No ar',
-    beta: 'Beta',
-    internal: 'Interno',
+    getInTouch: 'Fala comigo', // TODO: review
   },
 };

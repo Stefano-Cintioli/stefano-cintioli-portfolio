@@ -13,10 +13,6 @@ import {
 } from '@/components/ui/sheet';
 import type { SiteContent } from '@/content';
 
-/**
- * Mobile nav drawer. shadcn Sheet → Radix Dialog under the hood, so focus
- * trapping, Escape-to-close, and overlay click-out are handled correctly.
- */
 export function MobileMenu({
   content,
   activeId,
@@ -27,10 +23,10 @@ export function MobileMenu({
   const [open, setOpen] = useState(false);
 
   const items = [
-    { href: '#currently', label: content.nav.currently, id: 'currently' },
-    { href: '#work',      label: content.nav.work,      id: 'work' },
-    { href: '#how',       label: content.nav.how,       id: 'how' },
-    { href: '#contact',   label: content.nav.contact,   id: 'contact' },
+    { href: '#now',            label: content.nav.now,            id: 'now' },
+    { href: '#last-6-months',  label: content.nav.lastSixMonths,  id: 'last-6-months' },
+    { href: '#how',            label: content.nav.how,            id: 'how' },
+    { href: '#contact',        label: content.nav.contact,        id: 'contact' },
   ];
 
   return (
