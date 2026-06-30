@@ -1,6 +1,4 @@
 .DS_Store
-assets/photos/source/
-assets/fonts/pp-editorial-new/
 *.log
 .vercel
 .claude/
@@ -18,6 +16,3 @@ build/
 # IDE
 .idea/
 .vscode/
-
-# Bun
-# bun.lock IS committed (lockfile for reproducible installs).
