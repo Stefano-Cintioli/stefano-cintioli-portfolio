@@ -112,6 +112,46 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const content = getContent(locale);
+
+  // schema.org Person — static facts about Stefano. Same payload across
+  // locales (description swaps per locale to surface localized intent),
+  // emitted as a JSON-LD <script> in the body so crawlers + LLMs can read
+  // structured metadata without parsing the visible DOM.
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Stefano Cintioli',
+    url: SITE_URL,
+    image: `${SITE_URL}/assets/og-card.jpg`,
+    jobTitle: 'LatAm Community Lead',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'BNB Chain',
+      url: 'https://www.bnbchain.org/',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Buenos Aires',
+      addressCountry: 'AR',
+    },
+    description: content.hero.sub,
+    knowsAbout: [
+      'Web3',
+      'Blockchain',
+      'Business Development',
+      'Community Growth',
+      'AI Agents',
+      'Stablecoins',
+      'RWA',
+      'Developer Relations',
+    ],
+    sameAs: [
+      'https://x.com/s_cintioli_',
+      'https://www.linkedin.com/in/stefanocintioli/',
+      'https://t.me/StefanoCintioli',
+    ],
+  };
 
   return (
     <html
@@ -128,6 +168,12 @@ export default async function LocaleLayout({
         >
           Skip to content
         </a>
+
+        {/* schema.org Person — one per page, all locales */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
