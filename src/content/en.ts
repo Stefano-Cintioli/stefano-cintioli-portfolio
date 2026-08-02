@@ -36,27 +36,32 @@ export const en: SiteContent = {
   hero: {
     eyebrow: 'Argentina · LatAm · Global Web3',
     headline: {
-      lineA: 'Bridging LatAm builders',
+      lineA: "Connecting the region's talent",
       preAccent: 'with global ',
       accent: 'Web3',
-      postAccent: '.',
+      postAccent: ' opportunity.',
     },
-    sub: 'Routing regional builders to the right vertical, building the tools the work needs along the way.',
+    sub: "I find the people building for real in the region and connect them with the right team inside BNB Chain. Whatever's missing along the way, I build it.",
     status: 'LatAm Community Lead · BNB Chain · Buenos Aires',
-    cta: { label: 'Get in touch', href: '#contact' },
+    cta: { label: 'Book a call', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
     photoCaption: 'Binance Day · Lima · May 2026',
+  },
+
+  background: {
+    kicker: 'Before',
+    body: "Before this role I was on the other side of the table: four hackathons as a builder, one of them won, and one I came back to as a mentor. Along the way I co-founded a web3 community here in Argentina and shipped a handful of on-chain side projects. Same reason then as now, keep getting better and open up opportunities for the region.",
   },
 
   now: {
     kicker: 'Now',
-    body: "Running BNB Chain's LatAm community and sourcing leads to the BD pipeline from Buenos Aires.",
+    body: "Running BNB Chain's LatAm community from Buenos Aires and feeding real builders into the BD pipeline.",
     chips: ['8 countries', '6 months', 'Buenos Aires'],
   },
 
   lastSixMonths: {
     kicker: 'H1 2026',
     heading: 'Last 6 months',
-    intro: 'Organic growth, regional builders, real activations.',
+    intro: "Zero paid, all organic. Here's what six months on the ground actually moved.",
     metrics: [
       { value: '76.3K', label: 'X impressions on @BNBChainLatAm', detail: 'organic' },
       { value: '+462',  label: 'BNB Chain ES Telegram members added' },
@@ -122,25 +127,25 @@ export const en: SiteContent = {
         number: '01',
         keyword: 'FILTER',
         title: 'First filter for the region.',
-        body: "LatAm doesn't have a discovery problem. It has a signal problem. My job is to find serious builders in the region and route them to the right vertical owner inside BNB Chain BD (stables, payments, AI, RWAs) before noise reaches them. Warm referral over cold pitch.",
+        body: "LatAm doesn't have a discovery problem, it has a signal problem. My job is to find the builders who are serious and get them to the right vertical inside BNB Chain BD (stables, payments, AI, RWAs) before the noise reaches them. A warm intro beats a cold pitch every time.",
       },
       {
         number: '02',
         keyword: 'FOCUS',
         title: 'Builders, not banners.',
-        body: 'The budget goes where the builders are. Technical tracks, workshops, bounties, direct project migrations. Not vanity sponsorship tiers and not stages with twenty logos on them.',
+        body: 'The budget goes where the builders are. Technical tracks, workshops, bounties, moving real projects on-chain. Not vanity sponsor tiers, not a stage with twenty logos on it.',
       },
       {
         number: '03',
         keyword: 'BUILD',
         title: 'Build what the work needs.',
-        body: "The job comes with a fixed budget and a moving target. When the right tool doesn't exist, the only honest move is to build it. AI-assisted development makes this faster than waiting for it to arrive. The ceiling of what a community team produces is set by the tools it has access to. Some of those tools, the team has to ship themselves.",
+        body: "The job comes with a fixed budget and a target that keeps moving. When the tool you need doesn't exist, the only honest move is to build it, and AI-assisted development gets it done faster than waiting around for it. What a community team can pull off is capped by the tools it has on hand, and some of those the team has to ship itself.",
       },
       {
         number: '04',
         keyword: 'PRESENCE',
         title: 'Show up. Stay. Build alongside.',
-        body: "Regional ecosystems take years, not quarters. Repeat hackathons, repeat conferences, repeat conversations with the same builders. The job isn't to broadcast at them. It's to sit next to them, hear what they need, build the path with them. Without builders, no ecosystem. Without showing up, no trust. By year three you stop being a visitor and start being the room.",
+        body: "Regional ecosystems get built in years, not quarters. Same hackathon, same conference, same conversations with the same builders, over and over. The job isn't to broadcast at them. It's to sit next to them, listen to what they actually need, and build the path with them. No builders, no ecosystem. No showing up, no trust. By year three you stop being a visitor and start being part of the place.",
       },
     ],
   },
@@ -148,10 +153,10 @@ export const en: SiteContent = {
   contact: {
     kicker: 'Contact',
     headline: {
-      preEm: 'Building in LatAm, or hiring for it? ',
+      preEm: 'Building something in LatAm, or hiring for the region? ',
       em: "Let's talk.",
     },
-    primaryCta: { label: 'Email Stefano', href: 'mailto:stefano.cintioli@bnbchain.org' },
+    primaryCta: { label: 'Book a call', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
     items: [
       { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
       { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
@@ -167,6 +172,6 @@ export const en: SiteContent = {
   },
 
   action: {
-    getInTouch: 'Get in touch',
+    getInTouch: 'Book a call',
   },
 };

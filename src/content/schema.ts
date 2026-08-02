@@ -59,6 +59,15 @@ export interface HeroContent {
 }
 
 /* --------------------------------------------------------------------------
+ * Background — short pre-role origin story. Sits between Hero and Now.
+ * Narrative prose (2-4 sentences), first person. No CV list.
+ * -------------------------------------------------------------------------- */
+export interface BackgroundContent {
+  kicker: string;
+  body: string;
+}
+
+/* --------------------------------------------------------------------------
  * Now (was: Currently)
  * Short statement + 2–3 inline chips. No emphasis-clause split anymore.
  * -------------------------------------------------------------------------- */
@@ -167,6 +176,7 @@ export interface SiteContent {
   seo: SeoContent;
   nav: NavContent;
   hero: HeroContent;
+  background: BackgroundContent;
   now: NowContent;
   lastSixMonths: LastSixMonthsContent;
   how: HowContent;

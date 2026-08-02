@@ -30,27 +30,32 @@ export const es: SiteContent = {
   hero: {
     eyebrow: 'Argentina · LatAm · Web3 global',
     headline: {
-      lineA: 'Conectando builders de LatAm',
-      preAccent: 'con la ',
+      lineA: 'Conectando el talento de la región',
+      preAccent: 'con oportunidades ',
       accent: 'Web3',
-      postAccent: ' global.',
+      postAccent: ' globales.',
     },
-    sub: 'Conectando builders regionales con el vertical correcto, y construyendo en el camino las herramientas que el trabajo necesita.',
-    status: 'LatAm Community Lead · BNB Chain · Buenos Aires', // TODO: review (kept English title)
-    cta: { label: 'Hablemos', href: '#contact' },
+    sub: 'Busco a los que están construyendo en serio en la región y los conecto con el equipo correcto dentro de BNB Chain. Y las herramientas que faltan en el camino, las armo.',
+    status: 'LatAm Community Lead · BNB Chain · Buenos Aires',
+    cta: { label: 'Agendá una llamada', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
     photoCaption: 'Binance Day · Lima · Mayo 2026',
+  },
+
+  background: {
+    kicker: 'Antes',
+    body: 'Antes de este rol estaba del otro lado: cuatro hackathons como hacker, uno lo gané y a otro volví como mentor. En el medio cofundé una comunidad web3 acá en Argentina y saqué varios proyectos on-chain por mi cuenta. El motivo era el mismo que ahora, mejorar y abrir oportunidades para la región.',
   },
 
   now: {
     kicker: 'Ahora',
-    body: 'Llevando la comunidad LatAm de BNB Chain y derivando leads al pipeline de BD desde Buenos Aires.',
-    chips: ['8 países', '6 meses', 'Buenos Aires'], // TODO: review
+    body: 'Al frente de la comunidad LatAm de BNB Chain desde Buenos Aires, metiendo builders de verdad en el pipeline de BD.',
+    chips: ['8 países', '6 meses', 'Buenos Aires'],
   },
 
   lastSixMonths: {
     kicker: 'H1 2026',
     heading: 'Últimos 6 meses', // TODO: review
-    intro: 'Crecimiento orgánico, builders regionales, activaciones reales.', // TODO: review
+    intro: 'Cero paid, todo orgánico. Esto es lo que movieron seis meses en la cancha.',
     metrics: [
       { value: '76.3K', label: 'impresiones en @BNBChainLatAm', detail: 'orgánicas' },
       { value: '+462',  label: 'miembros sumados al Telegram de BNB Chain ES' },
@@ -113,26 +118,26 @@ export const es: SiteContent = {
       {
         number: '01',
         keyword: 'FILTRAR',
-        title: 'Primer filtro de la región.',
-        body: 'LatAm no tiene un problema de descubrimiento. Tiene un problema de señal. Mi trabajo es encontrar a los builders serios de la región y derivarlos al vertical correcto dentro de BD de BNB Chain (stables, pagos, AI, RWAs) antes de que llegue el ruido. Referidos en caliente antes que cold pitch.',
+        title: 'El primer filtro de la región.',
+        body: 'LatAm no tiene un problema de descubrimiento, tiene un problema de señal. Mi laburo es encontrar a los que van en serio y derivarlos al vertical correcto dentro del BD de BNB Chain (stables, pagos, AI, RWAs) antes de que los tape el ruido. Un referido en caliente le gana a un cold pitch siempre.',
       },
       {
         number: '02',
         keyword: 'FOCO',
         title: 'Builders, no banners.',
-        body: 'El presupuesto va donde están los builders. Tracks técnicos, workshops, bounties, migraciones directas de proyectos. No tiers de sponsorship vanidosos ni escenarios con veinte logos.',
+        body: 'La plata va donde están los builders. Tracks técnicos, workshops, bounties, proyectos que se mudan on-chain de verdad. Nada de tiers de sponsoreo para la foto ni un escenario con veinte logos.',
       },
       {
         number: '03',
         keyword: 'CONSTRUIR',
-        title: 'Construir lo que el trabajo necesita.',
-        body: 'El rol viene con presupuesto fijo y objetivos que se mueven. Cuando la herramienta correcta no existe, la única jugada honesta es construirla. El desarrollo asistido por AI lo hace más rápido que esperar a que aparezca. El techo de lo que un equipo de community produce lo marca el set de herramientas al que accede. Algunas de esas herramientas las tiene que shipear el equipo.',
+        title: 'Construir lo que el laburo pide.',
+        body: 'El rol viene con presupuesto fijo y objetivos que se mueven todo el tiempo. Cuando la herramienta que necesitás no existe, lo único honesto es construirla, y con desarrollo asistido por AI sale más rápido que esperar a que aparezca sola. El techo de lo que produce un equipo de community lo marcan las herramientas que tiene a mano, y algunas se las tiene que shipear el equipo mismo.',
       },
       {
         number: '04',
         keyword: 'PRESENCIA',
-        title: 'Estar. Quedarse. Construir al lado.',
-        body: 'Los ecosistemas regionales se construyen en años, no en trimestres. Hackathons repetidos, conferencias repetidas, conversaciones repetidas con los mismos builders. El trabajo no es transmitirles. Es sentarse al lado, escuchar lo que necesitan, construir el camino con ellos. Sin builders, no hay ecosistema. Sin presencia, no hay confianza. Al tercer año dejás de ser un visitante y empezás a ser parte del lugar.',
+        title: 'Estar. Quedarte. Construir al lado.',
+        body: 'Los ecosistemas de la región se construyen en años, no en trimestres. El mismo hackathon, la misma conferencia, las mismas charlas con los mismos builders, una y otra vez. El laburo no es hablarles de arriba. Es sentarte al lado, escuchar qué necesitan y construir el camino con ellos. Sin builders no hay ecosistema, y sin estar no hay confianza. Al tercer año dejás de ser un visitante y pasás a ser parte del lugar.',
       },
     ],
   },
@@ -140,10 +145,10 @@ export const es: SiteContent = {
   contact: {
     kicker: 'Contacto',
     headline: {
-      preEm: '¿Construís en LatAm o estás contratando para la región? ',
+      preEm: '¿Estás construyendo algo en LatAm o contratando para la región? ',
       em: 'Hablemos.',
     },
-    primaryCta: { label: 'Escribime', href: 'mailto:stefano.cintioli@bnbchain.org' }, // TODO: review
+    primaryCta: { label: 'Agendá una llamada', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
     items: [
       { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
       { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
@@ -159,6 +164,6 @@ export const es: SiteContent = {
   },
 
   action: {
-    getInTouch: 'Hablemos', // TODO: review
+    getInTouch: 'Agendá una llamada',
   },
 };

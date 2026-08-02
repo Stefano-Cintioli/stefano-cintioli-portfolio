@@ -74,7 +74,11 @@ export function Hero({ content }: { content: SiteContent }) {
 
             <motion.div {...item(0.18)} className="flex flex-wrap items-center gap-4">
               <Button asChild size="lg" className="group">
-                <a href={content.hero.cta.href}>
+                <a
+                  href={content.hero.cta.href}
+                  target={content.hero.cta.href.startsWith('http') ? '_blank' : undefined}
+                  rel={content.hero.cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
                   {content.hero.cta.label}
                   <ArrowRight
                     className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
@@ -132,7 +136,7 @@ export function Hero({ content }: { content: SiteContent }) {
         </div>
       </div>
 
-      <ScrollCue targetId="now" />
+      <ScrollCue targetId="background" />
     </section>
   );
 }

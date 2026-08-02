@@ -15,6 +15,7 @@ export type {
   SeoContent,
   NavContent,
   HeroContent,
+  BackgroundContent,
   NowContent,
   LastSixMonthsContent,
   ImpactMetric,

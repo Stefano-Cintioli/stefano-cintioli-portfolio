@@ -44,7 +44,11 @@ export function Contact({ content }: { content: SiteContent }) {
 
         <BlurFade blur={false} y={8} duration={0.5} delay={0.12}>
           <Button asChild size="lg" className="group mb-10">
-            <a href={primaryCta.href}>
+            <a
+              href={primaryCta.href}
+              target={primaryCta.href.startsWith('http') ? '_blank' : undefined}
+              rel={primaryCta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
               {primaryCta.label}
               <ArrowRight
                 className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
