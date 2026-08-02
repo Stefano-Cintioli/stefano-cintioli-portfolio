@@ -1,6 +1,6 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useEffect, useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Languages } from 'lucide-react';
@@ -20,17 +20,38 @@ import { locales, localeLabels, type Locale } from '@/content';
  * On select, replaces the current path under the new locale via next-intl's
  * locale-aware router. URL changes update the static HTML — both EN (/) and
  * ES (/es) and PT (/pt) are pre-rendered.
+ *
+ * Scroll preservation: a locale change is a route change, which normally
+ * resets scroll to the top. We pass `scroll: false` to keep the viewport put,
+ * and — as a belt-and-suspenders for the case where the subtree remounts —
+ * stash the current scrollY and restore it on the next mount. Sections are
+ * structurally identical across locales, so the reader stays in place. Deep
+ * links (hash anchors) are untouched.
  */
+const SCROLL_KEY = 'locale-switch-scroll';
+
 export function LocaleSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = useLocale() as Locale;
   const [isPending, startTransition] = useTransition();
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    if (saved !== null) {
+      sessionStorage.removeItem(SCROLL_KEY);
+      window.scrollTo(0, parseInt(saved, 10) || 0);
+    }
+  }, []);
+
   function onSelect(next: Locale) {
     if (next === currentLocale) return;
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+    }
     startTransition(() => {
-      router.replace(pathname, { locale: next });
+      router.replace(pathname, { locale: next, scroll: false });
     });
   }
 

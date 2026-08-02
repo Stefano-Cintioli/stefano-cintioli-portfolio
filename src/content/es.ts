@@ -66,10 +66,10 @@ export const es: SiteContent = {
     ],
     growth: {
       title: 'Seguidores de @BNBChainLatAm',
-      series: [80, 130, 195, 285, 370, 476],
-      startLabel: '<100',
-      endLabel: '476',
-      caption: 'orgánico · cero paid · 6 meses', // TODO: review
+      caption: 'orgánico · desde que tomé la cuenta',
+      startValue: '<100',
+      startDate: 'dic 2025',
+      endDate: 'ago 2026',
     },
     highlightsKicker: 'Contenido destacado', // TODO: review
     highlights: [
@@ -119,7 +119,7 @@ export const es: SiteContent = {
         number: '01',
         keyword: 'FILTRAR',
         title: 'El primer filtro de la región.',
-        body: 'LatAm no tiene un problema de descubrimiento, tiene un problema de señal. Mi laburo es encontrar a los que van en serio y derivarlos al vertical correcto dentro del BD de BNB Chain (stables, pagos, AI, RWAs) antes de que los tape el ruido. Un referido en caliente le gana a un cold pitch siempre.',
+        body: 'LatAm no tiene un problema de descubrimiento, tiene un problema de señal. Mi trabajo es encontrar a los que van en serio y derivarlos al vertical correcto dentro del BD de BNB Chain (stables, pagos, AI, RWAs) antes de que los tape el ruido. Un referido en caliente le gana a un cold pitch siempre.',
       },
       {
         number: '02',
@@ -130,14 +130,14 @@ export const es: SiteContent = {
       {
         number: '03',
         keyword: 'CONSTRUIR',
-        title: 'Construir lo que el laburo pide.',
+        title: 'Construir lo que el trabajo pide.',
         body: 'El rol viene con presupuesto fijo y objetivos que se mueven todo el tiempo. Cuando la herramienta que necesitás no existe, lo único honesto es construirla, y con desarrollo asistido por AI sale más rápido que esperar a que aparezca sola. El techo de lo que produce un equipo de community lo marcan las herramientas que tiene a mano, y algunas se las tiene que shipear el equipo mismo.',
       },
       {
         number: '04',
         keyword: 'PRESENCIA',
         title: 'Estar. Quedarte. Construir al lado.',
-        body: 'Los ecosistemas de la región se construyen en años, no en trimestres. El mismo hackathon, la misma conferencia, las mismas charlas con los mismos builders, una y otra vez. El laburo no es hablarles de arriba. Es sentarte al lado, escuchar qué necesitan y construir el camino con ellos. Sin builders no hay ecosistema, y sin estar no hay confianza. Al tercer año dejás de ser un visitante y pasás a ser parte del lugar.',
+        body: 'Los ecosistemas de la región se construyen en años, no en trimestres. El mismo hackathon, la misma conferencia, las mismas charlas con los mismos builders, una y otra vez. El trabajo no es hablarles de arriba. Es sentarte al lado, escuchar qué necesitan y construir el camino con ellos. Sin builders no hay ecosistema, y sin estar no hay confianza. Al tercer año dejás de ser un visitante y pasás a ser parte del lugar.',
       },
     ],
   },

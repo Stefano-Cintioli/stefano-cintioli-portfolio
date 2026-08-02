@@ -4,8 +4,7 @@ import { getContent, type Locale } from '@/content';
 import { SiteNav } from '@/components/nav/site-nav';
 import { SiteFooter } from '@/components/site-footer';
 import { Hero } from '@/components/sections/hero';
-import { Background } from '@/components/sections/background';
-import { Now } from '@/components/sections/now';
+import { Chapters } from '@/components/sections/chapters';
 import { LastSixMonths } from '@/components/sections/last-six-months';
 import { How } from '@/components/sections/how';
 import { Contact } from '@/components/sections/contact';
@@ -25,8 +24,7 @@ export default async function HomePage({
 
       <main id="main">
         <Hero content={content} />
-        <Background content={content} />
-        <Now content={content} />
+        <Chapters content={content} />
         <LastSixMonths content={content} />
         <How content={content} />
         <Contact content={content} />

@@ -72,12 +72,10 @@ export const en: SiteContent = {
     ],
     growth: {
       title: '@BNBChainLatAm followers',
-      // Synthetic monthly shape from <100 → 476. Endpoints are real; midpoints
-      // are visualization (no monthly snapshot data exists). Flagged in the PR.
-      series: [80, 130, 195, 285, 370, 476],
-      startLabel: '<100',
-      endLabel: '476',
-      caption: 'organic · zero paid · 6 months',
+      caption: 'organic · since I took over the account',
+      startValue: '<100',
+      startDate: 'Dec 2025',
+      endDate: 'Aug 2026',
     },
     highlightsKicker: 'Content highlights',
     highlights: [

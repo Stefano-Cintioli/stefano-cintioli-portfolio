@@ -66,10 +66,10 @@ export const pt: SiteContent = {
     ],
     growth: {
       title: 'Seguidores de @BNBChainLatAm',
-      series: [80, 130, 195, 285, 370, 476],
-      startLabel: '<100',
-      endLabel: '476',
-      caption: 'orgânico · zero paid · 6 meses', // TODO: review
+      caption: 'orgânico · desde que assumi a conta',
+      startValue: '<100',
+      startDate: 'dez 2025',
+      endDate: 'ago 2026',
     },
     highlightsKicker: 'Conteúdo em destaque', // TODO: review
     highlights: [

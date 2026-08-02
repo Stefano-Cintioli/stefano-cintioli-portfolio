@@ -88,17 +88,21 @@ export interface ImpactMetric {
 }
 
 /**
- * Growth-chart spec — minimal sparkline that animates a single gold line.
- * `series` is a list of synthetic-but-plausible monthly snapshots; only the
- * endpoints carry real data (start/end labels). Documented in the report.
+ * Growth-chart spec — @BNBChainLatAm follower growth.
+ *
+ * We have exactly TWO real data points: the takeover anchor (startValue on
+ * startDate) and today's count. The curve between them is a smooth visual
+ * connector, NOT a dataset — there are no intermediate monthly values, real
+ * or synthetic. The current follower number is deliberately NOT stored here:
+ * it lives in ONE place, `FOLLOWER_COUNT` in src/content/followers.ts, so it
+ * can be updated monthly by editing a single line.
  */
 export interface GrowthChart {
-  title: string;
-  /** Y-axis snapshot values. First/last are real; midpoints are visual shape. */
-  series: number[];
-  startLabel: string;   // e.g. "<100"
-  endLabel: string;     // e.g. "476"
-  caption: string;      // e.g. "@BNBChainLatAm followers · organic · zero paid"
+  title: string;       // localized label, e.g. "@BNBChainLatAm followers"
+  caption: string;     // MUST contain organic/orgánico/orgânico; frames growth since takeover
+  startValue: string;  // real start anchor, e.g. "<100"
+  startDate: string;   // localized takeover month, e.g. "Dec 2025"
+  endDate: string;     // localized current month, e.g. "Aug 2026"
 }
 
 export interface CommsPost {
