@@ -47,9 +47,9 @@ export async function generateMetadata({
   const shareDescription = content.hero.sub;
 
   const path = locale === routing.defaultLocale ? '' : `/${locale}`;
-  // Absolute URL belt-and-suspenders — metadataBase already covers this, but
-  // some scrapers strip relative URLs from og:image / twitter:image. Keep absolute.
-  const ogImageUrl = `${SITE_URL}/assets/og-card.jpg`;
+  // og:image + twitter:image are emitted automatically by Next.js from the
+  // file-based metadata routes at src/app/[locale]/{opengraph,twitter}-image.tsx.
+  // Don't set images here — would either duplicate or override the generator.
   // Stamped at server-render time → tracks the latest Vercel build date.
   const modifiedTime = new Date().toISOString();
 
@@ -70,21 +70,14 @@ export async function generateMetadata({
       siteName: 'Stefano Cintioli',
       url: `${SITE_URL}${path}`,
       locale: locale === 'en' ? 'en_US' : locale === 'es' ? 'es_AR' : 'pt_BR',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: shareTitle,
-        },
-      ],
+      // images: emitted by ./opengraph-image.tsx
     },
     twitter: {
       card: 'summary_large_image',
       title: shareTitle,
       description: shareDescription,
-      images: [ogImageUrl],
       creator: '@s_cintioli_',
+      // images: emitted by ./twitter-image.tsx
     },
     alternates: {
       canonical: `${SITE_URL}${path}`,
@@ -157,7 +150,9 @@ export default async function LocaleLayout({
     '@id': PERSON_ID,
     name: 'Stefano Cintioli',
     url: SITE_URL,
-    image: `${SITE_URL}/assets/og-card.jpg`,
+    // Person.image points at the generated EN OG card — same visual as the
+    // share preview, no separate static asset required.
+    image: `${SITE_URL}/opengraph-image`,
     jobTitle: 'LatAm Community Lead',
     worksFor: {
       '@type': 'Organization',
