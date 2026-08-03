@@ -132,7 +132,6 @@ export interface LastSixMonthsContent {
  * -------------------------------------------------------------------------- */
 export interface Principle {
   number: string;
-  keyword: string;
   title: string;
   body: string;
 }

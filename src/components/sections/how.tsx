@@ -64,22 +64,20 @@ function PrincipleCard({
         'hover:border-primary hover:-translate-y-1',
       )}
     >
-      <div className="flex items-baseline gap-3 mb-3">
+      {/* "01 Señal" — ghosted number + the word as the block heading */}
+      <div className="flex items-baseline gap-3 mb-4 md:mb-5">
         <span
           aria-hidden="true"
           className="font-display font-medium leading-none tracking-[-0.02em] tabular-nums text-3xl sm:text-4xl text-primary/15 group-hover:text-primary/25 transition-colors"
         >
           {principle.number}
         </span>
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-gold-ink/85">
-          {principle.keyword}
-        </span>
+        <h3 className="font-display text-xl sm:text-2xl font-medium leading-[1.15] tracking-[-0.018em] text-foreground">
+          {principle.title}
+        </h3>
       </div>
 
-      <h3 className="font-display text-xl sm:text-2xl font-medium leading-[1.15] tracking-[-0.018em] text-foreground mb-3">
-        {principle.title}
-      </h3>
-      <p className="text-[0.95rem] text-fg-dim leading-[1.65]">{principle.body}</p>
+      <p className="text-[0.95rem] text-fg-dim leading-[1.65] max-w-[46ch]">{principle.body}</p>
     </motion.li>
   );
 }
