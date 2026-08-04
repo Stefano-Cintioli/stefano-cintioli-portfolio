@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { CaretDown } from '@phosphor-icons/react/dist/ssr';
 import { useTranslations } from 'next-intl';
 
 /**
@@ -52,7 +52,8 @@ export function ScrollCue({ targetId = 'currently' }: { targetId?: string }) {
       <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em]">
         {label}
       </span>
-      <ChevronDown
+      <CaretDown
+        weight="bold"
         className="h-4 w-4 motion-safe:animate-bounce"
         style={{ animationDuration: '2.2s' }}
         aria-hidden="true"

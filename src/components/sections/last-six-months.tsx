@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { animate, motion, useInView, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
 
 import { BlurFade } from '@/components/motion/blur-fade';
 import { FOLLOWER_COUNT } from '@/content/followers';
@@ -41,7 +41,7 @@ export function LastSixMonths({ content }: { content: SiteContent }) {
       id="last-6-months"
       className="relative border-t border-hairline scroll-mt-[var(--nav-h)]"
     >
-      <div className="container max-w-6xl py-24 md:py-32">
+      <div className="container max-w-6xl pt-20 pb-24 md:pt-24 md:pb-32">
         <BlurFade blur={false} y={8} duration={0.45}>
           {/* Eyebrow (mono "H1 2026") sits above the h2 — keep it as a <p>;
               "Last 6 months" below is the actual section heading. */}
@@ -51,14 +51,14 @@ export function LastSixMonths({ content }: { content: SiteContent }) {
         </BlurFade>
 
         <BlurFade blur={false} y={8} duration={0.5} delay={0.06}>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.022em] text-foreground mb-3">
+          <h2 className="font-editorial text-3xl sm:text-4xl md:text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.018em] text-foreground mb-3 text-balance">
             {heading}
           </h2>
         </BlurFade>
 
         {intro && (
           <BlurFade blur={false} y={8} duration={0.5} delay={0.1}>
-            <p className="text-base md:text-lg text-fg-dim max-w-[52ch] leading-relaxed mb-14 md:mb-20">
+            <p className="text-base md:text-lg text-fg-dim max-w-[52ch] leading-relaxed mb-14 md:mb-20 text-pretty">
               {intro}
             </p>
           </BlurFade>
@@ -76,7 +76,7 @@ export function LastSixMonths({ content }: { content: SiteContent }) {
         <div className="mt-20 md:mt-28">
           <BlurFade blur={false} y={8} duration={0.5}>
             {/* Sub-section heading, semantically an h3 under the section's h2 */}
-            <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-7">
+            <h3 className="font-mono text-[0.72rem] tracking-[0.06em] text-gold-ink mb-7">
               {highlightsKicker}
             </h3>
           </BlurFade>
@@ -241,7 +241,7 @@ function GrowthCard({ growth }: { growth: GrowthChart }) {
             className="block font-display font-medium tracking-[-0.03em] leading-[0.9] text-foreground text-6xl sm:text-7xl"
           />
           <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-gold-ink">
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <ArrowUpRight weight="bold" className="h-3.5 w-3.5" aria-hidden="true" />
             {growth.startValue} → {endDisplay}
           </p>
           <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-fg-mute">
@@ -379,9 +379,10 @@ function HighlightCard({ post, index }: { post: CommsPost; index: number }) {
           <p className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-fg-mute">
             <span>{post.platform}</span> · <span>{post.date}</span>
           </p>
-          <p className="font-display text-lg leading-[1.3] tracking-[-0.012em] text-foreground flex items-start gap-2">
-            <span className="flex-1">{post.topic}</span>
+          <p className="font-editorial text-lg sm:text-xl leading-[1.25] tracking-[-0.006em] text-foreground flex items-start gap-2">
+            <span className="flex-1 text-balance">{post.topic}</span>
             <ArrowUpRight
+              weight="bold"
               className="h-4 w-4 mt-1 shrink-0 text-fg-mute transition-[color,transform] duration-200 group-hover:text-gold-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />

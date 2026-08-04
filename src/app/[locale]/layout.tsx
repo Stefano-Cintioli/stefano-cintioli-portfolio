@@ -4,6 +4,19 @@ import { setRequestLocale, getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { Fraunces } from 'next/font/google';
+
+/**
+ * Editorial display face (Tier 3 #1 experiment). Applied to headline TEXT only
+ * via the `font-editorial` utility — numbers stay on Geist for tabular figures.
+ * `latin` subset covers ñ / ã / í / ç (Latin-1 Supplement). Optical size + a
+ * slight "soft" axis give it warmth without going ornamental.
+ */
+const editorialDisplay = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-editorial',
+  display: 'swap',
+});
 
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Assistant } from '@/components/assistant';
@@ -199,7 +212,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialDisplay.variable}`}
     >
       <body>
         {/* Skip-to-content — visually hidden until focused via Tab.

@@ -83,6 +83,9 @@ const config: Config = {
         // the OS UI sans, not Georgia.
         sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        // Editorial display face for headline TEXT (Tier 3 #1). Numbers keep
+        // `font-display` (Geist) for tabular figures; only prose headings use this.
+        editorial: ['var(--font-editorial)', 'var(--font-geist-sans)', 'Georgia', 'serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'SF Mono', 'monospace'],
       },
       transitionTimingFunction: {

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 
 import { BlurFade } from '@/components/motion/blur-fade';
 import { Button } from '@/components/ui/button';
@@ -27,16 +27,16 @@ export function Contact({ content }: { content: SiteContent }) {
       id="contact"
       className="relative border-t border-hairline scroll-mt-[var(--nav-h)]"
     >
-      <div className="container max-w-4xl py-24 md:py-32 text-center">
+      <div className="container max-w-4xl pt-20 pb-24 md:pt-24 md:pb-36 text-center">
         <BlurFade blur={false} y={8} duration={0.45}>
           {/* Small label — h2 (the headline below carries the visual weight but is the same heading level) */}
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-7">
+          <p className="font-mono text-[0.72rem] tracking-[0.06em] text-gold-ink mb-7">
             {kicker}
           </p>
         </BlurFade>
 
         <BlurFade blur={false} y={8} duration={0.5} delay={0.06}>
-          <h2 className="font-display font-medium leading-[1.1] tracking-[-0.022em] text-balance text-3xl sm:text-4xl md:text-[clamp(2rem,3.6vw,3rem)] max-w-[24ch] mx-auto mb-10">
+          <h2 className="font-editorial font-medium leading-[1.1] tracking-[-0.012em] text-balance text-3xl sm:text-4xl md:text-[clamp(2rem,3.6vw,3rem)] max-w-[24ch] mx-auto mb-10">
             <span className="text-foreground">{headline.preEm}</span>
             <span className="text-gold-ink">{headline.em}</span>
           </h2>
@@ -51,6 +51,7 @@ export function Contact({ content }: { content: SiteContent }) {
             >
               {primaryCta.label}
               <ArrowRight
+                weight="bold"
                 className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 aria-hidden="true"
               />

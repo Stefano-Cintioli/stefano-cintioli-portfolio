@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import { motion, useReducedMotion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
@@ -50,7 +50,7 @@ export function Hero({ content }: { content: SiteContent }) {
             <motion.h1
               {...item(0.06)}
               className={cn(
-                'font-display font-medium tracking-[-0.02em] mb-7 text-balance',
+                'font-editorial font-medium tracking-[-0.02em] mb-7 text-balance',
                 'leading-[1.04]',
                 'text-[2.25rem] sm:text-[2.75rem] md:text-[clamp(2.5rem,4.4vw,3.75rem)]',
               )}
@@ -67,7 +67,7 @@ export function Hero({ content }: { content: SiteContent }) {
 
             <motion.p
               {...item(0.12)}
-              className="text-base md:text-lg text-fg-dim max-w-[44ch] leading-relaxed mb-8"
+              className="text-base md:text-lg text-fg-dim max-w-[44ch] leading-relaxed mb-8 text-pretty"
             >
               {content.hero.sub}
             </motion.p>
@@ -81,6 +81,7 @@ export function Hero({ content }: { content: SiteContent }) {
                 >
                   {content.hero.cta.label}
                   <ArrowRight
+                    weight="bold"
                     className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
                     aria-hidden="true"
                   />
