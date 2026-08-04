@@ -14,9 +14,24 @@ Must survive a future role change. BNB Chain is the current chapter, not the ide
 
 ## 2. Visual register
 
-Polished restraint. Reference: Linear, Pitch.com marketing site. Not Karpathy-sparse, not agency-portfolio. Editorial typography, generous whitespace, one accent color, restrained motion (smooth scroll, subtle hover states only). No parallax, no custom cursor, no splash screen, no count-up, no reveal-on-scroll. Fast loads. Dense info per scroll.
+Polished restraint. Reference: Linear, Pitch.com marketing site. Not Karpathy-sparse, not agency-portfolio. Editorial typography, generous whitespace, one accent color, restrained motion. No parallax, no custom cursor, no splash screen. Fast loads. Dense info per scroll.
+
+Motion (reconciled with build): scroll-triggered reveals (fade + small Y translate, staggered) and a single count-up on the followers metric ARE in use and approved. All motion is gated behind `prefers-reduced-motion` — under reduced motion, every element renders at its final state and the count-up shows its final value. Hover states are subtle (border shift, 1px lift). Line-draw on the followers curve is decorative and reduced-motion-aware.
+
+Typography (reconciled with build): body + labels are Geist Sans; data/numbers are Geist (tabular figures) or Geist Mono. Headline TEXT uses an editorial display face via the `font-editorial` utility (numbers never do, to preserve tabular alignment). The specific display face is under review — see the changelog below.
 
 Archetype selection: Claude Code reads `~/.claude/skills/premium-website/reference/02-archetypes.md` and proposes 2-3 archetypes matching this register. User picks before build starts.
+
+---
+
+## 2b. Changelog / reconciliation (source of truth for current build)
+
+This spec was written pre-launch and drifted from the shipped site. The lines below reflect the **current approved reality** and supersede any older contradicting text in this file (notably the "no count-up / no reveal-on-scroll" line, and the §4.3 "Work tabs" structure, which no longer exists).
+
+- **2026-08-04 — taste-skill design pass (branch experiment).** Softened all-caps section eyebrows to sentence case; optical asymmetric section padding; button pressed feedback; `text-wrap: pretty` on prose; arrow icons moved Lucide → Phosphor. "How I think" is a borderless full-width numbered stack (matches §4.4 intent). Before/Now is an asymmetric two-card split. Editorial display face (candidate: Fraunces) applied to headlines as a **test**; final face pending user pick. Accent color unchanged (`#F0B90B`); `#FFE900` brand-file discrepancy noted, not resolved.
+- **Current section structure** (single page): Hero → Before/Now (chapter cards) → Last 6 months (followers count-up + two-anchor curve, metric grid, content highlights) → How I think (01–04 stack) → Contact. The old Work tabs (Tools / Impact / Socials) in §4.3 were removed in an earlier phase.
+- **Followers metric rule (locked):** exactly two real data points — `<100` in Dec 2025 (takeover) and the current count in Aug 2026. The count lives in one place, `src/content/followers.ts`. No invented intermediate values; the curve is a visual connector only.
+- **Copy** across all three locales is hand-written and frozen; treat as verbatim.
 
 ---
 
