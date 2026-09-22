@@ -9,8 +9,8 @@ import { ThemeProvider as NextThemesProvider, type ThemeProviderProps } from 'ne
  *
  * Defaults set in layout.tsx:
  *   attribute="class" (toggles .dark / .light on <html>)
- *   defaultTheme="system"
- *   enableSystem
+ *   defaultTheme="light"
+ *   enableSystem={false}
  *   disableTransitionOnChange (prevents flash on toggle)
  */
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {

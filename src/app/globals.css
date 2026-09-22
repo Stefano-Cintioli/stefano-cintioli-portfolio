@@ -171,3 +171,26 @@
     color: hsl(var(--primary-foreground));
   }
 }
+
+@layer components {
+  .section-space { @apply py-14 md:py-20; }
+  .section-title { @apply text-3xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-4xl; }
+  .rail-control { @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-hairline-2 bg-background transition-colors hover:bg-bg-2 disabled:cursor-default disabled:opacity-30; }
+  .event-rail { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 3px 3px 18px; scroll-padding-inline: 3px; scrollbar-width: thin; scrollbar-color: hsl(var(--fg-mute)) transparent; }
+  .event-slide { flex: 0 0 84%; min-width: 0; scroll-snap-align: start; }
+  .event-poster { @apply relative flex aspect-video items-end overflow-hidden bg-bg-2 p-6 text-2xl font-semibold leading-tight tracking-tight; }
+  .event-poster-dot { @apply absolute right-5 top-5 h-3 w-3 rounded-full bg-primary; }
+  @media (min-width: 640px) { .event-slide { flex-basis: 46%; } }
+  @media (min-width: 1024px) { .event-slide { flex-basis: 31%; } }
+}
+@layer base {
+  a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+}
+
+@layer components {
+  .session-metric { @apply rounded-xl border border-hairline bg-background/75 p-6 transition-colors hover:border-primary/60; }
+  .country-button { @apply inline-flex min-h-11 items-center gap-2 rounded-full border border-hairline-2 bg-background px-4 text-sm transition-colors hover:border-primary; }
+  .country-button[aria-pressed="true"] { @apply border-foreground bg-foreground text-background; }
+  .social-link { @apply relative inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-hairline-2 bg-bg-2/60 text-foreground transition-[background-color,border-color,transform] duration-200 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground; }
+  .social-tooltip { @apply pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs text-background opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100; }
+}

@@ -1,171 +1,357 @@
-/**
- * English content — single source of truth.
- *
- * Phase 6 restructure: nav reshaped (now / lastSixMonths / how / contact);
- * tools entirely removed; impact + communication merged into a curated
- * lastSixMonths block; now becomes short prose + chips; contact regains
- * its headline + primary CTA.
- */
-
+// Copy approved by Stefano. Evidence and dates are documented in docs/portfolio-refresh-evidence.md.
 import type { SiteContent } from './schema';
 
 export const en: SiteContent = {
-  seo: {
-    // 51 chars
-    title: 'Stefano Cintioli — LatAm Community Lead, BNB Chain',
-    // 137 chars
-    description:
-      "LatAm Community Lead at BNB Chain. I route regional Web3 builders to the right vertical and ship the tools the work needs. Let's build.",
-    keywords: [
-      'web3',
-      'blockchain',
-      'BNB Chain',
-      'LatAm',
-      'business development',
-      'community',
-    ],
+  "seo": {
+    "title": "Stefano Cintioli | BNB Chain",
+    "description": "Community, marketing & growth at BNB Chain. Building the future of money starts with people.",
+    "keywords": [
+      "BNB Chain",
+      "Web3",
+      "fintech",
+      "community",
+      "builders",
+      "RWA",
+      "stablecoins"
+    ]
   },
-
-  nav: {
-    now: 'Now',
-    lastSixMonths: 'Last 6 months',
-    how: 'How I think',
-    contact: 'Contact',
+  "nav": {
+    "work": "Work",
+    "online": "Online",
+    "offline": "Offline",
+    "about": "About",
+    "contact": "Contact"
   },
-
-  hero: {
-    eyebrow: 'Argentina · LatAm · Global Web3',
-    headline: {
-      lineA: "Connecting the region's talent",
-      preAccent: 'with global ',
-      accent: 'Web3',
-      postAccent: ' opportunity.',
+  "hero": {
+    "eyebrow": "Stefano Cintioli",
+    "status": "Community, marketing & growth at BNB Chain",
+    "headline": {
+      "lineA": "Building the future of money starts with people.",
+      "preAccent": "",
+      "accent": "",
+      "postAccent": ""
     },
-    sub: "I find the people building for real in the region and connect them with the right team inside BNB Chain. Whatever's missing along the way, I build it.",
-    status: 'LatAm Community Lead · BNB Chain · Buenos Aires',
-    cta: { label: 'Book a call', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
-    photoCaption: 'Binance Day · Lima · May 2026',
-  },
-
-  background: {
-    kicker: 'Before',
-    body: "Before this role I was on the other side of the table: four hackathons as a builder, one of them won, and one I came back to as a mentor. Along the way I co-founded a web3 community here in Argentina and shipped a handful of on-chain side projects. Same reason then as now, keep getting better and open up opportunities for the region.",
-  },
-
-  now: {
-    kicker: 'Now',
-    body: "Running BNB Chain's LatAm community from Buenos Aires and feeding real builders into the BD pipeline.",
-    chips: ['8 countries', '6 months', 'Buenos Aires'],
-  },
-
-  lastSixMonths: {
-    kicker: 'H1 2026',
-    heading: 'Last 6 months',
-    intro: "Zero paid, all organic. Here's what six months on the ground actually moved.",
-    metrics: [
-      { value: '76.3K', label: 'X impressions on @BNBChainLatAm', detail: 'organic' },
-      { value: '+462',  label: 'BNB Chain ES Telegram members added' },
-      { value: '8',     label: 'countries activated', detail: 'AR · BR · PE · VE · PY · CL · MX · ES' },
-      { value: '25+',   label: 'KOL & builder 1-1s across the region' },
-      { value: '20+',   label: 'BD leads sourced & routed' },
-      { value: '5+',    label: 'projects live on BNB Chain mainnet', detail: 'one P0, one P1' },
-    ],
-    growth: {
-      title: '@BNBChainLatAm followers',
-      caption: 'organic · since I took over the account',
-      startValue: '<100',
-      startDate: 'Dec 2025',
-      endDate: 'Aug 2026',
+    "sub": "With a background in traditional finance, I connect builders, fintechs, and institutions with the BNB Chain ecosystem, helping them explore opportunities and take the next step toward building.",
+    "cta": {
+      "label": "Book a call",
+      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
     },
-    highlightsKicker: 'Content highlights',
-    highlights: [
-      {
-        id: 'binance-day-peru',
-        platform: 'X',
-        date: 'May 2026',
-        topic: 'Binance Day Perú — official BNB Chain LatAm coverage',
-        url: 'https://x.com/BNBChainLatAm/status/2052970649459597789',
-        photo: '/assets/img/binance-day-peru.webp',
-        alt: 'Stefano Cintioli on stage at Binance Day Perú, Lima, May 2026',
-      },
-      {
-        id: 'vendimia-tech',
-        platform: 'X',
-        date: 'Mar 2026',
-        topic: 'VendimiaTech — Blockenfy migration to BNB Chain',
-        url: 'https://x.com/s_cintioli_/status/2038248562824188158',
-        photo: '/assets/img/vendimia-workshop.webp',
-        alt: 'VendimiaTech Hackathon, Mendoza',
-      },
-      {
-        id: 'crecimiento-partnership',
-        platform: 'X',
-        date: 'Apr 2026',
-        topic: 'Crecimiento partnership',
-        url: 'https://x.com/crecimientoar/status/2034410672344137897',
-        photo: '/assets/img/crecimiento-workshop.webp',
-        alt: 'Crecimiento Workshop, Buenos Aires and Lima',
-      },
-      {
-        id: 'utn-university-tour',
-        platform: 'LinkedIn',
-        date: '2026',
-        topic: 'UTN Buenos Aires — University Tour',
-        url: 'https://www.linkedin.com/posts/natalie-abuchaibe_crypto-web3-blockchain-ugcPost-7444493501985116160-RFL4',
-        photo: '/assets/img/university-tour-panel.webp',
-        alt: 'Binance University Tour, UTN Buenos Aires',
-      },
-    ],
+    "photoCaption": "On stage at Binance Day Perú, Lima, May 2026",
+    "photoAlt": "Stefano Cintioli speaking on stage at Binance Day Perú in Lima"
   },
-
-  how: {
-    kicker: 'How I think & operate',
-    principles: [
-      {
-        number: '01',
-        title: 'Signal',
-        body: 'I look for the builders who are serious about this industry and connect them with the right BD vertical. A warm intro beats a cold pitch every time.',
-      },
-      {
-        number: '02',
-        title: 'Builders',
-        body: 'Resources go where builders are: technical tracks, workshops, bounties. Not logos on a stage.',
-      },
-      {
-        number: '03',
-        title: 'Tools',
-        body: "If the tool I need doesn't exist, I build it, leaning on AI. Building alongside the community is a requirement for me.",
-      },
-      {
-        number: '04',
-        title: 'Staying',
-        body: "Running a hackathon or a workshop and leaving isn't enough. You stay, build for the long run, and share values so the people in our community can grow in this industry.",
-      },
+  "builderSessions": {
+    "heading": "From curiosity to a working agent.",
+    "body": "I lead the coordination of BNB Builder Sessions, shaping the format and working with ambassadors and local partners to bring a consistent, hands-on experience to each community.",
+    "results": "We’ve activated Argentina, Brazil, Bolivia, and Peru, reaching more than 200 builders. More than half left the sessions with their own agent running.",
+    "goal": "The goal is simple: keep educating and be a point of contact for people who want to build the future of money with us.",
+    "coverageLabel": "Already activated",
+    "countries": [
+      "Argentina",
+      "Brazil",
+      "Bolivia",
+      "Peru"
     ],
+    "upcomingLabel": "Coming next",
+    "upcoming": "Uruguay, Chile, Mexico, Venezuela, and Ecuador, alongside more sessions in the countries already activated.",
+    "metrics": [
+      {
+        "value": "200+",
+        "label": "builders reached"
+      },
+      {
+        "value": ">50%",
+        "label": "left with an agent running"
+      },
+      {
+        "value": "4",
+        "label": "countries activated"
+      }
+    ],
+    "reviewed": "Program results reported by Stefano, September 2026.",
+    "exploreLabel": "Explore the sessions",
+    "countryDetails": [
+      {
+        "name": "Argentina",
+        "links": [
+          {
+            "title": "Mar del Plata",
+            "label": "View recap",
+            "url": "https://x.com/BNBChainLatAm/status/2102437887153184938"
+          },
+          {
+            "title": "Córdoba",
+            "label": "View recap",
+            "url": "https://x.com/BNBChainLatAm/status/2084281643955622315"
+          },
+          {
+            "title": "Buenos Aires",
+            "label": "View recap",
+            "url": "https://x.com/BNBChainLatAm/status/2075201738819149913"
+          }
+        ]
+      },
+      {
+        "name": "Brazil",
+        "links": [
+          {
+            "title": "Brasil",
+            "label": "View recap",
+            "url": "https://x.com/BNBChainLatAm/status/2071924822347579707"
+          }
+        ]
+      },
+      {
+        "name": "Bolivia",
+        "links": [
+          {
+            "title": "Cochabamba",
+            "label": "Session announcement",
+            "url": "https://x.com/BNBChainLatAm/status/2088703570119921731"
+          }
+        ]
+      },
+      {
+        "name": "Peru",
+        "links": [
+          {
+            "title": "Lima",
+            "label": "View recap",
+            "url": "https://x.com/BNBChainLatAm/status/2084275233142263849"
+          }
+        ]
+      }
+    ]
   },
-
-  contact: {
-    kicker: 'Contact',
-    headline: {
-      preEm: 'Building something in LatAm, or hiring for the region? ',
-      em: "Let's talk.",
+  "online": {
+    "heading": "Online events",
+    "intro": "Conversations with people building what’s next.",
+    "description": "Live discussions about stablecoins, payments, tokenized assets, AI, and the teams building across the ecosystem.",
+    "action": "Watch recording",
+    "items": [
+      {
+        "id": "qIJJXYBL4dg",
+        "videoId": "qIJJXYBL4dg",
+        "title": "Stablecoins y pagos en LatAm",
+        "date": "2026-09-10",
+        "language": "ES",
+        "description": "Stablecoins and payments in Latin America.",
+        "url": "https://www.youtube.com/watch?v=qIJJXYBL4dg"
+      },
+      {
+        "id": "t7gBGaYl4NI",
+        "videoId": "t7gBGaYl4NI",
+        "title": "Brasil On-Chain",
+        "date": "2026-08-27",
+        "language": "PT",
+        "description": "A conversation with Brazil’s onchain ecosystem.",
+        "url": "https://www.youtube.com/watch?v=t7gBGaYl4NI"
+      },
+      {
+        "id": "dlj58dbLG0U",
+        "videoId": "dlj58dbLG0U",
+        "title": "Activos del Mundo Real (RWA) en BNB Chain",
+        "date": "2026-08-06",
+        "language": "ES",
+        "description": "Real-world assets on BNB Chain.",
+        "url": "https://www.youtube.com/watch?v=dlj58dbLG0U"
+      },
+      {
+        "id": "H-mHxgbiHsQ",
+        "videoId": "H-mHxgbiHsQ",
+        "title": "NeoBanks vs Bancos",
+        "date": "2026-07-09",
+        "language": "ES",
+        "description": "Neobanks and the changing banking experience.",
+        "url": "https://www.youtube.com/watch?v=H-mHxgbiHsQ"
+      },
+      {
+        "id": "hRxjR9MihAk",
+        "videoId": "hRxjR9MihAk",
+        "title": "Autocustodia, Hardware Wallets y Scams",
+        "date": "2026-06-04",
+        "language": "ES",
+        "description": "Self-custody, hardware wallets, and scams with Tangem.",
+        "url": "https://www.youtube.com/watch?v=hRxjR9MihAk"
+      },
+      {
+        "id": "zt5cvUjv-DM",
+        "videoId": "zt5cvUjv-DM",
+        "title": "Agentes de IA sobre opBNB para Fintechs",
+        "date": "2026-05-13",
+        "language": "ES",
+        "description": "AI agents on opBNB for fintechs.",
+        "url": "https://www.youtube.com/watch?v=zt5cvUjv-DM"
+      },
+      {
+        "id": "fs-WYVLYFv8",
+        "videoId": "fs-WYVLYFv8",
+        "title": "AI LatAm Demo Day",
+        "date": "2026-05-06",
+        "language": "ES",
+        "description": "AI projects from the LatAm ecosystem.",
+        "url": "https://www.youtube.com/watch?v=fs-WYVLYFv8"
+      }
+    ]
+  },
+  "offline": {
+    "heading": "Offline events",
+    "intro": "Where online connections become real conversations.",
+    "description": "Builder Sessions, conferences, and time with the communities and teams moving the ecosystem forward.",
+    "action": "View recap",
+    "items": [
+      {
+        "id": "mar-del-plata",
+        "title": "BNB Builder Sessions / Mar del Plata",
+        "date": "2026-09-22",
+        "description": "46 attendees, 12 agents deployed, and 12 builders entering BNB Hack. With Mardeldev.",
+        "url": "https://x.com/BNBChainLatAm/status/2102437887153184938",
+        "photo": "/assets/img/events/mar-del-plata.webp",
+        "alt": "Builders attending the BNB Builder Session in Mar del Plata",
+        "photoPosition": "50% 40%"
+      },
+      {
+        "id": "latam-conference",
+        "title": "LatAm Digital Assets Conference",
+        "date": "2026-08-20",
+        "description": "Conversations with fintech teams at Crecimiento’s LatAm Digital Assets Conference.",
+        "url": "https://x.com/s_cintioli_/status/2090589098918449520",
+        "photo": "/assets/img/events/latam-conference.webp",
+        "alt": "Two attendees in front of the LatAm Digital Assets Conference backdrop",
+        "photoPosition": "50% 25%"
+      },
+      {
+        "id": "blockchain-rio",
+        "title": "Blockchain Rio",
+        "date": "2026-08-12",
+        "description": "Meeting Brazil’s community and recording conversations with local projects.",
+        "url": "https://x.com/s_cintioli_/status/2087711144496464068",
+        "photo": "/assets/img/events/blockchain-rio.webp",
+        "alt": "A group of attendees beside a BNB Chain display at Blockchain Rio",
+        "photoPosition": "50% 40%"
+      },
+      {
+        "id": "lima",
+        "title": "BNB Builder Sessions / Lima",
+        "date": "2026-08-03",
+        "description": "41 attendees, 8 projects, and 5 onchain deployments during the session.",
+        "url": "https://x.com/BNBChainLatAm/status/2084275233142263849",
+        "photo": "/assets/img/events/lima.webp",
+        "alt": "Group photo from the BNB Builder Session in Lima",
+        "photoPosition": "50% 40%",
+        "photoFit": "contain"
+      },
+      {
+        "id": "cordoba",
+        "title": "BNB Builder Sessions / Córdoba",
+        "date": "2026-08-03",
+        "description": "21 builders at a sold-out, hands-on session.",
+        "url": "https://x.com/BNBChainLatAm/status/2084281643955622315",
+        "photo": "/assets/img/events/cordoba.webp",
+        "alt": "Group photo from the BNB Builder Session in Córdoba",
+        "photoPosition": "50% 40%"
+      },
+      {
+        "id": "buenos-aires",
+        "title": "BNB Builder Sessions / Buenos Aires",
+        "date": "2026-07-09",
+        "description": "More than 20 builders and 5 AI agents deployed onchain.",
+        "url": "https://x.com/BNBChainLatAm/status/2075201738819149913",
+        "photo": "/assets/img/events/buenos-aires.webp",
+        "alt": "Group photo from the BNB Builder Session in Buenos Aires",
+        "photoPosition": "50% 40%"
+      },
+      {
+        "id": "brasil",
+        "title": "BNB Builder Sessions / Brasil",
+        "date": "2026-06-30",
+        "description": "A hands-on session with Brazil’s developer community.",
+        "url": "https://x.com/BNBChainLatAm/status/2071924822347579707",
+        "photo": "/assets/img/events/brasil.webp",
+        "alt": "Builders working with laptops during the BNB Builder Session in Brazil",
+        "photoPosition": "50% 40%"
+      },
+      {
+        "id": "binance-day-peru",
+        "title": "Binance Day Perú",
+        "date": "2026-05",
+        "description": "Speaking on stage and connecting with the community in Lima.",
+        "url": "https://x.com/BNBChainLatAm/status/2052970649459597789",
+        "photo": "/assets/img/binance-day-peru.webp",
+        "alt": "Stefano Cintioli speaking on stage at Binance Day Perú in Lima"
+      }
+    ]
+  },
+  "reach": {
+    "heading": "Community in numbers",
+    "period": "Sep 23, 2025 – Sep 22, 2026",
+    "impressions": "impressions",
+    "engagements": "engagements",
+    "source": "@BNBChainLatAm account analytics",
+    "growth": "Net followers gained",
+    "growthNote": "Cumulative follows minus unfollows during this period. This is growth, not the account’s total follower count.",
+    "explore": "Explore growth by date",
+    "total": "Period total"
+  },
+  "about": {
+    "heading": "About me",
+    "paragraphs": [
+      "I started in traditional finance, working in mutual fund operations. Having inflation eat into my salary made it personal.",
+      "That experience shapes how I approach Web3 today, connecting traditional finance with the people building what comes next.",
+      "Today, I work in community, marketing, and growth at BNB Chain. I coordinate initiatives with ambassadors around the world and use AI to build practical tools when needed.",
+      "I’m open to new opportunities and feedback that helps me grow, personally and professionally."
+    ]
+  },
+  "contact": {
+    "heading": "What are you building?",
+    "body": "Whether you’re a builder, a fintech, or an institution exploring blockchain, let’s talk.",
+    "primaryCta": {
+      "label": "Book a call",
+      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
     },
-    primaryCta: { label: 'Book a call', href: 'https://calendly.com/stefano-cintioli-bnbchain/30min' },
-    items: [
-      { kind: 'email',    label: 'Email',    href: 'mailto:stefano.cintioli@bnbchain.org' },
-      { kind: 'x',        label: 'X',        href: 'https://x.com/s_cintioli_' },
-      { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/stefanocintioli' },
-      { kind: 'telegram', label: 'Telegram', href: 'https://t.me/StefanoCintioli' },
-    ],
+    "items": [
+      {
+        "kind": "email",
+        "label": "Email",
+        "href": "mailto:stefano.cintioli@bnbchain.org"
+      },
+      {
+        "kind": "x",
+        "label": "X",
+        "href": "https://x.com/s_cintioli_"
+      },
+      {
+        "kind": "linkedin",
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/stefanocintioli"
+      },
+      {
+        "kind": "telegram",
+        "label": "Telegram",
+        "href": "https://t.me/StefanoCintioli"
+      },
+      {
+        "kind": "github",
+        "label": "GitHub",
+        "href": "https://github.com/Stefano-Cintioli"
+      }
+    ]
   },
-
-  footer: {
-    loc: 'Buenos Aires · UTC-3',
-    lastUpdatedLabel: 'Last updated',
-    copyright: '© 2026 Stefano Cintioli',
+  "footer": {
+    "copyright": "© 2026 Stefano Cintioli"
   },
-
-  action: {
-    getInTouch: 'Book a call',
-  },
+  "ui": {
+    "closeMenu": "Close menu",
+    "previous": "Previous events",
+    "next": "Next events",
+    "close": "Close recording",
+    "youtube": "Watch on YouTube",
+    "openMenu": "Open menu",
+    "navigation": "Navigation",
+    "skip": "Skip to content",
+    "carousel": "carousel",
+    "language": "Switch language",
+    "theme": "Choose theme",
+    "light": "Light",
+    "dark": "Dark",
+  }
 };

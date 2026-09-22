@@ -28,9 +28,9 @@ const geistSemiBold = readFileSync(join(FONT_DIR, 'Geist-SemiBold.ttf'));
 
 // Per-locale alt — used by Next as the og:image:alt attribute.
 const ALT: Record<Locale, string> = {
-  en: 'Stefano Cintioli — LatAm Community Lead at BNB Chain',
-  es: 'Stefano Cintioli — Líder de Comunidad LatAm en BNB Chain',
-  pt: 'Stefano Cintioli — Líder de Comunidade LatAm na BNB Chain',
+  en: 'Stefano Cintioli | Community, marketing & growth at BNB Chain',
+  es: 'Stefano Cintioli | Comunidad, marketing y crecimiento en BNB Chain',
+  pt: 'Stefano Cintioli | Comunidade, marketing e crescimento na BNB Chain',
 };
 export const alt = ALT.en;
 
@@ -72,9 +72,8 @@ export default async function Image({
   // Eyebrow = hero.eyebrow, uppercased. (en.eyebrow already mixed-case.)
   const eyebrow = content.hero.eyebrow.toUpperCase();
 
-  // Role = hero.status with the location suffix (last "· X" segment) stripped.
-  // Works in all 3 locales since they all end in "· Buenos Aires".
-  const role = content.hero.status.replace(/\s·\s[^·]+$/, '');
+  // Approved role descriptor, with no home-location label.
+  const role = content.hero.status;
 
   // Tagline = the full hero headline reassembled from its 4 parts.
   const h = content.hero.headline;

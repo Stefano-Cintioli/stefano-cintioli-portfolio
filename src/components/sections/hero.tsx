@@ -1,143 +1,32 @@
-'use client';
-
 import Image from 'next/image';
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import { motion, useReducedMotion } from 'framer-motion';
-
+import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
-import { ScrollCue } from '@/components/scroll-cue';
 import type { SiteContent } from '@/content';
-import { cn } from '@/lib/utils';
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-/**
- * Hero.
- *
- * Headline tightened to AT MOST 3 lines; size dialed down from 5xl→4xl-md.
- * Single CTA. Floating "Buenos Aires · UTC-3" mono line is gone — replaced
- * with a small status chip directly below the CTA: "Role · Org · Location".
- * Entrance staggers on MOUNT (first paint, not whileInView).
- */
 export function Hero({ content }: { content: SiteContent }) {
-  const reduced = useReducedMotion();
-
-  const item = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 12 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.5, delay, ease: EASE },
-        };
-
+  const { hero } = content;
   return (
-    <section
-      id="hero"
-      className="relative min-h-[100svh] flex items-center pt-[var(--nav-h)]"
-    >
-      <div className="container max-w-6xl py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-12 md:gap-16 items-center">
-          {/* Left — copy */}
-          <div className="order-2 md:order-1">
-            <motion.p
-              {...item(0)}
-              className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-gold-ink mb-5"
-            >
-              {content.hero.eyebrow}
-            </motion.p>
-
-            <motion.h1
-              {...item(0.06)}
-              className={cn(
-                'font-editorial font-medium tracking-[-0.02em] mb-7 text-balance',
-                'leading-[1.04]',
-                'text-[2.25rem] sm:text-[2.75rem] md:text-[clamp(2.5rem,4.4vw,3.75rem)]',
-              )}
-            >
-              <span className="block text-foreground">
-                {content.hero.headline.lineA}
-              </span>
-              <span className="block">
-                <span className="text-foreground">{content.hero.headline.preAccent}</span>
-                <span className="text-gold-ink">{content.hero.headline.accent}</span>
-                <span className="text-foreground">{content.hero.headline.postAccent}</span>
-              </span>
-            </motion.h1>
-
-            <motion.p
-              {...item(0.12)}
-              className="text-base md:text-lg text-fg-dim max-w-[44ch] leading-relaxed mb-8 text-pretty"
-            >
-              {content.hero.sub}
-            </motion.p>
-
-            <motion.div {...item(0.18)} className="flex flex-wrap items-center gap-4">
-              <Button asChild size="lg" className="group">
-                <a
-                  href={content.hero.cta.href}
-                  target={content.hero.cta.href.startsWith('http') ? '_blank' : undefined}
-                  rel={content.hero.cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {content.hero.cta.label}
-                  <ArrowRight
-                    weight="bold"
-                    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </a>
-              </Button>
-
-              {/* Status chip — role · org · location */}
-              <span
-                className={cn(
-                  'inline-flex items-center gap-2 rounded-full px-3.5 py-1.5',
-                  'border border-hairline-2 bg-card/60',
-                  'font-mono text-[0.7rem] tracking-[0.04em] text-fg-dim',
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-primary"
-                />
-                {content.hero.status}
-              </span>
-            </motion.div>
+    <section id="hero" aria-labelledby="hero-heading" className="pt-[var(--nav-h)]">
+      <div className="container max-w-6xl py-12 md:py-20">
+        <div className="grid items-center gap-10 md:grid-cols-[1.35fr_0.85fr] lg:gap-16">
+          <div>
+            <p className="mb-5 max-w-[36ch] text-sm font-medium text-fg-dim">{hero.status}</p>
+            <h1 id="hero-heading" className="max-w-[16ch] text-[clamp(2.5rem,5.3vw,4.5rem)] font-semibold leading-[1.03] tracking-[-0.055em] text-balance">
+              {hero.headline.lineA}
+            </h1>
+            <p className="mb-8 mt-6 max-w-[49ch] text-base leading-relaxed text-fg-dim lg:text-lg">{hero.sub}</p>
+            <Button asChild size="lg" className="rounded-full px-6">
+              <a href={hero.cta.href} target="_blank" rel="noopener noreferrer">{hero.cta.label}<ArrowUpRight aria-hidden="true" /></a>
+            </Button>
           </div>
-
-          {/* Right — photo */}
-          <motion.figure
-            {...(reduced
-              ? {}
-              : {
-                  initial: { opacity: 0, scale: 0.97 },
-                  animate: { opacity: 1, scale: 1 },
-                  transition: { duration: 0.6, delay: 0.08, ease: EASE },
-                })}
-            className={cn(
-              'order-1 md:order-2 relative rounded-2xl overflow-hidden',
-              'border border-hairline-2 bg-bg-2',
-              'shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55),0_12px_28px_-16px_rgba(240,185,11,0.18)]',
-              'mx-auto md:mx-0 w-full max-w-[420px] md:max-w-none',
-              'aspect-[4/5]',
-            )}
-          >
-            <Image
-              src="/assets/img/binance-day-peru.webp"
-              alt="Stefano Cintioli on stage at Binance Day Perú, Lima, May 2026"
-              fill
-              priority
-              sizes="(max-width: 768px) 90vw, 45vw"
-              className="object-cover object-[50%_28%]"
-            />
-            <figcaption className="absolute left-0 right-0 bottom-0 px-4 py-3 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-fg-dim bg-gradient-to-t from-black/85 to-transparent">
-              {content.hero.photoCaption}
-            </figcaption>
-          </motion.figure>
+          <figure className="min-w-0">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-bg-2 md:aspect-[4/5]">
+              <Image src="/assets/img/binance-day-peru.webp" alt={hero.photoAlt} fill priority sizes="(max-width: 767px) calc(100vw - 40px), 430px" className="object-cover object-[50%_32%]" />
+            </div>
+            <figcaption className="mt-3 text-xs leading-relaxed text-fg-dim">{hero.photoCaption}</figcaption>
+          </figure>
         </div>
       </div>
-
-      <ScrollCue targetId="background" />
     </section>
   );
 }

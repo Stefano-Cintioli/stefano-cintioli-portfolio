@@ -14,8 +14,5 @@ export default createMiddleware(routing);
 export const config = {
   // Match all paths except API routes, Next internals, Vercel internals,
   // and anything with a file extension (static assets in /public).
-  // NOTE: `experiment` is excluded so the TEMPORARY /experiment route (a
-  // separate non-localized root layout) isn't rewritten into the locale tree.
-  // Remove this exclusion when deleting src/app/experiment/.
-  matcher: ['/((?!api|_next|_vercel|experiment|.*\\..*).*)'],
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };

@@ -4,27 +4,13 @@ import { setRequestLocale, getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
-import { Fraunces } from 'next/font/google';
-
-/**
- * Editorial display face (Tier 3 #1 experiment). Applied to headline TEXT only
- * via the `font-editorial` utility — numbers stay on Geist for tabular figures.
- * `latin` subset covers ñ / ã / í / ç (Latin-1 Supplement). Optical size + a
- * slight "soft" axis give it warmth without going ornamental.
- */
-const editorialDisplay = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-editorial',
-  display: 'swap',
-});
-
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Assistant } from '@/components/assistant';
 import { routing } from '@/i18n/routing';
 import { getContent, type Locale } from '@/content';
 import '../globals.css';
 
-const SITE_URL = 'https://stefano-cintioli-portfolio.vercel.app';
+const SITE_URL = 'https://stefanocintioli.vercel.app';
 
 /**
  * Pre-render every locale at build time so each gets its own static HTML +
@@ -33,12 +19,6 @@ const SITE_URL = 'https://stefano-cintioli-portfolio.vercel.app';
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-/**
- * Site-wide publish date — the day the v2 redesign went to production.
- * Keep stable; doesn't refresh on every deploy. Used as article:published_time.
- */
-const PUBLISHED_TIME = '2026-06-30T00:00:00Z';
 
 export async function generateMetadata({
   params,
@@ -63,8 +43,7 @@ export async function generateMetadata({
   // og:image + twitter:image are emitted automatically by Next.js from the
   // file-based metadata routes at src/app/[locale]/{opengraph,twitter}-image.tsx.
   // Don't set images here — would either duplicate or override the generator.
-  // Stamped at server-render time → tracks the latest Vercel build date.
-  const modifiedTime = new Date().toISOString();
+
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -105,11 +84,6 @@ export async function generateMetadata({
       index: true,
       follow: true,
       'max-image-preview': 'large',
-    },
-    // E-E-A-T dates — pass through to <head> as <meta property="article:...">
-    other: {
-      'article:published_time': PUBLISHED_TIME,
-      'article:modified_time': modifiedTime,
     },
     icons: {
       icon: [
@@ -172,11 +146,6 @@ export default async function LocaleLayout({
       name: 'BNB Chain',
       url: 'https://www.bnbchain.org/',
     },
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Buenos Aires',
-      addressCountry: 'AR',
-    },
     description: content.hero.sub,
     knowsAbout: [
       'Web3',
@@ -212,7 +181,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialDisplay.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body>
         {/* Skip-to-content — visually hidden until focused via Tab.
@@ -221,7 +190,7 @@ export default async function LocaleLayout({
           href="#main"
           className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-[100] focus-visible:rounded-md focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:px-4 focus-visible:py-2 focus-visible:font-medium focus-visible:shadow-lg"
         >
-          Skip to content
+          {content.ui.skip}
         </a>
 
         {/* schema.org Person — one per page, all locales */}
@@ -237,8 +206,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            enableSystem={false}
             disableTransitionOnChange
           >
             {children}

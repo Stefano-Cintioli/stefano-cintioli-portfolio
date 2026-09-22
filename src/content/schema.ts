@@ -1,189 +1,61 @@
-/**
- * SiteContent — single typed schema for all per-locale content.
- *
- * Phase 6 structural refactor:
- *   - Section names changed: "currently" → "now", "work + impact + tools" → "lastSixMonths".
- *   - Tools section removed entirely (no ToolItem, no ToolStatus, no WorkContent, no
- *     status labels). Tools content + URLs are gone from every locale.
- *   - Hero gains `status` chip (role · org · location), drops `location`.
- *   - Now is short prose + a list of chips (no preEm/em/postEm split anymore).
- *   - LastSixMonths is a flat curated metric list + a single growth-chart spec
- *     + the event/content cards that used to live in the Communication tab.
- *   - Contact gains its headline + primary CTA back. Footer no longer renders socials.
- */
-
+/** Approved portfolio copy and curated evidence. Keep all locales in sync. */
 export type Locale = 'en' | 'es' | 'pt';
-
-/* --------------------------------------------------------------------------
- * SEO — short document title + meta description + soft keyword list.
- *
- * Kept separate from hero copy (which fuels the OG card + share previews)
- * because the constraints are different:
- *   - Document <title> must be ≤ ~60 chars
- *   - Meta description must be ≤ ~155 chars
- *   - Both are per-locale, both must work in isolation without context.
- * -------------------------------------------------------------------------- */
-export interface SeoContent {
-  title: string;
-  description: string;
-  keywords: string[];
-}
-
-/* --------------------------------------------------------------------------
- * Nav
- * -------------------------------------------------------------------------- */
-export interface NavContent {
-  now: string;
-  lastSixMonths: string;
-  how: string;
-  contact: string;
-}
-
-/* --------------------------------------------------------------------------
- * Hero
- * -------------------------------------------------------------------------- */
-export interface HeroContent {
-  eyebrow: string;
-  headline: {
-    lineA: string;
-    preAccent: string;
-    accent: string;
-    postAccent: string;
-  };
-  sub: string;
-  /** Status chip near the CTA: role · org · location. */
-  status: string;
-  /** Single CTA — "Get in touch" → #contact. */
-  cta: { label: string; href: string };
-  photoCaption: string;
-}
-
-/* --------------------------------------------------------------------------
- * Background — short pre-role origin story. Sits between Hero and Now.
- * Narrative prose (2-4 sentences), first person. No CV list.
- * -------------------------------------------------------------------------- */
-export interface BackgroundContent {
-  kicker: string;
-  body: string;
-}
-
-/* --------------------------------------------------------------------------
- * Now (was: Currently)
- * Short statement + 2–3 inline chips. No emphasis-clause split anymore.
- * -------------------------------------------------------------------------- */
-export interface NowContent {
-  kicker: string;
-  body: string;
-  /** Short pill facts (e.g. "8 countries", "6 months", "Buenos Aires"). */
-  chips: string[];
-}
-
-/* --------------------------------------------------------------------------
- * Last 6 months (merges old Impact + Communication)
- * -------------------------------------------------------------------------- */
-export interface ImpactMetric {
-  value: string;        // verbatim across locales: "76.3K", "+462", "20+", etc.
-  label: string;        // translated
-  detail?: string;      // optional qualifier (e.g. "organic", "from <100")
-}
-
-/**
- * Growth-chart spec — @BNBChainLatAm follower growth.
- *
- * We have exactly TWO real data points: the takeover anchor (startValue on
- * startDate) and today's count. The curve between them is a smooth visual
- * connector, NOT a dataset — there are no intermediate monthly values, real
- * or synthetic. The current follower number is deliberately NOT stored here:
- * it lives in ONE place, `FOLLOWER_COUNT` in src/content/followers.ts, so it
- * can be updated monthly by editing a single line.
- */
-export interface GrowthChart {
-  title: string;       // localized label, e.g. "@BNBChainLatAm followers"
-  caption: string;     // MUST contain organic/orgánico/orgânico; frames growth since takeover
-  startValue: string;  // real start anchor, e.g. "<100"
-  startDate: string;   // localized takeover month, e.g. "Dec 2025"
-  endDate: string;     // localized current month, e.g. "Aug 2026"
-}
-
-export interface CommsPost {
+export interface EventItem {
   id: string;
-  platform: 'X' | 'LinkedIn';
-  date: string;        // verbatim across locales: "May 2026", "Mar 2026", etc.
-  topic: string;       // translated
-  url: string;
-  photo: string;       // /public path
-  alt: string;         // translated
-}
-
-export interface LastSixMonthsContent {
-  kicker: string;
-  heading: string;
-  /** Optional short lead-in below the heading. */
-  intro?: string;
-  /** Curated 6 strongest metrics. */
-  metrics: ImpactMetric[];
-  growth: GrowthChart;
-  highlightsKicker: string;
-  highlights: CommsPost[];
-}
-
-/* --------------------------------------------------------------------------
- * How I think
- * -------------------------------------------------------------------------- */
-export interface Principle {
-  number: string;
   title: string;
-  body: string;
+  date: string;
+  description: string;
+  url: string;
+  videoId?: string;
+  language?: string;
+  photo?: string;
+  photoPosition?: string;
+  photoFit?: 'cover' | 'contain';
+  alt?: string;
 }
-
-export interface HowContent {
-  kicker: string;
-  principles: Principle[];
+export interface EventCollection {
+  heading: string;
+  intro: string;
+  description: string;
+  action: string;
+  items: EventItem[];
 }
-
-/* --------------------------------------------------------------------------
- * Contact
- * -------------------------------------------------------------------------- */
 export interface ContactItem {
-  kind: 'email' | 'x' | 'linkedin' | 'telegram';
-  label: string;       // also serves as aria-label
+  kind: 'email' | 'x' | 'linkedin' | 'telegram' | 'github';
+  label: string;
   href: string;
 }
-
-export interface ContactContent {
-  kicker: string;
-  /** Short headline; the emphasized clause is rendered in --primary. */
-  headline: { preEm: string; em: string };
-  /** Primary mailto CTA. Sits above the 4 icon buttons. */
-  primaryCta: { label: string; href: string };
-  items: ContactItem[];
-}
-
-/* --------------------------------------------------------------------------
- * Misc
- * -------------------------------------------------------------------------- */
-export interface FooterContent {
-  loc: string;
-  lastUpdatedLabel: string;
-  copyright: string;
-}
-
-export interface ActionLabels {
-  getInTouch: string;
-}
-
-/* --------------------------------------------------------------------------
- * Aggregate
- * -------------------------------------------------------------------------- */
 export interface SiteContent {
-  seo: SeoContent;
-  nav: NavContent;
-  hero: HeroContent;
-  background: BackgroundContent;
-  now: NowContent;
-  lastSixMonths: LastSixMonthsContent;
-  how: HowContent;
-  contact: ContactContent;
-  footer: FooterContent;
-  action: ActionLabels;
+  seo: { title: string; description: string; keywords: string[] };
+  nav: { work: string; online: string; offline: string; about: string; contact: string };
+  hero: {
+    eyebrow: string;
+    status: string;
+    headline: { lineA: string; preAccent: string; accent: string; postAccent: string };
+    sub: string;
+    cta: { label: string; href: string };
+    photoCaption: string;
+    photoAlt: string;
+  };
+  builderSessions: {
+    heading: string;
+    body: string;
+    results: string;
+    goal: string;
+    coverageLabel: string;
+    countries: string[];
+    exploreLabel: string;
+    countryDetails: { name: string; links: { title: string; label: string; url: string }[] }[];
+    upcomingLabel: string;
+    upcoming: string;
+    metrics: { value: string; label: string }[];
+    reviewed: string;
+  };
+  online: EventCollection;
+  offline: EventCollection;
+  reach: { heading: string; period: string; impressions: string; engagements: string; source: string; growth: string; growthNote: string; explore: string; total: string };
+  about: { heading: string; paragraphs: string[] };
+  contact: { heading: string; body: string; primaryCta: { label: string; href: string }; items: ContactItem[] };
+  footer: { copyright: string };
+  ui: { previous: string; next: string; close: string; closeMenu: string; youtube: string; openMenu: string; navigation: string; skip: string; carousel: string; language: string; theme: string; light: string; dark: string };
 }

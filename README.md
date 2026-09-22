@@ -4,7 +4,9 @@ Personal site for Stefano Cintioli (LatAm Community Lead, BNB Chain).
 Trilingual (EN / ES / PT), built with Next.js 16 + Tailwind CSS + shadcn/ui +
 Framer Motion. Deployed on Vercel.
 
-**Live:** https://stefano-cintioli-portfolio.vercel.app
+**Live:** https://stefanocintioli.vercel.app
+
+**Local refresh:** `codex/portfolio-refresh` uses the approved September 2026 structure in `briefs/site-spec.md`. Source notes and validation are in `docs/portfolio-refresh-evidence.md`. Local changes are not deployed.
 
 ---
 
@@ -47,13 +49,13 @@ src/
 │  │  ├─ layout.tsx       Root layout — Geist fonts, ThemeProvider,
 │  │  │                    next-intl provider, JSON-LD Person, skip-link,
 │  │  │                    Assistant mount
-│  │  └─ page.tsx          Home — renders the 5 sections in order
+│  │  └─ page.tsx          Home — renders the approved portfolio sections
 │  ├─ globals.css          Design tokens (HSL CSS vars) + base styles
 │  ├─ robots.ts            /robots.txt generator
 │  └─ sitemap.ts           /sitemap.xml generator (3 locales + hreflang)
 │
 ├─ components/
-│  ├─ sections/            Hero / Now / LastSixMonths / How / Contact
+│  ├─ sections/            Hero / BuilderSessions / Events / About / Contact
 │  ├─ nav/                 SiteNav (scroll-spy) + MobileMenu + LocaleSwitcher
 │  ├─ motion/              BlurFade + BlurStagger (Magic-UI-style reveals)
 │  ├─ providers/           ThemeProvider (next-themes wrapper)
@@ -67,8 +69,8 @@ src/
 ├─ content/                Single source of truth — see "Content layer" below
 │  ├─ schema.ts            SiteContent interface
 │  ├─ en.ts                Source of truth (English)
-│  ├─ es.ts                DRAFT — Argentine voseo, flagged for review
-│  ├─ pt.ts                DRAFT — Brazilian PT, flagged for review
+│  ├─ es.ts                Approved Argentine Spanish
+│  ├─ pt.ts                Approved Brazilian Portuguese
 │  └─ index.ts             getContent(locale) with EN fallback
 │
 ├─ hooks/

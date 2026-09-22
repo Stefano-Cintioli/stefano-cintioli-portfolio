@@ -3,7 +3,7 @@
 import { useEffect, useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
-import { Languages } from 'lucide-react';
+import { Globe2, ChevronDown } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { locales, localeLabels, type Locale } from '@/content';
+import { getContent, locales, localeLabels, type Locale } from '@/content';
 
 /**
  * Locale switcher — shadcn dropdown over a ghost icon button.
@@ -29,6 +29,7 @@ import { locales, localeLabels, type Locale } from '@/content';
  * links (hash anchors) are untouched.
  */
 const SCROLL_KEY = 'locale-switch-scroll';
+const languageNames = { en: 'English', es: 'Español', pt: 'Português' };
 
 export function LocaleSwitcher() {
   const router = useRouter();
@@ -51,7 +52,7 @@ export function LocaleSwitcher() {
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
     }
     startTransition(() => {
-      router.replace(pathname, { locale: next, scroll: false });
+      router.replace(`${pathname}${window.location.search}${window.location.hash}`, { locale: next, scroll: false });
     });
   }
 
@@ -61,26 +62,26 @@ export function LocaleSwitcher() {
         <Button
           variant="ghost"
           size="sm"
-          aria-label="Switch language"
-          className="h-9 gap-1.5 px-2.5 font-mono text-xs uppercase tracking-[0.08em] text-foreground/80 hover:text-foreground"
+          aria-label={getContent(currentLocale).ui.language}
+          className="h-10 gap-1.5 rounded-full border border-hairline-2 bg-bg-2/50 px-3 text-xs font-medium text-foreground hover:bg-bg-2"
           disabled={isPending}
         >
-          <Languages className="h-4 w-4" aria-hidden="true" />
-          <span aria-hidden="true">{localeLabels[currentLocale]}</span>
+          <Globe2 className="hidden h-4 w-4 sm:block" aria-hidden="true" />
+          <span aria-hidden="true">{localeLabels[currentLocale]}</span><ChevronDown className="h-3 w-3 opacity-60" aria-hidden="true" />
           <span className="sr-only">
-            Current language: {localeLabels[currentLocale]}
+            {localeLabels[currentLocale]}
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[120px]">
+      <DropdownMenuContent align="end" className="min-w-[190px] rounded-xl p-1.5">
         {locales.map((loc) => (
           <DropdownMenuItem
             key={loc}
             onClick={() => onSelect(loc)}
-            className="gap-2 font-mono text-xs uppercase tracking-[0.08em]"
+            className="min-h-11 gap-3 rounded-lg px-3 text-sm"
             aria-current={loc === currentLocale ? 'true' : undefined}
           >
-            <span>{localeLabels[loc]}</span>
+            <span className="w-7 text-xs text-fg-dim">{localeLabels[loc]}</span><span lang={loc}>{languageNames[loc]}</span>
             {loc === currentLocale && (
               <span
                 className="ml-auto text-[0.65rem] text-muted-foreground"

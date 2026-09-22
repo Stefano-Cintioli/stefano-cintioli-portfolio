@@ -1,7 +1,7 @@
 /**
  * Content layer entry point.
  *
- * Phase 6 schema after the tools/work removal + impact-comms merge.
+ * Approved portfolio schema, shared across EN / ES / PT.
  */
 
 import { en } from './en';
@@ -9,25 +9,7 @@ import { es } from './es';
 import { pt } from './pt';
 import type { Locale, SiteContent } from './schema';
 
-export type {
-  Locale,
-  SiteContent,
-  SeoContent,
-  NavContent,
-  HeroContent,
-  BackgroundContent,
-  NowContent,
-  LastSixMonthsContent,
-  ImpactMetric,
-  GrowthChart,
-  CommsPost,
-  HowContent,
-  Principle,
-  ContactContent,
-  ContactItem,
-  FooterContent,
-  ActionLabels,
-} from './schema';
+export type { Locale, SiteContent, EventItem, EventCollection, ContactItem } from './schema';
 
 export const locales: readonly Locale[] = ['en', 'es', 'pt'] as const;
 export const defaultLocale: Locale = 'en';

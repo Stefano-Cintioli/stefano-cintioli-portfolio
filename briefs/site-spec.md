@@ -1,6 +1,23 @@
 # Stefano Cintioli — Personal Site Spec
 
-Source of truth for the build. Claude Code reads this before generating anything.
+## Approved refresh, September 2026
+
+This section supersedes conflicting historical guidance below for the local `codex/portfolio-refresh` implementation. It is not a deployment record.
+
+- Goal: connect builders, fintechs, and institutions with Stefano and the BNB Chain ecosystem. Global scope without inventing a global job title or publishing internal pipeline metrics.
+- Page: Hero → BNB Builder Sessions → Online events → dated X account analytics → Offline events → About → Contact.
+- One booking CTA in the hero; social/contact links at the bottom. No home-location label.
+- Geist Sans headings and body, white/charcoal themes, restrained gold, real photography. No automatic carousels or decorative growth curves. In the follow-up polish request, Stefano approved integer metric count-ups and a real daily net-follow growth chart; effects respect reduced motion. Country buttons reveal linked session evidence, and contact buttons are icon-only with accessible names, including GitHub.
+- Event rails use native horizontal scrolling, arrow controls and keyboard navigation. YouTube preview images and recording links open YouTube directly; embedded playback was removed after repeated reliability problems during local review. Offline cards link to original recaps; cards without supplied photos use typography rather than unrelated imagery.
+- Copy was approved in EN, Argentine ES and Brazilian PT. The exact Spanish origin line is “Arranqué en finanzas tradicionales, trabajando en back office de fondos comunes de inversión.” Keep Spanish prose free of colons.
+- Activated countries: Argentina, Brazil, Bolivia and Peru. Uruguay, Chile, Mexico, Venezuela and Ecuador are upcoming, alongside further sessions in activated countries.
+- Program-wide 200+ builders / more than half leaving with running agents are user-reported. The CSV reach figures have a separate reporting period; never label them organic or current follower totals.
+- Content is maintained in `src/content/{en,es,pt}.ts` with types in `schema.ts`. Sources and qualifications are in `docs/portfolio-refresh-evidence.md`.
+- No automatic “last updated” dates. Local implementation approval does not authorize commits, pushes or deployment.
+
+## Historical specification
+
+The material below records earlier design intent and does not override the approved refresh above.
 
 ---
 

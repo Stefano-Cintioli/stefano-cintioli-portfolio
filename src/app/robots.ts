@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://stefano-cintioli-portfolio.vercel.app';
+const SITE_URL = 'https://stefanocintioli.vercel.app';
 
 /**
  * robots.txt — allow everything (this is a portfolio, no private paths),

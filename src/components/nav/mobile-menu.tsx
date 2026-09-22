@@ -23,10 +23,11 @@ export function MobileMenu({
   const [open, setOpen] = useState(false);
 
   const items = [
-    { href: '#now',            label: content.nav.now,            id: 'now' },
-    { href: '#last-6-months',  label: content.nav.lastSixMonths,  id: 'last-6-months' },
-    { href: '#how',            label: content.nav.how,            id: 'how' },
-    { href: '#contact',        label: content.nav.contact,        id: 'contact' },
+    { href: '#builder-sessions', label: content.nav.work, id: 'builder-sessions' },
+    { href: '#online-events', label: content.nav.online, id: 'online-events' },
+    { href: '#offline-events', label: content.nav.offline, id: 'offline-events' },
+    { href: '#about', label: content.nav.about, id: 'about' },
+    { href: '#contact', label: content.nav.contact, id: 'contact' },
   ];
 
   return (
@@ -35,19 +36,19 @@ export function MobileMenu({
         <Button
           variant="ghost"
           size="icon"
-          aria-label="Open menu"
-          className="h-9 w-9 md:hidden"
+          aria-label={content.ui.openMenu}
+          className="h-9 w-9 lg:hidden"
         >
           <Menu className="h-5 w-5" aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[260px] sm:w-[300px]">
+      <SheetContent closeLabel={content.ui.closeMenu} aria-describedby={undefined} side="right" className="w-[260px] sm:w-[300px]">
         <SheetHeader>
           <SheetTitle className="font-display text-xl">
             Stefano Cintioli
           </SheetTitle>
         </SheetHeader>
-        <nav aria-label="Mobile" className="mt-8 flex flex-col gap-1 px-4">
+        <nav aria-label={content.ui.navigation} className="mt-8 flex flex-col gap-1 px-4">
           {items.map((item) => {
             const isActive = item.id === activeId;
             return (
