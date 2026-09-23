@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
-import { Button } from '@/components/ui/button';
+import { RequestCall } from '@/components/request-call';
 import type { SiteContent } from '@/content';
 
 export function Hero({ content }: { content: SiteContent }) {
@@ -15,9 +14,7 @@ export function Hero({ content }: { content: SiteContent }) {
               {hero.headline.lineA}
             </h1>
             <p className="mb-8 mt-6 max-w-[49ch] text-base leading-relaxed text-fg-dim lg:text-lg">{hero.sub}</p>
-            <Button asChild size="lg" className="rounded-full px-6">
-              <a href={hero.cta.href} target="_blank" rel="noopener noreferrer">{hero.cta.label}<ArrowUpRight aria-hidden="true" /></a>
-            </Button>
+            <RequestCall copy={content.requestForm} />
           </div>
           <figure className="min-w-0">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-bg-2 md:aspect-[4/5]">

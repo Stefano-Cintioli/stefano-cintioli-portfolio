@@ -33,8 +33,8 @@ export const es: SiteContent = {
     },
     "sub": "Con experiencia en finanzas tradicionales, conecto builders, fintechs e instituciones con el ecosistema de BNB Chain para explorar oportunidades y dar el próximo paso para construir.",
     "cta": {
-      "label": "Agendemos una llamada",
-      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
+      "label": "Solicitar una llamada",
+      "href": "#contact"
     },
     "photoCaption": "En el escenario de Binance Day Perú, Lima, mayo de 2026",
     "photoAlt": "Stefano Cintioli hablando en el escenario de Binance Day Perú en Lima"
@@ -305,8 +305,8 @@ export const es: SiteContent = {
     "heading": "¿Qué estás construyendo?",
     "body": "Si sos builder, trabajás en una fintech o representás a una institución que está explorando blockchain, charlemos.",
     "primaryCta": {
-      "label": "Agendemos una llamada",
-      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
+      "label": "Solicitar una llamada",
+      "href": "#contact"
     },
     "items": [
       {
@@ -336,6 +336,23 @@ export const es: SiteContent = {
       }
     ]
   },
+  "requestForm": {
+    "title": "Solicitar una llamada",
+    "intro": "Contame un poco sobre vos y qué tenés en mente. Voy a revisar tu solicitud antes de coordinar una llamada.",
+    "name": "Tu nombre",
+    "email": "Tu email",
+    "company": "Empresa o proyecto",
+    "link": "Sitio web, LinkedIn o enlace de tu proyecto",
+    "message": "¿De qué te gustaría hablar?",
+    "hint": "Contame brevemente qué estás construyendo y cómo podría ayudarte.",
+    "submit": "Enviar solicitud",
+    "sending": "Enviando…",
+    "success": "Gracias por escribirme. Voy a revisar tu solicitud y te voy a responder si tiene sentido coordinar una llamada. Todavía no se agendó ninguna reunión.",
+    "error": "No se pudo confirmar el envío. Tus respuestas siguen acá. Probá de nuevo o escribime por email.",
+    "privacy": "Tus datos se envían a través de FormSubmit para que pueda revisar tu solicitud y responderte.",
+    "close": "Cerrar formulario",
+    "done": "Listo"
+},
   "footer": {
     "copyright": "© 2026 Stefano Cintioli"
   },

@@ -33,8 +33,8 @@ export const en: SiteContent = {
     },
     "sub": "With a background in traditional finance, I connect builders, fintechs, and institutions with the BNB Chain ecosystem, helping them explore opportunities and take the next step toward building.",
     "cta": {
-      "label": "Book a call",
-      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
+      "label": "Request a call",
+      "href": "#contact"
     },
     "photoCaption": "On stage at Binance Day Perú, Lima, May 2026",
     "photoAlt": "Stefano Cintioli speaking on stage at Binance Day Perú in Lima"
@@ -305,8 +305,8 @@ export const en: SiteContent = {
     "heading": "What are you building?",
     "body": "Whether you’re a builder, a fintech, or an institution exploring blockchain, let’s talk.",
     "primaryCta": {
-      "label": "Book a call",
-      "href": "https://calendly.com/stefano-cintioli-bnbchain/30min"
+      "label": "Request a call",
+      "href": "#contact"
     },
     "items": [
       {
@@ -336,6 +336,23 @@ export const en: SiteContent = {
       }
     ]
   },
+  "requestForm": {
+    "title": "Request a call",
+    "intro": "Tell me a little about yourself and what you have in mind. I’ll review your request before we schedule anything.",
+    "name": "Your name",
+    "email": "Your email",
+    "company": "Company or project",
+    "link": "Website, LinkedIn, or project link",
+    "message": "What would you like to discuss?",
+    "hint": "Briefly describe what you’re working on and how I could help.",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "success": "Thanks for reaching out. I’ll review your request and get back to you if a call makes sense. No meeting has been booked.",
+    "error": "The request could not be confirmed. Your answers are still here. Try again, or email me directly.",
+    "privacy": "Your details are sent through FormSubmit so I can review and reply to your request.",
+    "close": "Close form",
+    "done": "Done"
+},
   "footer": {
     "copyright": "© 2026 Stefano Cintioli"
   },

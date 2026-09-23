@@ -56,6 +56,7 @@ export interface SiteContent {
   reach: { heading: string; period: string; impressions: string; engagements: string; source: string; growth: string; growthNote: string; explore: string; total: string };
   about: { heading: string; paragraphs: string[] };
   contact: { heading: string; body: string; primaryCta: { label: string; href: string }; items: ContactItem[] };
+  requestForm: { title: string; intro: string; name: string; email: string; company: string; link: string; message: string; hint: string; submit: string; sending: string; success: string; error: string; privacy: string; close: string; done: string };
   footer: { copyright: string };
   ui: { previous: string; next: string; close: string; closeMenu: string; youtube: string; openMenu: string; navigation: string; skip: string; carousel: string; language: string; theme: string; light: string; dark: string };
 }
