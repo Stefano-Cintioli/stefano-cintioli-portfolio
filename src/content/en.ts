@@ -347,7 +347,7 @@ export const en: SiteContent = {
     "hint": "Briefly describe what you’re working on and how I could help.",
     "submit": "Send request",
     "sending": "Sending…",
-    "success": "Thanks for reaching out. I’ll review your request and get back to you if a call makes sense. No meeting has been booked.",
+    "success": "Request received. If it’s a fit, I’ll email you my calendar.",
     "error": "The request could not be confirmed. Your answers are still here. Try again, or email me directly.",
     "privacy": "Your details are sent through FormSubmit so I can review and reply to your request.",
     "close": "Close form",

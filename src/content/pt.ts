@@ -347,7 +347,7 @@ export const pt: SiteContent = {
     "hint": "Conte brevemente o que está construindo e como eu poderia ajudar.",
     "submit": "Enviar pedido",
     "sending": "Enviando…",
-    "success": "Obrigado pelo contato. Vou analisar seu pedido e responder se fizer sentido marcarmos uma conversa. Nenhuma reunião foi agendada ainda.",
+    "success": "Recebi seu pedido. Se fizer sentido conversarmos, envio meu calendário por e-mail.",
     "error": "Não foi possível confirmar o envio. Suas respostas continuam aqui. Tente novamente ou me envie um e-mail.",
     "privacy": "Seus dados são enviados pelo FormSubmit para que eu possa analisar seu pedido e responder.",
     "close": "Fechar formulário",

@@ -56,11 +56,11 @@ export function RequestCall({ copy }: { copy: SiteContent['requestForm'] }) {
       <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" />
       <Dialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-hairline-2 bg-background p-6 text-left text-foreground shadow-xl sm:p-8">
         <Dialog.Title className="pr-10 text-2xl font-semibold tracking-tight">{copy.title}</Dialog.Title>
-        <Dialog.Description className="mb-6 mt-3 text-sm leading-relaxed text-fg-dim">{copy.intro}</Dialog.Description>
+        {status !== 'success' && <Dialog.Description className="mb-6 mt-3 text-sm leading-relaxed text-fg-dim">{copy.intro}</Dialog.Description>}
         <Dialog.Close disabled={status === 'sending'} className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full hover:bg-bg-2 disabled:opacity-40" aria-label={copy.close}><X size={20} aria-hidden="true" /></Dialog.Close>
         {status === 'success' ? <div role="status" className="space-y-5 py-5">
           <Check className="h-8 w-8 text-gold-ink" aria-hidden="true" />
-          <p className="leading-relaxed">{copy.success}</p>
+          <Dialog.Description className="leading-relaxed">{copy.success}</Dialog.Description>
           <Dialog.Close asChild><Button className="rounded-full">{copy.done}</Button></Dialog.Close>
         </div> : <form onSubmit={submit} aria-busy={status === 'sending'}>
           <fieldset disabled={status === 'sending'} className="space-y-4">
