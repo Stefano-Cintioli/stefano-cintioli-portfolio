@@ -1,28 +1,33 @@
 import Image from 'next/image';
+import { HeroMesh } from '@/components/hero-mesh';
 import { RequestCall } from '@/components/request-call';
+import { SocialLinks } from '@/components/social-links';
 import type { SiteContent } from '@/content';
 
 export function Hero({ content }: { content: SiteContent }) {
-  const { hero } = content;
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="pt-[var(--nav-h)]">
-      <div className="container max-w-6xl py-12 md:py-20">
-        <div className="grid items-center gap-10 md:grid-cols-[1.35fr_0.85fr] lg:gap-16">
-          <div>
-            <p className="mb-5 max-w-[36ch] text-sm font-medium text-fg-dim">{hero.status}</p>
-            <h1 id="hero-heading" className="max-w-[16ch] text-[clamp(2.5rem,5.3vw,4.5rem)] font-semibold leading-[1.03] tracking-[-0.055em] text-balance">
-              {hero.headline.lineA}
-            </h1>
-            <p className="mb-8 mt-6 max-w-[49ch] text-base leading-relaxed text-fg-dim lg:text-lg">{hero.sub}</p>
-            <RequestCall copy={content.requestForm} />
+    <section id="hero" aria-labelledby="hero-heading" className="hero-section pt-[var(--nav-h)]">
+      <div className="container hero-content">
+        <div className="hero-portrait-stage">
+          <HeroMesh />
+          <div className="hero-portrait">
+            <Image
+              id="hero-portrait-image"
+              src="/assets/img/hero-peru.webp"
+              alt={content.hero.photoAlt}
+              width={500}
+              height={500}
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 768px) 200px, 160px"
+              className="h-full w-full object-cover"
+            />
           </div>
-          <figure className="min-w-0">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-bg-2 md:aspect-[4/5]">
-              <Image src="/assets/img/binance-day-peru.webp" alt={hero.photoAlt} fill priority sizes="(max-width: 767px) calc(100vw - 40px), 430px" className="object-cover object-[50%_32%]" />
-            </div>
-            <figcaption className="mt-3 text-xs leading-relaxed text-fg-dim">{hero.photoCaption}</figcaption>
-          </figure>
         </div>
+        <h1 id="hero-heading" className="hero-name hero-text-reveal">Stefano Cintioli</h1>
+        <p className="hero-role hero-text-reveal">{content.hero.status}</p>
+        <div className="hero-action"><RequestCall copy={content.requestForm} /></div>
+        <SocialLinks items={content.contact.items} className="hero-socials" />
       </div>
     </section>
   );

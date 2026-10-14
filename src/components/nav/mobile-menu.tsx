@@ -1,75 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Menu } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
 import type { SiteContent } from '@/content';
+
+// The modal, focus trap, and Radix runtime are only needed after a tap.
+const MobileMenuPanel = dynamic(() => import('./mobile-menu-panel'), { ssr: false });
 
 export function MobileMenu({
   content,
   activeId,
 }: {
-  content: SiteContent;
+  content: Pick<SiteContent, 'nav' | 'ui'>;
   activeId: string | null;
 }) {
   const [open, setOpen] = useState(false);
-
-  const items = [
-    { href: '#builder-sessions', label: content.nav.work, id: 'builder-sessions' },
-    { href: '#online-events', label: content.nav.online, id: 'online-events' },
-    { href: '#offline-events', label: content.nav.offline, id: 'offline-events' },
-    { href: '#about', label: content.nav.about, id: 'about' },
-    { href: '#contact', label: content.nav.contact, id: 'contact' },
-  ];
+  const trigger = useRef<HTMLButtonElement>(null);
+  const id = useId();
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label={content.ui.openMenu}
-          className="h-9 w-9 lg:hidden"
-        >
-          <Menu className="h-5 w-5" aria-hidden="true" />
-        </Button>
-      </SheetTrigger>
-      <SheetContent closeLabel={content.ui.closeMenu} aria-describedby={undefined} side="right" className="w-[260px] sm:w-[300px]">
-        <SheetHeader>
-          <SheetTitle className="font-display text-xl">
-            Stefano Cintioli
-          </SheetTitle>
-        </SheetHeader>
-        <nav aria-label={content.ui.navigation} className="mt-8 flex flex-col gap-1 px-4">
-          {items.map((item) => {
-            const isActive = item.id === activeId;
-            return (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                aria-current={isActive ? 'location' : undefined}
-                className={[
-                  'rounded-md px-3 py-3 font-display text-xl transition-colors',
-                  isActive
-                    ? 'text-gold-ink'
-                    : 'text-foreground/80 hover:text-foreground hover:bg-muted',
-                ].join(' ')}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </nav>
-      </SheetContent>
-    </Sheet>
+    <>
+      <button
+        ref={trigger}
+        type="button"
+        aria-label={content.ui.openMenu}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls={open ? id : undefined}
+        onClick={() => setOpen(true)}
+        className="inline-flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
+      >
+        <Menu className="h-5 w-5" aria-hidden="true" />
+      </button>
+      {open && <MobileMenuPanel id={id} content={content} activeId={activeId} onClose={() => setOpen(false)} onReturnFocus={() => trigger.current?.focus()} />}
+    </>
   );
 }

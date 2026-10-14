@@ -184,7 +184,7 @@
   @media (min-width: 1024px) { .event-slide { flex-basis: 31%; } }
 }
 @layer base {
-  a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 }
 
 @layer components {
@@ -193,4 +193,43 @@
   .country-button[aria-pressed="true"] { @apply border-foreground bg-foreground text-background; }
   .social-link { @apply relative inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-hairline-2 bg-bg-2/60 text-foreground transition-[background-color,border-color,transform] duration-200 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground; }
   .social-tooltip { @apply pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs text-background opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100; }
+}
+
+/* Centered personal-brand hero. The portrait is never animated. */
+@layer components {
+  .hero-section { position: relative; overflow: clip; }
+  .hero-content { min-height: calc(100svh - var(--nav-h)); justify-content: center; display: flex; flex-direction: column; align-items: center; padding-block: 3rem 4rem; text-align: center; }
+  .hero-portrait-stage { position: relative; isolation: isolate; margin-bottom: 1.75rem; }
+  .hero-portrait { position: relative; z-index: 1; width: 160px; height: 160px; overflow: hidden; border-radius: 50%; border: 2px solid hsl(var(--foreground) / 0.12); background: hsl(var(--bg-2)); box-shadow: 0 12px 40px hsl(220 30% 10% / 0.08); }
+  .hero-mesh { position: absolute; z-index: 0; width: 480px; height: 300px; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; background: radial-gradient(ellipse at 36% 40%, hsl(45 96% 50% / 0.18), transparent 56%), radial-gradient(ellipse at 68% 55%, hsl(42 70% 44% / 0.13), transparent 52%); mask-image: radial-gradient(ellipse, #000 24%, transparent 72%); }
+  .hero-mesh-canvas { opacity: 0.16; }
+  .dark .hero-mesh { background: radial-gradient(ellipse at 36% 40%, hsl(45 96% 50% / 0.16), transparent 58%), radial-gradient(ellipse at 68% 55%, hsl(42 70% 44% / 0.14), transparent 52%); }
+  .dark .hero-mesh-canvas { opacity: 0.28; }
+  .hero-name { position: relative; max-width: 100%; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.055em; }
+  .hero-role { position: relative; margin-top: 1rem; max-width: 54ch; font-size: 0.875rem; line-height: 1.6; color: hsl(var(--fg-dim)); text-wrap: balance; }
+  .hero-action { margin-top: 1.75rem; }
+  .hero-socials { margin-top: 1.75rem; }
+  .hero-socials .social-link { width: 48px; height: 48px; border-radius: 50%; background: transparent; }
+  .hero-socials .social-link:hover { background: hsl(var(--primary)); }
+  @media (min-width: 768px) {
+    .hero-content { padding-block: 4rem 5rem; }
+    .hero-portrait { width: 200px; height: 200px; }
+    .hero-mesh { width: 640px; height: 380px; }
+    .hero-role { font-size: 1rem; }
+  }
+}
+
+/* CSS-only fade-up adapted from akaieuan/trickle-UI-kit TextReveal (MIT).
+   See THIRD_PARTY_NOTICES.md for source and license. No animation runtime. */
+@keyframes hero-text-reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-text-reveal { animation: hero-text-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-role.hero-text-reveal { animation-delay: 80ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-text-reveal { animation: none; opacity: 1; transform: none; }
+  .hero-mesh-canvas { display: none; }
 }
