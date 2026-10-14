@@ -29,5 +29,27 @@ export function inlineScriptHashes(html) {
 export function withHashes(policy, hashes) {
   if (!hashes.length) throw new Error('No prerendered script hashes found');
   if (!/script-src 'self'(?:;|$)/.test(policy)) throw new Error('Expected unhashed script-src directive missing');
-  return policy.replace("script-src 'self'", `script-src 'self' ${[...new Set(hashes)].sort().join(' ')}`);
+  const result = policy.replace("script-src 'self'", `script-src 'self' ${[...new Set(hashes)].sort().join(' ')}`);
+  if (Buffer.byteLength(result) > 7000) throw new Error('CSP exceeds 7 KB; split policies by route');
+  return result;
+}
+
+/** Vercel's Next adapter uses Build Output API v3 header maps, not Next arrays. */
+export function withVercelHashes(config, hashes) {
+  if (!config || config.version !== 3 || !Array.isArray(config.routes)) throw new Error('Unsupported Vercel output format');
+  let updated = 0;
+  const routes = config.routes.map(route => {
+    if (!route.headers) return route;
+    if (typeof route.headers !== 'object' || Array.isArray(route.headers)) throw new Error('Unsupported Vercel output headers');
+    const headers = { ...route.headers };
+    for (const [key, value] of Object.entries(headers)) {
+      if (key.toLowerCase() !== 'content-security-policy-report-only') continue;
+      if (typeof value !== 'string') throw new Error('Vercel CSP must be a string');
+      headers[key] = withHashes(value, hashes);
+      updated++;
+    }
+    return { ...route, headers };
+  });
+  if (!updated) throw new Error('Report-only CSP not found in Vercel output');
+  return { ...config, routes };
 }

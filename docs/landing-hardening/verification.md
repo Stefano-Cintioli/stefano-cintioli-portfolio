@@ -31,7 +31,9 @@ Screenshots: [360px](./screenshots/hero-360.png), [768px](./screenshots/hero-768
 
 `bun run build`, `bun run typecheck`, `bun run test:security` and `git diff --check` pass. Run `node scripts/verify-preview.mjs <URL>` against the deployed preview, as recorded in the PR. It verifies returned headers, every inline script hash, secure locale cookies, all three locale pages, normal 404 and favicon.
 
-Headers live only in `next.config.ts`. The full policy is report-only; `frame-ancestors 'none'` is enforced now. Production inline scripts use hashes generated from exact prerendered bytes after each build, retaining static HTML/CDN caching. Finalization refuses missing hashes, unsupported adapter output or a policy over 7 KB. Document policy hashes are not repeated on every asset response.
+Headers live only in `next.config.ts`. The full policy is report-only; `frame-ancestors 'none'` is enforced now. Production inline scripts use hashes generated from exact prerendered bytes after each build, retaining static HTML/CDN caching. Finalization updates both Next's route manifest and Vercel's Build Output API v3 header maps. It refuses missing hashes, unknown output formats or a policy over 7 KB, and checks emitted adapter HTML before writing. Document policy hashes are not repeated on every asset response.
+
+The initial cloud preview correctly stopped at the unsupported-adapter guard. After inspecting Vercel's actual v3 format, two regression tests were added (five tests total). A real local Vercel-adapter build passed and verified six emitted HTML files against 107 script hashes.
 
 FormSubmit needs `connect-src https://formsubmit.co`. Existing theme, dialog, chart and Paper styles require inline styles; scripts do not allow `unsafe-inline` or `unsafe-eval`. Paper uses local WebGL2 and requires no worker, blob or wasm permissions. HSTS is not configured or changed by this patch.
 
