@@ -22,6 +22,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Unknown locale segments must use the static, hashed 404 rather than emit new inline scripts.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
