@@ -19,7 +19,6 @@ export const en: SiteContent = {
     "work": "Work",
     "online": "Online",
     "offline": "Offline",
-    "about": "About",
     "contact": "Contact"
   },
   "hero": {
@@ -291,15 +290,6 @@ export const en: SiteContent = {
     "growthNote": "Cumulative follows minus unfollows during this period. This is growth, not the account’s total follower count.",
     "explore": "Explore growth by date",
     "total": "Period total"
-  },
-  "about": {
-    "heading": "About me",
-    "paragraphs": [
-      "I started in traditional finance, working in mutual fund operations. Having inflation eat into my salary made it personal.",
-      "That experience shapes how I approach Web3 today, connecting traditional finance with the people building what comes next.",
-      "Today, I work in community, marketing, and growth at BNB Chain. I coordinate initiatives with ambassadors around the world and use AI to build practical tools when needed.",
-      "I’m open to new opportunities and feedback that helps me grow, personally and professionally."
-    ]
   },
   "contact": {
     "heading": "What are you building?",

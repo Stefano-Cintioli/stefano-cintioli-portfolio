@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "lighthouseVersion": "13.5.0",
+  "methodology": {
+    "mobile": "Lighthouse default mobile simulated throttling, Chrome headless=new disable-gpu no-sandbox, three independent runs",
+    "desktop": "Lighthouse desktop preset, same Chrome flags",
+    "reducedMotion": "Actual 1350px desktop media-query and network verification, Chrome force-prefers-reduced-motion"
+  },
+  "suppliedBaselineUnverified": {
+    "performance": 73,
+    "lcpMs": 3500,
+    "tbtMs": 660,
+    "unusedJsKiBApprox": 116
+  },
+  "beforeLocal": {
+    "runs": [
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T18:34:25.998Z",
+        "scores": {
+          "performance": 88,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 92
+        },
+        "lcpMs": 3794.9539000000004,
+        "tbtMs": 83,
+        "fcpMs": 933.4154000000001,
+        "cls": 0,
+        "observedLcpMs": 315,
+        "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+        "unusedJsBytes": 116694,
+        "scriptTransferBytesTotal": 274942,
+        "fontTransferBytes": 141622,
+        "consoleErrors": 0
+      },
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T18:34:55.242Z",
+        "scores": {
+          "performance": 90,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 92
+        },
+        "lcpMs": 3590.59205,
+        "tbtMs": 24,
+        "fcpMs": 909.0263,
+        "cls": 0,
+        "observedLcpMs": 116,
+        "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+        "unusedJsBytes": 116694,
+        "scriptTransferBytesTotal": 274942,
+        "fontTransferBytes": 141622,
+        "consoleErrors": 0
+      },
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T18:35:21.792Z",
+        "scores": {
+          "performance": 90,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 92
+        },
+        "lcpMs": 3579.1565999999993,
+        "tbtMs": 25,
+        "fcpMs": 909.1876,
+        "cls": 0,
+        "observedLcpMs": 94,
+        "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+        "unusedJsBytes": 116694,
+        "scriptTransferBytesTotal": 274942,
+        "fontTransferBytes": 141622,
+        "consoleErrors": 0
+      }
+    ],
+    "medians": {
+      "scores": {
+        "performance": 90,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 92
+      },
+      "lcpMs": 3590.59205,
+      "tbtMs": 25,
+      "fcpMs": 909.1876,
+      "cls": 0,
+      "unusedJsBytes": 116694,
+      "fontTransferBytes": 141622,
+      "scriptTransferBytesTotal": 274942
+    }
+  },
+  "afterLocal": {
+    "runs": [
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T19:12:29.920Z",
+        "scores": {
+          "performance": 97,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2514.4733,
+        "tbtMs": 5,
+        "fcpMs": 907.4733000000001,
+        "cls": 0,
+        "observedLcpMs": 140,
+        "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+        "unusedJsBytes": 57436,
+        "scriptTransferBytesTotal": 175705,
+        "fontTransferBytes": 29813,
+        "consoleErrors": 0
+      },
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T19:13:12.253Z",
+        "scores": {
+          "performance": 97,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2542.8139,
+        "tbtMs": 16,
+        "fcpMs": 913.8139000000001,
+        "cls": 0,
+        "observedLcpMs": 128,
+        "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+        "unusedJsBytes": 57436,
+        "scriptTransferBytesTotal": 175705,
+        "fontTransferBytes": 29813,
+        "consoleErrors": 0
+      },
+      {
+        "url": "http://localhost:3011/",
+        "timestamp": "2026-10-14T19:14:46.161Z",
+        "scores": {
+          "performance": 97,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2562.4564,
+        "tbtMs": 18,
+        "fcpMs": 914.4564,
+        "cls": 0,
+        "observedLcpMs": 139,
+        "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+        "unusedJsBytes": 57436,
+        "scriptTransferBytesTotal": 175705,
+        "fontTransferBytes": 29813,
+        "consoleErrors": 0
+      }
+    ],
+    "medians": {
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2542.8139,
+      "tbtMs": 16,
+      "fcpMs": 913.8139000000001,
+      "cls": 0,
+      "unusedJsBytes": 57436,
+      "fontTransferBytes": 29813,
+      "scriptTransferBytesTotal": 175705
+    }
+  },
+  "beforeLiveMobile": {
+    "url": "https://stefanocintioli.vercel.app/",
+    "timestamp": "2026-10-14T18:42:05.398Z",
+    "scores": {
+      "performance": 92,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 3335.2595000000006,
+    "tbtMs": 58.5,
+    "fcpMs": 1113.5495,
+    "cls": 0.01625961208824147,
+    "observedLcpMs": 1182,
+    "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+    "unusedJsBytes": 118924,
+    "scriptTransferBytesTotal": 279367,
+    "fontTransferBytes": 141524,
+    "consoleErrors": 0
+  },
+  "beforeDesktop": {
+    "url": "http://localhost:3011/",
+    "timestamp": "2026-10-14T18:35:59.815Z",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 92
+    },
+    "lcpMs": 791.8799,
+    "tbtMs": 0,
+    "fcpMs": 249.80919999999998,
+    "cls": 0,
+    "observedLcpMs": 77,
+    "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+    "unusedJsBytes": 116694,
+    "scriptTransferBytesTotal": 274942,
+    "fontTransferBytes": 141622,
+    "consoleErrors": 0
+  },
+  "afterDesktop": {
+    "url": "http://localhost:3011/",
+    "timestamp": "2026-10-14T19:15:57.948Z",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 612.7384999999999,
+    "tbtMs": 0,
+    "fcpMs": 249.7385,
+    "cls": 0,
+    "observedLcpMs": 114,
+    "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+    "unusedJsBytes": 57436,
+    "scriptTransferBytesTotal": 175705,
+    "fontTransferBytes": 29813,
+    "consoleErrors": 0
+  },
+  "afterReducedMotionDesktop": {
+    "url": "http://localhost:3011/",
+    "timestamp": "2026-10-14T19:19:25.214Z",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "motion-checks": 100
+    },
+    "lcpMs": 606.4839999999999,
+    "tbtMs": 0,
+    "fcpMs": 251.5872,
+    "cls": 0,
+    "observedLcpMs": 132,
+    "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+    "unusedJsBytes": 57559,
+    "scriptTransferBytesTotal": 175705,
+    "fontTransferBytes": 29813,
+    "consoleErrors": 0,
+    "checks": {
+      "type": "debugdata",
+      "reducedMotion": true,
+      "viewport": 1350,
+      "meshState": "static",
+      "shaderCanvasCount": 0,
+      "nameAnimation": "none",
+      "roleAnimation": "none",
+      "shaderChunks": [
+        "0d__as055ix7x.js"
+      ],
+      "fetchedShaderChunks": []
+    },
+    "passed": true
+  },
+  "notes": [
+    "Baseline local SEO92 was caused by localhost alternate Link headers against production canonical. Before live SEO100; after local SEO100 with HTML hreflang retained.",
+    "Final local mobile median LCP2542.8ms narrowly misses strict<2500ms target; Vercel HTTPS preview measurement pending.",
+    "Measured supplied Performance73/TBT660 baseline was not reproduced; use measured medians for comparison.",
+    "Earlier failed iterations are preserved separately; no run was removed from a reported median."
+  ],
+  "preview": null
+}

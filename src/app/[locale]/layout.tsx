@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale, getMessages } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Assistant } from '@/components/assistant';
 import { routing } from '@/i18n/routing';
 import { getContent, type Locale } from '@/content';
 import '../globals.css';
+
+// Self-hosted Latin subsets preserve the typefaces without preloading unused Mono.
+const GeistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap' });
+const GeistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap', preload: false });
 
 const SITE_URL = 'https://stefanocintioli.vercel.app';
 
@@ -119,7 +121,6 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale);
-  const messages = await getMessages();
   const content = getContent(locale);
 
   // Stable @id for the Person — referenced by WebSite.publisher so crawlers
@@ -203,7 +204,6 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
-        <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
@@ -214,7 +214,6 @@ export default async function LocaleLayout({
             {/* Deferred RAG chatbot mount point. Renders null today. */}
             <Assistant />
           </ThemeProvider>
-        </NextIntlClientProvider>
       </body>
     </html>
   );

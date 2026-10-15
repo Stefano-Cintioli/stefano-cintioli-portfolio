@@ -1,4 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
+import type { NextRequest } from 'next/server';
 
 import { routing } from './i18n/routing';
 
@@ -9,7 +10,17 @@ import { routing } from './i18n/routing';
  * because that's still its export path (changing the file name does
  * not require changing the package's API).
  */
-export default createMiddleware(routing);
+const handleLocale = createMiddleware(routing);
+
+export default function proxy(request: NextRequest) {
+  const response = handleLocale(request);
+  const localeCookie = response.cookies.get('NEXT_LOCALE');
+  if (localeCookie) {
+    // Locale navigation uses document links. No client code accesses this cookie.
+    response.cookies.set({ ...localeCookie, secure: true, httpOnly: true });
+  }
+  return response;
+}
 
 export const config = {
   // Match all paths except API routes, Next internals, Vercel internals,

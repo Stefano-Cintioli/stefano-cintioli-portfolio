@@ -27,7 +27,7 @@ export interface ContactItem {
 }
 export interface SiteContent {
   seo: { title: string; description: string; keywords: string[] };
-  nav: { work: string; online: string; offline: string; about: string; contact: string };
+  nav: { work: string; online: string; offline: string; contact: string };
   hero: {
     eyebrow: string;
     status: string;
@@ -54,7 +54,6 @@ export interface SiteContent {
   online: EventCollection;
   offline: EventCollection;
   reach: { heading: string; period: string; impressions: string; engagements: string; source: string; growth: string; growthNote: string; explore: string; total: string };
-  about: { heading: string; paragraphs: string[] };
   contact: { heading: string; body: string; primaryCta: { label: string; href: string }; items: ContactItem[] };
   requestForm: { title: string; intro: string; name: string; email: string; company: string; link: string; message: string; hint: string; submit: string; sending: string; success: string; error: string; privacy: string; close: string; done: string };
   footer: { copyright: string };

@@ -6,7 +6,7 @@ Framer Motion. Deployed on Vercel.
 
 **Live:** https://stefanocintioli.vercel.app
 
-**Local refresh:** `codex/portfolio-refresh` uses the approved September 2026 structure in `briefs/site-spec.md`. Source notes and validation are in `docs/portfolio-refresh-evidence.md`. Local changes are not deployed.
+**October hardening preview:** `feat/landing-hardening-hero` adds a centered portrait hero, deferred section interactions and report-only CSP. Review its PR and preview before merging to `main`. The September refresh and email request form are already in production.
 
 ---
 
@@ -18,8 +18,8 @@ Framer Motion. Deployed on Vercel.
 | Styling | Tailwind CSS v3 + design-token CSS variables | All theme values flow through `--bg`, `--primary`, `--gold-ink`, etc. — no hardcoded hex in components |
 | Components | shadcn/ui (Button, DropdownMenu, Sheet) | Tokens map to our palette, not shadcn's default neutrals |
 | Fonts | Geist Sans + Geist Mono via `next/font` | Self-hosted by Next.js, zero external font requests |
-| Animation | Framer Motion 12 | All reveals gated by `useReducedMotion()` |
-| Themes | `next-themes` | `attribute="class"`, `defaultTheme="system"`, `disableTransitionOnChange` |
+| Animation | CSS text reveal + optional Paper mesh | Static on mobile/reduced motion; desktop mesh loads after portrait paint and pauses off-screen |
+| Themes | `next-themes` | `attribute="class"`, `defaultTheme="light"`, `enableSystem={false}`, `disableTransitionOnChange` |
 | i18n | `next-intl` 4 with `proxy.ts` (Next 16's middleware convention) | `localePrefix: 'as-needed'` → EN at `/`, ES at `/es`, PT at `/pt` |
 | Package manager | `bun` | Lockfile committed; Vercel uses `bun install` per `vercel.json` |
 
@@ -30,8 +30,9 @@ Framer Motion. Deployed on Vercel.
 ```bash
 bun install
 bun run dev          # localhost:3000
-bun run build        # production build (Next 16 Turbopack)
+bun run build        # production build + generated CSP script hashes
 bun run typecheck    # tsc --noEmit
+bun run test:security # built-in Node CSP checks
 bun run start        # serve the production build
 ```
 
@@ -47,7 +48,7 @@ src/
 ├─ app/
 │  ├─ [locale]/
 │  │  ├─ layout.tsx       Root layout — Geist fonts, ThemeProvider,
-│  │  │                    next-intl provider, JSON-LD Person, skip-link,
+│  │  │                    JSON-LD Person, skip-link,
 │  │  │                    Assistant mount
 │  │  └─ page.tsx          Home — renders the approved portfolio sections
 │  ├─ globals.css          Design tokens (HSL CSS vars) + base styles
@@ -55,7 +56,7 @@ src/
 │  └─ sitemap.ts           /sitemap.xml generator (3 locales + hreflang)
 │
 ├─ components/
-│  ├─ sections/            Hero / BuilderSessions / Events / About / Contact
+│  ├─ sections/            Hero / BuilderSessions / Events / CommunityGrowth / Contact
 │  ├─ nav/                 SiteNav (scroll-spy) + MobileMenu + LocaleSwitcher
 │  ├─ motion/              BlurFade + BlurStagger (Magic-UI-style reveals)
 │  ├─ providers/           ThemeProvider (next-themes wrapper)
@@ -195,9 +196,9 @@ tag in `src/app/[locale]/layout.tsx`. Nothing else depends on it.
   all other images lazy; fonts via `next/font` (zero CLS); Tailwind v3
   with content-aware purging; SSG for every locale page.
 
-Run PageSpeed Insights against any branch preview URL for the 4 Lighthouse
-scores — the sandbox doesn't ship a headless browser, so the audit isn't
-automated here.
+The hardening PR records production-build Lighthouse measurements and browser
+checks. Verify a deployed preview with `node scripts/verify-preview.mjs <URL>`
+to check headers, locale cookies and hashes against its actual HTML.
 
 ---
 

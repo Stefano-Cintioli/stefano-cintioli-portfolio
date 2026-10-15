@@ -19,7 +19,6 @@ export const es: SiteContent = {
     "work": "Trabajo",
     "online": "Online",
     "offline": "Presenciales",
-    "about": "Sobre mí",
     "contact": "Contacto"
   },
   "hero": {
@@ -291,15 +290,6 @@ export const es: SiteContent = {
     "growthNote": "Seguimientos acumulados menos bajas durante este período. Es el crecimiento, no el total de seguidores de la cuenta.",
     "explore": "Explorá el crecimiento por fecha",
     "total": "Total del período"
-  },
-  "about": {
-    "heading": "Sobre mí",
-    "paragraphs": [
-      "Arranqué en finanzas tradicionales, trabajando en back office de fondos comunes de inversión. Que la inflación me comiera el sueldo lo hizo personal.",
-      "Esa experiencia marca cómo me muevo hoy en Web3, conectando las finanzas tradicionales con quienes están construyendo lo que viene.",
-      "Hoy trabajo en comunidad, marketing y growth en BNB Chain. Coordino iniciativas con embajadores de distintas partes del mundo y uso IA para crear herramientas prácticas cuando hacen falta.",
-      "Estoy abierto a nuevas oportunidades y al feedback que me ayude a seguir creciendo como persona y como profesional."
-    ]
   },
   "contact": {
     "heading": "¿Qué estás construyendo?",

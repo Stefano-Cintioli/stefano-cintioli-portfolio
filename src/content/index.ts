@@ -11,8 +11,8 @@ import type { Locale, SiteContent } from './schema';
 
 export type { Locale, SiteContent, EventItem, EventCollection, ContactItem } from './schema';
 
-export const locales: readonly Locale[] = ['en', 'es', 'pt'] as const;
-export const defaultLocale: Locale = 'en';
+import { defaultLocale } from '@/i18n/locales';
+export { locales, defaultLocale, localeLabels } from '@/i18n/locales';
 
 const dictionary: Record<Locale, SiteContent> = { en, es, pt };
 
@@ -22,9 +22,3 @@ export function getContent(locale: Locale | string | undefined): SiteContent {
   }
   return dictionary[defaultLocale];
 }
-
-export const localeLabels: Record<Locale, string> = {
-  en: 'EN',
-  es: 'ES',
-  pt: 'PT',
-};
