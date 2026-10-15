@@ -42,3 +42,13 @@ FormSubmit needs `connect-src https://formsubmit.co`. Existing theme, dialog, ch
 A TODO leaves full enforcement until a week of clean browser observations. This patch does not install a CSP report-collection service or automatically promote the policy.
 
 The About component, render, translations and navigation anchors are removed. Its unique personal line about inflation is proposed only in the PR description. No new biography copy was added.
+
+## Public production release, October 15
+
+Stefano approved merging PR #6; main commit `68712f9` deployed successfully to the public production domain. No preview credential was needed for the public audits. All individual production results are in [production-metrics.json](./production-metrics.json).
+
+- Three mobile runs scored 97 / 99 / 99; median performance 99, LCP 2.169s, TBT 52.5ms. Accessibility, Best Practices and SEO were 100 in every run. CLS and console errors were zero; the portrait remained LCP.
+- The first run's LCP was 2.527s, just above the threshold; the median passes. The before-production baseline was one measured run (92, 3.335s, 58.5ms), not a three-run median.
+- Desktop scored 100 across all categories, LCP 0.490s and TBT 0.
+
+Release verification found that Vercel's static 404 substituted a wildcard for the empty ACAO header. The focused correction specifies the canonical origin explicitly and uses only the three generated locale segments, preventing runtime-generated error scripts for unknown dotted paths. The verifier now checks both ordinary and dotted 404 paths and requires the exact canonical origin. Local checks and all six generated social-image URLs pass; actual production results for this correction are recorded in its PR.

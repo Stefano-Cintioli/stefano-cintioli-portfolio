@@ -9,8 +9,9 @@ const config: NextConfig = {
   async headers() {
     return [
       { source: '/:path*', headers: [
-        // Empty values remove Vercel's injected wildcard, including 404 documents.
-        { key: 'Access-Control-Allow-Origin', value: '' },
+        // Vercel's static 404 replaces an empty value with '*'. Keep an explicit
+        // allowlist for the canonical origin on every document response.
+        { key: 'Access-Control-Allow-Origin', value: 'https://stefanocintioli.vercel.app' },
         { key: 'X-Content-Type-Options', value: 'nosniff' },
         { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },

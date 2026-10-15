@@ -1,0 +1,157 @@
+{
+  "mainCommit": "68712f9",
+  "productionUrl": "https://stefanocintioli.vercel.app/",
+  "methodology": "Lighthouse13.5.0 default simulated mobile throttling, three independent public runs; desktop preset for desktop; no credentials or bypass headers; same Chrome flags as saved baseline.",
+  "beforeLiveMobile": {
+    "url": "https://stefanocintioli.vercel.app/",
+    "fetchTime": "2026-10-14T18:42:05.398Z",
+    "lighthouseVersion": "13.5.0",
+    "scores": {
+      "performance": 92,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 3335.2595000000006,
+    "tbtMs": 58.5,
+    "fcpMs": 1113.5495,
+    "cls": 0.01625961208824147,
+    "lcpSelector": "div.grid > figure.min-w-0 > div.relative > img.object-cover",
+    "consoleErrors": 0,
+    "unusedJsBytes": 118924,
+    "fontTransferBytes": 141524,
+    "scriptTransferBytesTotal": 279367,
+    "protocols": [
+      "h2"
+    ]
+  },
+  "mobileRuns": [
+    {
+      "url": "https://stefanocintioli.vercel.app/",
+      "fetchTime": "2026-10-15T12:07:14.043Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2526.996,
+      "tbtMs": 60.5,
+      "fcpMs": 989.996,
+      "cls": 0,
+      "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+      "consoleErrors": 0,
+      "unusedJsBytes": 58243,
+      "fontTransferBytes": 29568,
+      "scriptTransferBytesTotal": 175875,
+      "protocols": [
+        "h2"
+      ]
+    },
+    {
+      "url": "https://stefanocintioli.vercel.app/",
+      "fetchTime": "2026-10-15T12:08:11.212Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2169.228,
+      "tbtMs": 52.5,
+      "fcpMs": 1011.2280000000001,
+      "cls": 0,
+      "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+      "consoleErrors": 0,
+      "unusedJsBytes": 58474,
+      "fontTransferBytes": 29516,
+      "scriptTransferBytesTotal": 175909,
+      "protocols": [
+        "h2"
+      ]
+    },
+    {
+      "url": "https://stefanocintioli.vercel.app/",
+      "fetchTime": "2026-10-15T12:09:08.120Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2143.38,
+      "tbtMs": 20,
+      "fcpMs": 982.38,
+      "cls": 0,
+      "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+      "consoleErrors": 0,
+      "unusedJsBytes": 58474,
+      "fontTransferBytes": 29569,
+      "scriptTransferBytesTotal": 175878,
+      "protocols": [
+        "h2"
+      ]
+    }
+  ],
+  "mobileMedians": {
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 2169.228,
+    "tbtMs": 52.5,
+    "fcpMs": 989.996,
+    "cls": 0,
+    "unusedJsBytes": 58474,
+    "fontTransferBytes": 29568,
+    "scriptTransferBytesTotal": 175878
+  },
+  "desktop": {
+    "url": "https://stefanocintioli.vercel.app/",
+    "fetchTime": "2026-10-15T12:10:11.053Z",
+    "lighthouseVersion": "13.5.0",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 489.66700000000014,
+    "tbtMs": 0,
+    "fcpMs": 290.58700000000005,
+    "cls": 0,
+    "lcpSelector": "div.container > div.hero-portrait-stage > div.hero-portrait > img#hero-portrait-image",
+    "consoleErrors": 0,
+    "unusedJsBytes": 58327,
+    "fontTransferBytes": 29570,
+    "scriptTransferBytesTotal": 175908,
+    "protocols": [
+      "h2"
+    ]
+  },
+  "comparisonToMeasuredLiveBaseline": {
+    "performancePoints": 7,
+    "lcpImprovementMs": 1166.0315000000005,
+    "lcpImprovementPercent": 34.96074293469519,
+    "tbtImprovementMs": 6.0
+  },
+  "acceptance": {
+    "mobilePerformanceAllRunsAtLeast90": true,
+    "mobileMedianLcpUnder2500ms": true,
+    "mobileEveryRunLcpUnder2500ms": false,
+    "mobileTbtAllRunsUnder200ms": true,
+    "allMobileA11yBpSeo100": true,
+    "photoIsLcpEveryMobileRun": true,
+    "noConsoleErrors": true
+  },
+  "notes": [
+    "The first run LCP was2526.996ms, 26.996ms over target; all three runs are reported. The median2169.228ms meets target.",
+    "The before live baseline is one Oct14 public run, not a three-run median.",
+    "404 response headers are being checked separately by the parent/security agent; these performance audits do not certify404 header behavior."
+  ]
+}

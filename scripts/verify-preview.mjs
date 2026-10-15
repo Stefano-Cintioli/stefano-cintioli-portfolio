@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { inlineScriptHashes } from './csp.mjs';
 
 const origin = process.argv[2] ?? 'http://localhost:3011';
-for (const route of ['/', '/es', '/pt', '/missing-hardening-check']) {
+for (const route of ['/', '/es', '/pt', '/missing-hardening-check', '/missing-hardening-check.html']) {
   const response = await fetch(new URL(route, origin), { headers: { 'Accept-Language': 'en' } });
   const html = await response.text();
   const policy = response.headers.get('content-security-policy-report-only') ?? '';
@@ -10,7 +10,7 @@ for (const route of ['/', '/es', '/pt', '/missing-hardening-check']) {
   assert.equal(response.headers.get('referrer-policy'), 'strict-origin-when-cross-origin');
   assert.equal(response.headers.get('permissions-policy'), 'camera=(), microphone=(), geolocation=()');
   assert.equal(response.headers.get('content-security-policy'), "frame-ancestors 'none'");
-  assert.notEqual(response.headers.get('access-control-allow-origin'), '*');
+  assert.equal(response.headers.get('access-control-allow-origin'), 'https://stefanocintioli.vercel.app');
   assert.ok(policy.includes("connect-src 'self' https://formsubmit.co"));
   assert.ok(!/script-src[^;]*(unsafe-inline|unsafe-eval)/.test(policy));
   const hashes = inlineScriptHashes(html);
